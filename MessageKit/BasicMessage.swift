@@ -10,5 +10,7 @@ import UIKit
 
 public class BasicMessage {
     
-    
+    public init() {
+        
+    }
 }

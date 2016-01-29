@@ -11,14 +11,15 @@ import UIKit
 public class MessageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var messageTableView: MessageTableView!
-    
+    public var messageDataSource: MessageKitDataSource?
     
     override public func viewDidLoad() {
         super.viewDidLoad()
     
         NSBundle(forClass: MessageViewController.self).loadNibNamed("MessageViewController", owner: self, options: nil)
-        messageTableView.dataSource = self
         // Do any additional setup after loading the view.
+        messageTableView.dataSource = self
+        messageTableView.delegate = self
     }
 
     override public func didReceiveMemoryWarning() {
@@ -38,16 +39,34 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
     */
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "sdfsdsd")
+        let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellIncoming.cellIdentifer()) as! MessageTextCellIncoming
+        //cell!.textLabel?.text = "row\(indexPath.row)"
+        let model = messageDataSource?.messageKitCcontroller(self, modelAtRow: indexPath.row)
+        
+        switch model {
+        case is TextMessage:
+            let model = model as! TextMessage
+            cell.contentLabel.text = model.messageText
+        default:
+            break
+        }
+        
         return cell
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
+    public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let ss: NSString = "dfdf"
+        
+        let size = ss.boundingRectWithSize(CGSizeMake(200, CGFloat.max), options: .UsesFontLeading, attributes: nil, context: nil)
+        return size.height;
+    }
 }

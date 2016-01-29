@@ -11,13 +11,14 @@
 		E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672121C59C354005C9598 /* MessageViewController.swift */; };
 		E5D6721D1C59D2D9005C9598 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6721C1C59D2D9005C9598 /* MessageTableView.swift */; };
 		E5D672231C59F42A005C9598 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672221C59F42A005C9598 /* MessageTableViewCell.swift */; };
-		E5D672261C59F4B4005C9598 /* MessageTableViewCellIncoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672241C59F4B4005C9598 /* MessageTableViewCellIncoming.swift */; };
-		E5D672271C59F4B4005C9598 /* MessageTableViewCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D672251C59F4B4005C9598 /* MessageTableViewCellIncoming.xib */; };
+		E5D672261C59F4B4005C9598 /* MessageTextCellIncoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672241C59F4B4005C9598 /* MessageTextCellIncoming.swift */; };
+		E5D672271C59F4B4005C9598 /* MessageTextCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D672251C59F4B4005C9598 /* MessageTextCellIncoming.xib */; };
 		E5D6722A1C59F506005C9598 /* MessageTableViewCellOutcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672281C59F506005C9598 /* MessageTableViewCellOutcoming.swift */; };
 		E5D6722B1C59F506005C9598 /* MessageTableViewCellOutcoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D672291C59F506005C9598 /* MessageTableViewCellOutcoming.xib */; };
 		E5D6722E1C59F8AC005C9598 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D6722D1C59F8AC005C9598 /* MessageViewController.xib */; };
 		E5D672321C5A0163005C9598 /* BasicMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672311C5A0163005C9598 /* BasicMessage.swift */; };
 		E5D672341C5A01A2005C9598 /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672331C5A01A2005C9598 /* TextMessage.swift */; };
+		E5D672361C5A0335005C9598 /* MessageKitDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672351C5A0335005C9598 /* MessageKitDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +28,14 @@
 		E5D672121C59C354005C9598 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		E5D6721C1C59D2D9005C9598 /* MessageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableView.swift; sourceTree = "<group>"; };
 		E5D672221C59F42A005C9598 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		E5D672241C59F4B4005C9598 /* MessageTableViewCellIncoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCellIncoming.swift; sourceTree = "<group>"; };
-		E5D672251C59F4B4005C9598 /* MessageTableViewCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCellIncoming.xib; sourceTree = "<group>"; };
+		E5D672241C59F4B4005C9598 /* MessageTextCellIncoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTextCellIncoming.swift; sourceTree = "<group>"; };
+		E5D672251C59F4B4005C9598 /* MessageTextCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTextCellIncoming.xib; sourceTree = "<group>"; };
 		E5D672281C59F506005C9598 /* MessageTableViewCellOutcoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCellOutcoming.swift; sourceTree = "<group>"; };
 		E5D672291C59F506005C9598 /* MessageTableViewCellOutcoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCellOutcoming.xib; sourceTree = "<group>"; };
 		E5D6722D1C59F8AC005C9598 /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
 		E5D672311C5A0163005C9598 /* BasicMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicMessage.swift; sourceTree = "<group>"; };
 		E5D672331C5A01A2005C9598 /* TextMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
+		E5D672351C5A0335005C9598 /* MessageKitDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKitDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +84,8 @@
 			children = (
 				E5D6721C1C59D2D9005C9598 /* MessageTableView.swift */,
 				E5D672221C59F42A005C9598 /* MessageTableViewCell.swift */,
-				E5D672241C59F4B4005C9598 /* MessageTableViewCellIncoming.swift */,
-				E5D672251C59F4B4005C9598 /* MessageTableViewCellIncoming.xib */,
+				E5D672241C59F4B4005C9598 /* MessageTextCellIncoming.swift */,
+				E5D672251C59F4B4005C9598 /* MessageTextCellIncoming.xib */,
 				E5D672281C59F506005C9598 /* MessageTableViewCellOutcoming.swift */,
 				E5D672291C59F506005C9598 /* MessageTableViewCellOutcoming.xib */,
 			);
@@ -118,6 +120,7 @@
 		E5D672301C5A00A3005C9598 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				E5D672351C5A0335005C9598 /* MessageKitDataSource.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -190,7 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5D672271C59F4B4005C9598 /* MessageTableViewCellIncoming.xib in Resources */,
+				E5D672271C59F4B4005C9598 /* MessageTextCellIncoming.xib in Resources */,
 				E5D6722B1C59F506005C9598 /* MessageTableViewCellOutcoming.xib in Resources */,
 				E5D6722E1C59F8AC005C9598 /* MessageViewController.xib in Resources */,
 			);
@@ -206,8 +209,9 @@
 				E5D6722A1C59F506005C9598 /* MessageTableViewCellOutcoming.swift in Sources */,
 				E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */,
 				E5D672341C5A01A2005C9598 /* TextMessage.swift in Sources */,
-				E5D672261C59F4B4005C9598 /* MessageTableViewCellIncoming.swift in Sources */,
+				E5D672261C59F4B4005C9598 /* MessageTextCellIncoming.swift in Sources */,
 				E5D6721D1C59D2D9005C9598 /* MessageTableView.swift in Sources */,
+				E5D672361C5A0335005C9598 /* MessageKitDataSource.swift in Sources */,
 				E5D672321C5A0163005C9598 /* BasicMessage.swift in Sources */,
 				E5D672231C59F42A005C9598 /* MessageTableViewCell.swift in Sources */,
 			);

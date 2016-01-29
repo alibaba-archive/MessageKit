@@ -9,18 +9,25 @@
 import UIKit
 import MessageKit
 
-class ViewController: MessageViewController {
+class ViewController: MessageViewController, MessageKitDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        self.dataSource
+        messageDataSource = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
+
+extension ViewController {
+    
+    func messageKitCcontroller(messageViewController: MessageViewController, modelAtRow row: Int) -> BasicMessage {
+        return TextMessage(text: "dsfsdfsdfsdf")
+    }
+}

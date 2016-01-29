@@ -10,5 +10,8 @@ import UIKit
 
 public class TextMessage: BasicMessage {
     
-    var messageText: String?
+    var messageText: String
+    public init(text: String) {
+        messageText = text
+    }
 }
