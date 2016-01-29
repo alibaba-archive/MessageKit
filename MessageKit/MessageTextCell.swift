@@ -1,24 +1,22 @@
 //
-//  MessageTableViewCell.swift
+//  MessageTextCell.swift
 //  MessageKit
 //
-//  Created by ChenHao on 1/28/16.
+//  Created by ChenHao on 1/29/16.
 //  Copyright © 2016 HarriesChen. All rights reserved.
 //
 
 import UIKit
 
-public class MessageTableViewCell: UITableViewCell {
+public class MessageTextCell: MessageTableViewCell {
 
-    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var bubbleImageView: UIImageView!
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.selectionStyle = .None
     }
-    
- 
 
     override public func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

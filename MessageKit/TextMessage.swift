@@ -11,7 +11,8 @@ import UIKit
 public class TextMessage: BasicMessage {
     
     var messageText: String
-    public init(text: String) {
+    public init(type:messageType, text: String) {
         messageText = text
+        super.init(type: type)
     }
 }

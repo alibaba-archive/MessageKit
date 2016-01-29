@@ -40,13 +40,11 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellIncoming.cellIdentifer()) as! MessageTextCellIncoming
-        //cell!.textLabel?.text = "row\(indexPath.row)"
-        let model = messageDataSource?.messageKitCcontroller(self, modelAtRow: indexPath.row)
         
+        let model = messageDataSource?.messageKitCcontroller(self, modelAtRow: indexPath.row)
         switch model {
         case is TextMessage:
-            let model = model as! TextMessage
-            cell.contentLabel.text = model.messageText
+            return configTextCellAtIndexPath(indexPath)
         default:
             break
         }
@@ -54,8 +52,24 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    public func configTextCellAtIndexPath(indexPath: NSIndexPath) -> MessageTextCell {
+        let model = messageDataSource!.messageKitCcontroller(self, modelAtRow: indexPath.row)
+        let textModel = model as! TextMessage
+        if model.type == .Incoming {
+            let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellIncoming.cellIdentifer()) as! MessageTextCellIncoming
+            cell.contentLabel.text = textModel.messageText
+            cell.config()
+            return cell
+        } else {
+            let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellOutcoming.cellIdentifer()) as! MessageTextCellOutcoming
+            cell.contentLabel.text = textModel.messageText
+            cell.config()
+            return cell
+        }
+    }
+    
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return messageDataSource!.numberOfROwinMessageKitCcontroller(self)
     }
     
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -67,6 +81,6 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         let ss: NSString = "dfdf"
         
         let size = ss.boundingRectWithSize(CGSizeMake(200, CGFloat.max), options: .UsesFontLeading, attributes: nil, context: nil)
-        return size.height;
+        return 36;
     }
 }

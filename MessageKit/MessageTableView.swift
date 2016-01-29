@@ -18,6 +18,8 @@ class MessageTableView: UITableView {
     func configTableView() {
         self.registerNib(MessageTextCellIncoming.nib(), forCellReuseIdentifier: MessageTextCellIncoming.cellIdentifer())
         
+        self.registerNib(MessageTextCellOutcoming.nib(), forCellReuseIdentifier: MessageTextCellOutcoming.cellIdentifer())
+        
         
     }
 

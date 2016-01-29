@@ -11,4 +11,6 @@ import UIKit
 public protocol MessageKitDataSource: NSObjectProtocol {
     
     func messageKitCcontroller(messageViewController: MessageViewController, modelAtRow row: Int) -> BasicMessage
+    
+    func numberOfROwinMessageKitCcontroller(messageViewController: MessageViewController) -> Int
 }

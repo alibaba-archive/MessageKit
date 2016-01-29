@@ -1,5 +1,5 @@
 //
-//  MessageTableViewCellIncomingTableViewCell.swift
+//  MessageTableViewCellOutcoming.swift
 //  MessageKit
 //
 //  Created by ChenHao on 1/28/16.
@@ -8,21 +8,20 @@
 
 import UIKit
 
-class MessageTextCellIncoming: MessageTextCell {
-    
+class MessageTextCellOutcoming: MessageTextCell {
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     class func nib() -> UINib {
-        return UINib(nibName: String(MessageTextCellIncoming), bundle: NSBundle(forClass: MessageTextCellIncoming.self))
+        return UINib(nibName: String(MessageTextCellOutcoming), bundle: NSBundle(forClass: MessageTextCellOutcoming.self))
     }
     
     class func cellIdentifer() -> String {
-        return String(MessageTextCellIncoming)
+        return String(MessageTextCellOutcoming)
     }
-    
     func config() {
         let image = UIImage(named: "bubble", inBundle: NSBundle(forClass: MessageViewController.classForCoder()), compatibleWithTraitCollection: nil)!
         let capInsets: UIEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
@@ -30,7 +29,7 @@ class MessageTextCellIncoming: MessageTextCell {
         let messageImages = bubbleFactory.messagesBubbleImageWithColor(UIColor.redColor())
         bubbleImageView.image = messageImages.messageBubbleImage
     }
-    
+
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

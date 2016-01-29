@@ -8,9 +8,16 @@
 
 import UIKit
 
+public enum messageType {
+    case Incoming
+    case Outcoming
+}
+
 public class BasicMessage {
     
-    public init() {
-        
+    let type: messageType
+    
+    public init(type: messageType) {
+        self.type = type
     }
 }
