@@ -25,6 +25,7 @@
 		E5D672421C5B3CDB005C9598 /* MessageBubbleImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672411C5B3CDB005C9598 /* MessageBubbleImageFactory.swift */; };
 		E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */; };
 		E5D672461C5B430D005C9598 /* MessagesBubbleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672451C5B430D005C9598 /* MessagesBubbleImage.swift */; };
+		E5D672481C5B6017005C9598 /* MessageKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672471C5B6017005C9598 /* MessageKitDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		E5D672411C5B3CDB005C9598 /* MessageBubbleImageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBubbleImageFactory.swift; sourceTree = "<group>"; };
 		E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Mask.swift"; sourceTree = "<group>"; };
 		E5D672451C5B430D005C9598 /* MessagesBubbleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesBubbleImage.swift; sourceTree = "<group>"; };
+		E5D672471C5B6017005C9598 /* MessageKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKitDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D672351C5A0335005C9598 /* MessageKitDataSource.swift */,
+				E5D672471C5B6017005C9598 /* MessageKitDelegate.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				E5D6722A1C59F506005C9598 /* MessageTextCellOutcoming.swift in Sources */,
 				E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */,
 				E5D672341C5A01A2005C9598 /* TextMessage.swift in Sources */,
+				E5D672481C5B6017005C9598 /* MessageKitDelegate.swift in Sources */,
 				E5D672261C59F4B4005C9598 /* MessageTextCellIncoming.swift in Sources */,
 				E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */,
 				E5D6721D1C59D2D9005C9598 /* MessageTableView.swift in Sources */,

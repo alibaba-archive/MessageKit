@@ -24,24 +24,24 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJK-rC-ZfY">
-                        <rect key="frame" x="61" y="5" width="105" height="73.5"/>
+                        <rect key="frame" x="61" y="5" width="109" height="73.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OhX-bZ-uNU">
-                                <rect key="frame" x="0.0" y="0.0" width="105" height="73.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="109" height="73.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是文字我" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veg-tU-0Ky">
-                                <rect key="frame" x="10" y="5" width="85" height="63.5"/>
+                                <rect key="frame" x="12" y="7" width="85" height="59.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="veg-tU-0Ky" firstAttribute="leading" secondItem="SJK-rC-ZfY" secondAttribute="leading" constant="10" id="Ck1-7d-T9m"/>
-                            <constraint firstAttribute="bottom" secondItem="veg-tU-0Ky" secondAttribute="bottom" constant="5" id="HTa-p8-R54"/>
+                            <constraint firstItem="veg-tU-0Ky" firstAttribute="leading" secondItem="SJK-rC-ZfY" secondAttribute="leading" constant="12" id="Ck1-7d-T9m"/>
+                            <constraint firstAttribute="bottom" secondItem="veg-tU-0Ky" secondAttribute="bottom" constant="7" id="HTa-p8-R54"/>
                             <constraint firstAttribute="trailing" secondItem="OhX-bZ-uNU" secondAttribute="trailing" id="Iii-zq-C6z"/>
-                            <constraint firstAttribute="trailing" secondItem="veg-tU-0Ky" secondAttribute="trailing" constant="10" id="Nx0-ek-fLA"/>
-                            <constraint firstItem="veg-tU-0Ky" firstAttribute="top" secondItem="SJK-rC-ZfY" secondAttribute="top" constant="5" id="QKo-fV-fMm"/>
+                            <constraint firstAttribute="trailing" secondItem="veg-tU-0Ky" secondAttribute="trailing" constant="12" id="Nx0-ek-fLA"/>
+                            <constraint firstItem="veg-tU-0Ky" firstAttribute="top" secondItem="SJK-rC-ZfY" secondAttribute="top" constant="7" id="QKo-fV-fMm"/>
                             <constraint firstItem="OhX-bZ-uNU" firstAttribute="top" secondItem="SJK-rC-ZfY" secondAttribute="top" id="U4i-lY-bS8"/>
                             <constraint firstAttribute="bottom" secondItem="OhX-bZ-uNU" secondAttribute="bottom" id="gmd-Xm-7JC"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="pS2-mZ-7vg"/>
