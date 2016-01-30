@@ -31,7 +31,7 @@ class ViewController: MessageViewController, MessageKitDataSource {
         dataSource.append(photo)
         
         
-        let outimage = UIImage(named: "Image")!
+        let outimage = UIImage(named: "hujiang")!
         let outphoto = PhotoMessage(type: .Outcoming, photo: outimage)
         outphoto.width = Int(outimage.size.width)
         outphoto.height = Int(outimage.size.height)

@@ -44,11 +44,22 @@ extension UIImage {
     }
     
     func scaleToSize(size: CGSize) -> UIImage {
-        UIGraphicsBeginImageContext(size)
-        self.drawInRect(CGRect(x: 0, y: 0, width: size.width, height: size.height))
-        let scaleImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return scaleImage
+        let cgImage = self.CGImage
+        let width = Int(size.width)
+        let height = Int(size.height)
+        let bitsPerComponent = CGImageGetBitsPerComponent(cgImage)
+        let bytesPerRow = CGImageGetBytesPerRow(cgImage)
+        let colorSpace = CGImageGetColorSpace(cgImage)
+        let bitmapInfo = CGImageGetBitmapInfo(cgImage)
+        
+        let context = CGBitmapContextCreate(nil, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo.rawValue)
+        
+        CGContextSetInterpolationQuality(context, .High)
+        
+        CGContextDrawImage(context, CGRect(origin: CGPointZero, size: CGSize(width: CGFloat(width), height: CGFloat(height))), cgImage)
+        
+        let scaledImage = CGBitmapContextCreateImage(context).flatMap { UIImage(CGImage: $0) }
+        return scaledImage!
     }
     
     func clipRoundCorner(corner: CGFloat) -> UIImage {

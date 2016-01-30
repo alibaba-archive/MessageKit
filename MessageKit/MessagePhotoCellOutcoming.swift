@@ -8,19 +8,11 @@
 
 import UIKit
 
-class MessagePhotoCellOutcoming: MessageMediaCell {
+class MessagePhotoCellOutcoming: MessageMediaCell, NibReusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    
-    class func nib() -> UINib {
-        return UINib(nibName: String(MessagePhotoCellOutcoming), bundle: NSBundle(forClass: MessagePhotoCellOutcoming.self))
-    }
-    
-    class func cellIdentifer() -> String {
-        return String(MessagePhotoCellOutcoming)
     }
     
     func configWithModel(model: PhotoMessage) {
@@ -29,7 +21,8 @@ class MessagePhotoCellOutcoming: MessageMediaCell {
         photoImageHeightConstraint.constant = size.height
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
-            let image = model.photo.scaleToSize(CGSize(width: model.width, height: model.height)).clipRoundCorner(20)
+            let newSize = self.resizePhoto(model.width, height: model.height)
+            let image = model.photo.scaleToSize(newSize).clipRoundCorner(12)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.photoImageView.image = image
             })

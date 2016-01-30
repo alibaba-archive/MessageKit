@@ -8,19 +8,11 @@
 
 import UIKit
 
-class MessageTextCellIncoming: MessageTextCell {
+class MessageTextCellIncoming: MessageTextCell, NibReusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-    
-    class func nib() -> UINib {
-        return UINib(nibName: String(MessageTextCellIncoming), bundle: NSBundle(forClass: MessageTextCellIncoming.self))
-    }
-    
-    class func cellIdentifer() -> String {
-        return String(MessageTextCellIncoming)
+        
     }
     
     func configWithBubbleColor(color: UIColor) {

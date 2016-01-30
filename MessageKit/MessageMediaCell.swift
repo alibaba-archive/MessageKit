@@ -40,5 +40,19 @@ public class MessageMediaCell: MessageTableViewCell {
             return resizePhoto(200, height: newHeight)
         }
     }
+    
+    func resizePhotoWithScale(width: Int, height: Int) -> CGSize {
+        let scale = Int(UIScreen.mainScreen().scale)
+        if width <= (200 * scale) {
+            if height <= 300 * scale {
+                return CGSize(width: width, height: height)
+            } else {
+                return CGSize(width: width, height: 300 * scale)
+            }
+        } else {
+            let newHeight: Int = Int(Double(height) / (Double(width) / (200.0 * Double(scale))))
+            return resizePhoto(200 * scale, height: newHeight)
+        }
+    }
 
 }

@@ -16,13 +16,13 @@ class MessageTableView: UITableView {
     }
     
     func configTableView() {
-        self.registerNib(MessageTextCellIncoming.nib(), forCellReuseIdentifier: MessageTextCellIncoming.cellIdentifer())
+        self.registerNib(MessageTextCellIncoming.nib, forCellReuseIdentifier: MessageTextCellIncoming.reuseIdentifier)
         
-        self.registerNib(MessageTextCellOutcoming.nib(), forCellReuseIdentifier: MessageTextCellOutcoming.cellIdentifer())
+        self.registerNib(MessageTextCellOutcoming.nib, forCellReuseIdentifier: MessageTextCellOutcoming.reuseIdentifier)
         
-        self.registerNib(MessagePhotoCellIncoming.nib(), forCellReuseIdentifier: MessagePhotoCellIncoming.cellIdentifer())
+        self.registerNib(MessagePhotoCellIncoming.nib, forCellReuseIdentifier: MessagePhotoCellIncoming.reuseIdentifier)
         
-        self.registerNib(MessagePhotoCellOutcoming.nib(), forCellReuseIdentifier: MessagePhotoCellOutcoming.cellIdentifer())
+        self.registerNib(MessagePhotoCellOutcoming.nib, forCellReuseIdentifier: MessagePhotoCellOutcoming.reuseIdentifier)
     }
 
 }

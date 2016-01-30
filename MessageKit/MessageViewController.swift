@@ -58,7 +58,7 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         default:
             break
         }
-        let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellIncoming.cellIdentifer()) as! MessageTextCellIncoming
+        let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessageTextCellIncoming
         
         return cell
     }
@@ -67,11 +67,11 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         let model = messageDataSource!.messageKitCcontroller(self, modelAtRow: indexPath.row)
         let photoModel = model as! PhotoMessage
         if model.type == .Incoming {
-            let cell = messageTableView.dequeueReusableCellWithIdentifier(MessagePhotoCellIncoming.cellIdentifer()) as! MessagePhotoCellIncoming
+            let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessagePhotoCellIncoming
             cell.configWithModel(photoModel)
             return cell
         } else {
-            let cell = messageTableView.dequeueReusableCellWithIdentifier(MessagePhotoCellOutcoming.cellIdentifer()) as! MessagePhotoCellOutcoming
+            let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessagePhotoCellOutcoming
             cell.configWithModel(photoModel)
             return cell
         }
@@ -81,12 +81,12 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         let model = messageDataSource!.messageKitCcontroller(self, modelAtRow: indexPath.row)
         let textModel = model as! TextMessage
         if model.type == .Incoming {
-            let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellIncoming.cellIdentifer()) as! MessageTextCellIncoming
+            let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessageTextCellIncoming
             cell.contentLabel.text = textModel.messageText
             cell.configWithBubbleColor(messageDelegate!.bubbleIncomingWithMessageKitCcontroller(self))
             return cell
         } else {
-            let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellOutcoming.cellIdentifer()) as! MessageTextCellOutcoming
+            let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessageTextCellOutcoming
             cell.contentLabel.text = textModel.messageText
             cell.configWithBubbleColor(messageDelegate!.bubbleOutcomingWithMessageKitCcontroller(self))
             return cell

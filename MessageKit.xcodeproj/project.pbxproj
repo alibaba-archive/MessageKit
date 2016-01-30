@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E52366A81C5CB6B1009032D3 /* MessageFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52366A71C5CB6B1009032D3 /* MessageFileCell.swift */; };
+		E52366AA1C5CB94C009032D3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52366A91C5CB94C009032D3 /* Reusable.swift */; };
 		E5D671C91C59BD0C005C9598 /* MessageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D671C81C59BD0C005C9598 /* MessageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672121C59C354005C9598 /* MessageViewController.swift */; };
 		E5D6721D1C59D2D9005C9598 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6721C1C59D2D9005C9598 /* MessageTableView.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E52366A71C5CB6B1009032D3 /* MessageFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFileCell.swift; sourceTree = "<group>"; };
+		E52366A91C5CB94C009032D3 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		E5D671C51C59BD0C005C9598 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D671C81C59BD0C005C9598 /* MessageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKit.h; sourceTree = "<group>"; };
 		E5D671CA1C59BD0C005C9598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			children = (
 				E5D672351C5A0335005C9598 /* MessageKitDataSource.swift */,
 				E5D672471C5B6017005C9598 /* MessageKitDelegate.swift */,
+				E52366A91C5CB94C009032D3 /* Reusable.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 		E5D672581C5C9310005C9598 /* FileMessage */ = {
 			isa = PBXGroup;
 			children = (
+				E52366A71C5CB6B1009032D3 /* MessageFileCell.swift */,
 			);
 			name = FileMessage;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5D6725B1C5C984E005C9598 /* MessagePhotoCellOutcoming.swift in Sources */,
+				E52366A81C5CB6B1009032D3 /* MessageFileCell.swift in Sources */,
 				E5D672381C5B1092005C9598 /* MessageTextCell.swift in Sources */,
 				E5D672461C5B430D005C9598 /* MessagesBubbleImage.swift in Sources */,
 				E5D6722A1C59F506005C9598 /* MessageTextCellOutcoming.swift in Sources */,
@@ -318,6 +325,7 @@
 				E5D6724A1C5C5865005C9598 /* MessageAvatarImageFactory.swift in Sources */,
 				E5D672261C59F4B4005C9598 /* MessageTextCellIncoming.swift in Sources */,
 				E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */,
+				E52366AA1C5CB94C009032D3 /* Reusable.swift in Sources */,
 				E5D672501C5C784B005C9598 /* MessagePhotoCellIncoming.swift in Sources */,
 				E5D6721D1C59D2D9005C9598 /* MessageTableView.swift in Sources */,
 				E5D672361C5A0335005C9598 /* MessageKitDataSource.swift in Sources */,
