@@ -11,7 +11,7 @@ import UIKit
 public class MessageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
-    
+
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

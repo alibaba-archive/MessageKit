@@ -23,12 +23,14 @@ class MessageTextCellIncoming: MessageTextCell {
         return String(MessageTextCellIncoming)
     }
     
-    func config() {
+    func configWithBubbleColor(color: UIColor) {
         let image = UIImage(named: "bubble", inBundle: NSBundle(forClass: MessageViewController.classForCoder()), compatibleWithTraitCollection: nil)!
         let capInsets: UIEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         let bubbleFactory = MessageBubbleImageFactory(bubbleImage: image, capInsets: capInsets)
-        let messageImages = bubbleFactory.messagesBubbleImageWithColor(UIColor.redColor())
+        let messageImages = bubbleFactory.messagesBubbleImageWithColor(color)
         bubbleImageView.image = messageImages.messageBubbleImage
+        
+        self.avatarImageView.image = UIImage(named: "avatar", inBundle: NSBundle(forClass: MessageViewController.classForCoder()), compatibleWithTraitCollection: nil)!.circularAvatarImageWithDiameter(36)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

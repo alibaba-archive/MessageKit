@@ -12,6 +12,7 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
 
     @IBOutlet weak var messageTableView: MessageTableView!
     public var messageDataSource: MessageKitDataSource?
+    public var messageDelegate: MessageKitDelegate?
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,8 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view.
         messageTableView.dataSource = self
         messageTableView.delegate = self
+        
+        messageDelegate = self
     }
 
     override public func didReceiveMemoryWarning() {
@@ -58,12 +61,12 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         if model.type == .Incoming {
             let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellIncoming.cellIdentifer()) as! MessageTextCellIncoming
             cell.contentLabel.text = textModel.messageText
-            cell.config()
+            cell.configWithBubbleColor(messageDelegate!.bubbleIncomingWithMessageKitCcontroller(self))
             return cell
         } else {
             let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellOutcoming.cellIdentifer()) as! MessageTextCellOutcoming
             cell.contentLabel.text = textModel.messageText
-            cell.config()
+            cell.configWithBubbleColor(messageDelegate!.bubbleOutcomingWithMessageKitCcontroller(self))
             return cell
         }
     }
@@ -78,9 +81,6 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
     
     public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        let ss: NSString = "dfdf"
-        
-        let size = ss.boundingRectWithSize(CGSizeMake(200, CGFloat.max), options: .UsesFontLeading, attributes: nil, context: nil)
         return 36;
     }
 }
