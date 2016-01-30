@@ -20,7 +20,9 @@ class MessageTableView: UITableView {
         
         self.registerNib(MessageTextCellOutcoming.nib(), forCellReuseIdentifier: MessageTextCellOutcoming.cellIdentifer())
         
+        self.registerNib(MessagePhotoCellIncoming.nib(), forCellReuseIdentifier: MessagePhotoCellIncoming.cellIdentifer())
         
+        self.registerNib(MessagePhotoCellOutcoming.nib(), forCellReuseIdentifier: MessagePhotoCellOutcoming.cellIdentifer())
     }
 
 }

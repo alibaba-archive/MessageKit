@@ -48,8 +48,8 @@
                             <constraint firstItem="OhX-bZ-uNU" firstAttribute="leading" secondItem="SJK-rC-ZfY" secondAttribute="leading" id="zN3-J0-A6b"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JYI-wa-bU6" userLabel="nameAndTime">
-                        <rect key="frame" x="0.0" y="88" width="230" height="20"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JYI-wa-bU6" userLabel="nameAndTime">
+                        <rect key="frame" x="0.0" y="88" width="320" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tim cook , 晚上12点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yus-Ao-bgh">
                                 <rect key="frame" x="73" y="1" width="128" height="17"/>

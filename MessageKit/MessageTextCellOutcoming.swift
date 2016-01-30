@@ -22,6 +22,7 @@ class MessageTextCellOutcoming: MessageTextCell {
     class func cellIdentifer() -> String {
         return String(MessageTextCellOutcoming)
     }
+    
     func configWithBubbleColor(color: UIColor) {
         let image = UIImage(named: "bubble", inBundle: NSBundle(forClass: MessageViewController.classForCoder()), compatibleWithTraitCollection: nil)!
         let capInsets: UIEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)

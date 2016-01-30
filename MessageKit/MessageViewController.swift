@@ -23,8 +23,13 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         messageTableView.delegate = self
         
         messageDelegate = self
+//        messageTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
     }
 
+    public override func viewDidAppear(animated: Bool) {
+//        /messageTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: messageDataSource!.numberOfROwinMessageKitCcontroller(self)-1, inSection: 0), atScrollPosition: .Bottom, animated: false)
+    }
+    
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,17 +47,34 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
     */
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellIncoming.cellIdentifer()) as! MessageTextCellIncoming
+        
         
         let model = messageDataSource?.messageKitCcontroller(self, modelAtRow: indexPath.row)
         switch model {
         case is TextMessage:
             return configTextCellAtIndexPath(indexPath)
+        case is PhotoMessage:
+            return configPhotoCellAtIndexPath(indexPath)
         default:
             break
         }
+        let cell = messageTableView.dequeueReusableCellWithIdentifier(MessageTextCellIncoming.cellIdentifer()) as! MessageTextCellIncoming
         
         return cell
+    }
+    
+    public func configPhotoCellAtIndexPath(indexPath: NSIndexPath) -> MessageMediaCell {
+        let model = messageDataSource!.messageKitCcontroller(self, modelAtRow: indexPath.row)
+        let photoModel = model as! PhotoMessage
+        if model.type == .Incoming {
+            let cell = messageTableView.dequeueReusableCellWithIdentifier(MessagePhotoCellIncoming.cellIdentifer()) as! MessagePhotoCellIncoming
+            cell.configWithModel(photoModel)
+            return cell
+        } else {
+            let cell = messageTableView.dequeueReusableCellWithIdentifier(MessagePhotoCellOutcoming.cellIdentifer()) as! MessagePhotoCellOutcoming
+            cell.configWithModel(photoModel)
+            return cell
+        }
     }
     
     public func configTextCellAtIndexPath(indexPath: NSIndexPath) -> MessageTextCell {

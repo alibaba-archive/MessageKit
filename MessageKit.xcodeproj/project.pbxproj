@@ -27,6 +27,14 @@
 		E5D672461C5B430D005C9598 /* MessagesBubbleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672451C5B430D005C9598 /* MessagesBubbleImage.swift */; };
 		E5D672481C5B6017005C9598 /* MessageKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672471C5B6017005C9598 /* MessageKitDelegate.swift */; };
 		E5D6724A1C5C5865005C9598 /* MessageAvatarImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672491C5C5865005C9598 /* MessageAvatarImageFactory.swift */; };
+		E5D6724D1C5C7827005C9598 /* MessageMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6724C1C5C7827005C9598 /* MessageMediaCell.swift */; };
+		E5D672501C5C784B005C9598 /* MessagePhotoCellIncoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6724E1C5C784B005C9598 /* MessagePhotoCellIncoming.swift */; };
+		E5D672511C5C784B005C9598 /* MessagePhotoCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D6724F1C5C784B005C9598 /* MessagePhotoCellIncoming.xib */; };
+		E5D672531C5C7912005C9598 /* MediaMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672521C5C7912005C9598 /* MediaMessage.swift */; };
+		E5D672551C5C7926005C9598 /* PhotoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672541C5C7926005C9598 /* PhotoMessage.swift */; };
+		E5D672571C5C7F9C005C9598 /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672561C5C7F9C005C9598 /* UIView+Constraint.swift */; };
+		E5D6725B1C5C984E005C9598 /* MessagePhotoCellOutcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672591C5C984E005C9598 /* MessagePhotoCellOutcoming.swift */; };
+		E5D6725C1C5C984E005C9598 /* MessagePhotoCellOutcoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D6725A1C5C984E005C9598 /* MessagePhotoCellOutcoming.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +60,14 @@
 		E5D672451C5B430D005C9598 /* MessagesBubbleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesBubbleImage.swift; sourceTree = "<group>"; };
 		E5D672471C5B6017005C9598 /* MessageKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKitDelegate.swift; sourceTree = "<group>"; };
 		E5D672491C5C5865005C9598 /* MessageAvatarImageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageAvatarImageFactory.swift; sourceTree = "<group>"; };
+		E5D6724C1C5C7827005C9598 /* MessageMediaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageMediaCell.swift; sourceTree = "<group>"; };
+		E5D6724E1C5C784B005C9598 /* MessagePhotoCellIncoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePhotoCellIncoming.swift; sourceTree = "<group>"; };
+		E5D6724F1C5C784B005C9598 /* MessagePhotoCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessagePhotoCellIncoming.xib; sourceTree = "<group>"; };
+		E5D672521C5C7912005C9598 /* MediaMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMessage.swift; sourceTree = "<group>"; };
+		E5D672541C5C7926005C9598 /* PhotoMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessage.swift; sourceTree = "<group>"; };
+		E5D672561C5C7F9C005C9598 /* UIView+Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
+		E5D672591C5C984E005C9598 /* MessagePhotoCellOutcoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePhotoCellOutcoming.swift; sourceTree = "<group>"; };
+		E5D6725A1C5C984E005C9598 /* MessagePhotoCellOutcoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessagePhotoCellOutcoming.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +120,8 @@
 				E5D6721C1C59D2D9005C9598 /* MessageTableView.swift */,
 				E5D672221C59F42A005C9598 /* MessageTableViewCell.swift */,
 				E5D672391C5B11AD005C9598 /* TextMessage */,
+				E5D6724B1C5C68F1005C9598 /* MediaMessage */,
+				E5D672581C5C9310005C9598 /* FileMessage */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -130,6 +148,8 @@
 				E5D672311C5A0163005C9598 /* BasicMessage.swift */,
 				E5D672331C5A01A2005C9598 /* TextMessage.swift */,
 				E5D672451C5B430D005C9598 /* MessagesBubbleImage.swift */,
+				E5D672521C5C7912005C9598 /* MediaMessage.swift */,
+				E5D672541C5C7926005C9598 /* PhotoMessage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -168,6 +188,7 @@
 			children = (
 				E5D6723E1C5B19BF005C9598 /* NSBundle+Message.swift */,
 				E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */,
+				E5D672561C5C7F9C005C9598 /* UIView+Constraint.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -179,6 +200,25 @@
 				E5D672491C5C5865005C9598 /* MessageAvatarImageFactory.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		E5D6724B1C5C68F1005C9598 /* MediaMessage */ = {
+			isa = PBXGroup;
+			children = (
+				E5D6724C1C5C7827005C9598 /* MessageMediaCell.swift */,
+				E5D6724E1C5C784B005C9598 /* MessagePhotoCellIncoming.swift */,
+				E5D6724F1C5C784B005C9598 /* MessagePhotoCellIncoming.xib */,
+				E5D672591C5C984E005C9598 /* MessagePhotoCellOutcoming.swift */,
+				E5D6725A1C5C984E005C9598 /* MessagePhotoCellOutcoming.xib */,
+			);
+			name = MediaMessage;
+			sourceTree = "<group>";
+		};
+		E5D672581C5C9310005C9598 /* FileMessage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FileMessage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5D672271C59F4B4005C9598 /* MessageTextCellIncoming.xib in Resources */,
+				E5D672511C5C784B005C9598 /* MessagePhotoCellIncoming.xib in Resources */,
 				E5D6723C1C5B179B005C9598 /* Images.xcassets in Resources */,
 				E5D6722B1C59F506005C9598 /* MessageTextCellOutcoming.xib in Resources */,
+				E5D6725C1C5C984E005C9598 /* MessagePhotoCellOutcoming.xib in Resources */,
 				E5D6722E1C59F8AC005C9598 /* MessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,20 +305,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D6725B1C5C984E005C9598 /* MessagePhotoCellOutcoming.swift in Sources */,
 				E5D672381C5B1092005C9598 /* MessageTextCell.swift in Sources */,
 				E5D672461C5B430D005C9598 /* MessagesBubbleImage.swift in Sources */,
 				E5D6722A1C59F506005C9598 /* MessageTextCellOutcoming.swift in Sources */,
 				E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */,
 				E5D672341C5A01A2005C9598 /* TextMessage.swift in Sources */,
 				E5D672481C5B6017005C9598 /* MessageKitDelegate.swift in Sources */,
+				E5D672531C5C7912005C9598 /* MediaMessage.swift in Sources */,
+				E5D672571C5C7F9C005C9598 /* UIView+Constraint.swift in Sources */,
+				E5D6724D1C5C7827005C9598 /* MessageMediaCell.swift in Sources */,
 				E5D6724A1C5C5865005C9598 /* MessageAvatarImageFactory.swift in Sources */,
 				E5D672261C59F4B4005C9598 /* MessageTextCellIncoming.swift in Sources */,
 				E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */,
+				E5D672501C5C784B005C9598 /* MessagePhotoCellIncoming.swift in Sources */,
 				E5D6721D1C59D2D9005C9598 /* MessageTableView.swift in Sources */,
 				E5D672361C5A0335005C9598 /* MessageKitDataSource.swift in Sources */,
 				E5D672321C5A0163005C9598 /* BasicMessage.swift in Sources */,
 				E5D6723F1C5B19BF005C9598 /* NSBundle+Message.swift in Sources */,
 				E5D672231C59F42A005C9598 /* MessageTableViewCell.swift in Sources */,
+				E5D672551C5C7926005C9598 /* PhotoMessage.swift in Sources */,
 				E5D672421C5B3CDB005C9598 /* MessageBubbleImageFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
