@@ -15,7 +15,6 @@ public class MessageTextCell: MessageTableViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override public func setSelected(selected: Bool, animated: Bool) {

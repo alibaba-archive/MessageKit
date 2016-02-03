@@ -12,7 +12,6 @@ class MessageTextCellIncoming: MessageTextCell, NibReusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     func configWithBubbleColor(color: UIColor) {
@@ -28,7 +27,6 @@ class MessageTextCellIncoming: MessageTextCell, NibReusable {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }

@@ -68,11 +68,11 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         let photoModel = model as! PhotoMessage
         if model.type == .Incoming {
             let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessagePhotoCellIncoming
-            cell.configWithModel(photoModel)
+            cell.configPhotoWithModel(photoModel, withAvatar: true)
             return cell
         } else {
             let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessagePhotoCellOutcoming
-            cell.configWithModel(photoModel)
+            cell.configPhotoWithModel(photoModel, withAvatar: false)
             return cell
         }
     }

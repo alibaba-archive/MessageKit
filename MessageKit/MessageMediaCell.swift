@@ -11,21 +11,16 @@ import UIKit
 public class MessageMediaCell: MessageTableViewCell {
 
     @IBOutlet weak var mediaContainerView: UIView!
-    
     @IBOutlet weak var photoImageView: UIImageView!
-    
     @IBOutlet weak var photoImageWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var photoImageHeightConstraint: NSLayoutConstraint!
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override public func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func resizePhoto(width: Int, height: Int) -> CGSize {
@@ -54,5 +49,20 @@ public class MessageMediaCell: MessageTableViewCell {
             return resizePhoto(200 * scale, height: newHeight)
         }
     }
-
+    
+    func configPhotoWithModel(model: PhotoMessage, withAvatar:Bool) {
+        let size = resizePhoto(model.width, height: model.height)
+        photoImageWidthConstraint.constant = size.width
+        photoImageHeightConstraint.constant = size.height
+        if (withAvatar) {
+            self.avatarImageView.image = UIImage(named: "avatar", inBundle: NSBundle(forClass: MessageViewController.classForCoder()), compatibleWithTraitCollection: nil)!.circularAvatarImageWithDiameter(36)
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+            let newSize = self.resizePhoto(model.width, height: model.height)
+            let image = model.photo.scaleToSize(newSize).clipRoundCorner(12)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.photoImageView.image = image
+            })
+        }
+    }
 }
