@@ -17,7 +17,16 @@ class ViewController: MessageViewController, MessageKitDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        self.dataSource
+//        yy
+        
+        let label = FPSLabel(frame: CGRect(x: 0, y: 0, width: 100, height: 64))
+        self.navigationController?.view.addSubview(label)
+        
         messageDataSource = self
+        
+        
+        let file = FileMessage(type: .Incoming, fileName: "fdg")
+        dataSource.append(file)
         dataSource.append(TextMessage(type: .Incoming, text: "123456"))
         dataSource.append(TextMessage(type: .Incoming, text: "www.baidu.com"))
         dataSource.append(TextMessage(type: .Outcoming, text: "dsfsdfsdfsdfsdf"))
@@ -30,12 +39,20 @@ class ViewController: MessageViewController, MessageKitDataSource {
         photo.height = Int(image.size.height)
         dataSource.append(photo)
         
+        let image1 = UIImage(named: "Image")!
+        let photo1 = PhotoMessage(type: .Incoming, photo: image)
+        photo1.width = Int(image1.size.width)
+        photo1.height = Int(image1.size.height)
+        dataSource.append(photo1)
+        
         
         let outimage = UIImage(named: "hujiang")!
         let outphoto = PhotoMessage(type: .Outcoming, photo: outimage)
         outphoto.width = Int(outimage.size.width)
         outphoto.height = Int(outimage.size.height)
         dataSource.append(outphoto)
+        
+        
         
         
         dataSource.append(TextMessage(type: .Incoming, text: "苹果希望给开发者时间, 来为 Apple Watch 开发应用. 我们在正式上市之前就发布 Apple Watch, 一个原因是这样开发者就有时间来为它开发应用.现在 Twitter 和 Facebook 这样的大公司, 还有很多小公司, 都已经加入了开发行列. 每个开发者拿到 WatchKit 以后, 都有机会为 Apple Watch 开发应用."))

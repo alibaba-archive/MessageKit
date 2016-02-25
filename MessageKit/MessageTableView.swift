@@ -23,6 +23,10 @@ class MessageTableView: UITableView {
         self.registerNib(MessagePhotoCellIncoming.nib, forCellReuseIdentifier: MessagePhotoCellIncoming.reuseIdentifier)
         
         self.registerNib(MessagePhotoCellOutcoming.nib, forCellReuseIdentifier: MessagePhotoCellOutcoming.reuseIdentifier)
+        
+        self.registerNib(MessageFileCellOutcoming.nib, forCellReuseIdentifier: MessageFileCellOutcoming.reuseIdentifier)
+        
+        self.registerNib(MessageFileCellIncoming.nib, forCellReuseIdentifier: MessageFileCellIncoming.reuseIdentifier)
     }
 
 }

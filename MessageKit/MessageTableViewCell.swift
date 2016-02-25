@@ -18,8 +18,6 @@ public class MessageTableViewCell: UITableViewCell {
         self.selectionStyle = .None
     }
     
- 
-
     override public func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

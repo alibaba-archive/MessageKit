@@ -53,14 +53,30 @@ public class MessageViewController: UIViewController, UITableViewDelegate, UITab
         switch model {
         case is TextMessage:
             return configTextCellAtIndexPath(indexPath)
+        case is FileMessage:
+            return configFileCellAtIndexPath(indexPath)
         case is PhotoMessage:
             return configPhotoCellAtIndexPath(indexPath)
+
         default:
             break
         }
         let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessageTextCellIncoming
         
         return cell
+    }
+    
+    public func configFileCellAtIndexPath(indexPath: NSIndexPath) -> MessageFileCell {
+        let model = messageDataSource!.messageKitCcontroller(self, modelAtRow: indexPath.row)
+        let fileModel = model as! FileMessage
+        if model.type == .Incoming {
+            let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessageFileCellIncoming
+            cell.configFileWithModel(fileModel, withAvatar: true)
+            return cell
+        } else {
+            let cell = messageTableView.dequeueReusableCell(indexPath: indexPath) as MessageFileCellOutcoming
+            return cell
+        }
     }
     
     public func configPhotoCellAtIndexPath(indexPath: NSIndexPath) -> MessageMediaCell {

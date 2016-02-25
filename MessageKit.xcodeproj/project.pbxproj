@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		E52366A81C5CB6B1009032D3 /* MessageFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52366A71C5CB6B1009032D3 /* MessageFileCell.swift */; };
 		E52366AA1C5CB94C009032D3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52366A91C5CB94C009032D3 /* Reusable.swift */; };
+		E54FD68C1C621A7900F0E0D4 /* MessageFileCellIncoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FD68A1C621A7900F0E0D4 /* MessageFileCellIncoming.swift */; };
+		E54FD68D1C621A7900F0E0D4 /* MessageFileCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54FD68B1C621A7900F0E0D4 /* MessageFileCellIncoming.xib */; };
+		E54FD6901C621AA500F0E0D4 /* MessageFileCellOutcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FD68E1C621AA500F0E0D4 /* MessageFileCellOutcoming.swift */; };
+		E54FD6911C621AA500F0E0D4 /* MessageFileCellOutcoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54FD68F1C621AA500F0E0D4 /* MessageFileCellOutcoming.xib */; };
+		E54FD6931C621AC300F0E0D4 /* FileMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FD6921C621AC300F0E0D4 /* FileMessage.swift */; };
 		E5D671C91C59BD0C005C9598 /* MessageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D671C81C59BD0C005C9598 /* MessageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672121C59C354005C9598 /* MessageViewController.swift */; };
 		E5D6721D1C59D2D9005C9598 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6721C1C59D2D9005C9598 /* MessageTableView.swift */; };
@@ -42,6 +47,11 @@
 /* Begin PBXFileReference section */
 		E52366A71C5CB6B1009032D3 /* MessageFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFileCell.swift; sourceTree = "<group>"; };
 		E52366A91C5CB94C009032D3 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		E54FD68A1C621A7900F0E0D4 /* MessageFileCellIncoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFileCellIncoming.swift; sourceTree = "<group>"; };
+		E54FD68B1C621A7900F0E0D4 /* MessageFileCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageFileCellIncoming.xib; sourceTree = "<group>"; };
+		E54FD68E1C621AA500F0E0D4 /* MessageFileCellOutcoming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFileCellOutcoming.swift; sourceTree = "<group>"; };
+		E54FD68F1C621AA500F0E0D4 /* MessageFileCellOutcoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageFileCellOutcoming.xib; sourceTree = "<group>"; };
+		E54FD6921C621AC300F0E0D4 /* FileMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMessage.swift; sourceTree = "<group>"; };
 		E5D671C51C59BD0C005C9598 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D671C81C59BD0C005C9598 /* MessageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKit.h; sourceTree = "<group>"; };
 		E5D671CA1C59BD0C005C9598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,6 +164,7 @@
 				E5D672451C5B430D005C9598 /* MessagesBubbleImage.swift */,
 				E5D672521C5C7912005C9598 /* MediaMessage.swift */,
 				E5D672541C5C7926005C9598 /* PhotoMessage.swift */,
+				E54FD6921C621AC300F0E0D4 /* FileMessage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -223,6 +234,10 @@
 			isa = PBXGroup;
 			children = (
 				E52366A71C5CB6B1009032D3 /* MessageFileCell.swift */,
+				E54FD68A1C621A7900F0E0D4 /* MessageFileCellIncoming.swift */,
+				E54FD68B1C621A7900F0E0D4 /* MessageFileCellIncoming.xib */,
+				E54FD68E1C621AA500F0E0D4 /* MessageFileCellOutcoming.swift */,
+				E54FD68F1C621AA500F0E0D4 /* MessageFileCellOutcoming.xib */,
 			);
 			name = FileMessage;
 			sourceTree = "<group>";
@@ -298,7 +313,9 @@
 				E5D672271C59F4B4005C9598 /* MessageTextCellIncoming.xib in Resources */,
 				E5D672511C5C784B005C9598 /* MessagePhotoCellIncoming.xib in Resources */,
 				E5D6723C1C5B179B005C9598 /* Images.xcassets in Resources */,
+				E54FD68D1C621A7900F0E0D4 /* MessageFileCellIncoming.xib in Resources */,
 				E5D6722B1C59F506005C9598 /* MessageTextCellOutcoming.xib in Resources */,
+				E54FD6911C621AA500F0E0D4 /* MessageFileCellOutcoming.xib in Resources */,
 				E5D6725C1C5C984E005C9598 /* MessagePhotoCellOutcoming.xib in Resources */,
 				E5D6722E1C59F8AC005C9598 /* MessageViewController.xib in Resources */,
 			);
@@ -312,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5D6725B1C5C984E005C9598 /* MessagePhotoCellOutcoming.swift in Sources */,
+				E54FD68C1C621A7900F0E0D4 /* MessageFileCellIncoming.swift in Sources */,
 				E52366A81C5CB6B1009032D3 /* MessageFileCell.swift in Sources */,
 				E5D672381C5B1092005C9598 /* MessageTextCell.swift in Sources */,
 				E5D672461C5B430D005C9598 /* MessagesBubbleImage.swift in Sources */,
@@ -319,6 +337,7 @@
 				E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */,
 				E5D672341C5A01A2005C9598 /* TextMessage.swift in Sources */,
 				E5D672481C5B6017005C9598 /* MessageKitDelegate.swift in Sources */,
+				E54FD6931C621AC300F0E0D4 /* FileMessage.swift in Sources */,
 				E5D672531C5C7912005C9598 /* MediaMessage.swift in Sources */,
 				E5D672571C5C7F9C005C9598 /* UIView+Constraint.swift in Sources */,
 				E5D6724D1C5C7827005C9598 /* MessageMediaCell.swift in Sources */,
@@ -332,6 +351,7 @@
 				E5D672321C5A0163005C9598 /* BasicMessage.swift in Sources */,
 				E5D6723F1C5B19BF005C9598 /* NSBundle+Message.swift in Sources */,
 				E5D672231C59F42A005C9598 /* MessageTableViewCell.swift in Sources */,
+				E54FD6901C621AA500F0E0D4 /* MessageFileCellOutcoming.swift in Sources */,
 				E5D672551C5C7926005C9598 /* PhotoMessage.swift in Sources */,
 				E5D672421C5B3CDB005C9598 /* MessageBubbleImageFactory.swift in Sources */,
 			);

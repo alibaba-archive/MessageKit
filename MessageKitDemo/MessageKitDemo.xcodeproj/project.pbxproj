@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5259E5B1C7DB06E00C503FF /* FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5259E5A1C7DB06E00C503FF /* FPSLabel.swift */; };
 		E5D672011C59BE77005C9598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672001C59BE77005C9598 /* AppDelegate.swift */; };
 		E5D672031C59BE77005C9598 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672021C59BE77005C9598 /* ViewController.swift */; };
 		E5D672061C59BE77005C9598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D672041C59BE77005C9598 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E5259E5A1C7DB06E00C503FF /* FPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSLabel.swift; sourceTree = "<group>"; };
 		E5D671FD1C59BE77005C9598 /* MessageKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D672001C59BE77005C9598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5D672021C59BE77005C9598 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		E5D671FF1C59BE77005C9598 /* MessageKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				E5259E5A1C7DB06E00C503FF /* FPSLabel.swift */,
 				E5D672001C59BE77005C9598 /* AppDelegate.swift */,
 				E5D672021C59BE77005C9598 /* ViewController.swift */,
 				E5D672041C59BE77005C9598 /* Main.storyboard */,
@@ -157,6 +160,7 @@
 			files = (
 				E5D672031C59BE77005C9598 /* ViewController.swift in Sources */,
 				E5D672011C59BE77005C9598 /* AppDelegate.swift in Sources */,
+				E5259E5B1C7DB06E00C503FF /* FPSLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +273,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MessageKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitDemo;
@@ -281,6 +289,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MessageKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitDemo;
