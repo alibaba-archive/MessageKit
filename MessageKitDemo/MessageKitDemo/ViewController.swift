@@ -25,6 +25,22 @@ class TextMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     }
 }
 
+class PhotoMessageTestHandler: BaseMessageInteractionHandlerProtocol {
+    typealias ViewModelT = PhotoMessageViewModel
+    
+    func userDidTapOnFailIcon(viewModel viewModel: ViewModelT) {
+        
+    }
+    
+    func userDidTapOnBubble(viewModel viewModel: ViewModelT) {
+        
+    }
+    
+    func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
+        
+    }
+}
+
 class FakeDataSource: MessageDataSourceProtocol {
     var hasMoreNext = true
     var hasMorePrevious = true
@@ -80,7 +96,10 @@ class ViewController: MessageViewController {
         let messageModelIncoming = MessageModel(uid: "dsfsdf", senderId: "dsfsdfsdf", type: "text-message", isIncoming: true, date: NSDate(), status: .Success)
         let textMessageModelIncoming = TextMessageModel(messageModel: messageModelIncoming, text: "dsfsdkfskjdhfskdfhkjsdfhjksdfhkjsdfhksdfhjksdfhjksdfhsdkfhskdjfhksdfhksdjfhskdhfsjdkhfksjdhfkjsdhf")
         
-        fake.chatItems = [textMessageModel, textMessageModelIncoming, textMessageModel, textMessageModel, textMessageModelIncoming, textMessageModel, textMessageModel, textMessageModel, textMessageModel, textMessageModelIncoming, textMessageModel]
+        let photoMessageModel1 = MessageModel(uid: "dsfsdf", senderId: "dsfsdfsdf", type: "photo-message", isIncoming: false, date: NSDate(), status: .Success)
+        let photoMessageModelIncoming = PhotoMessageModel(messageModel: photoMessageModel1, imageSize: CGSize(width: 300, height: 300), image: UIImage(named: "hujiang")!)
+        
+        fake.chatItems = [textMessageModel, textMessageModelIncoming, textMessageModel, textMessageModel, textMessageModelIncoming, textMessageModel, textMessageModel, textMessageModel, textMessageModel, textMessageModelIncoming, textMessageModel, photoMessageModelIncoming, photoMessageModelIncoming, photoMessageModelIncoming]
         
         fake.delegate = self
         self.messageDataSource = fake
@@ -89,9 +108,16 @@ class ViewController: MessageViewController {
     
     override func createPresenterBuilders() -> [MessageItemType : [ItemPresenterBuilderProtocol]] {
         let builder = TextMessagePresenterBuilder(viewModelBuilder: TextMessageViewModelDefaultBuilder(), interactionHandler: TextMessageTestHandler())
+        
+        let photobuilder = PhotoMessagePresenterBuilder(viewModelBuilder: PhotoMessageViewModelDefaultBuilder(), interactionHandler: PhotoMessageTestHandler())
+        
         return [
             "text-message" : [
                 builder
+            ]
+            ,
+            "photo-message": [
+                photobuilder
             ]
         ]
     }

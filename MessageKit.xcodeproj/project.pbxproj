@@ -27,6 +27,7 @@
 		E553FE501C880BC8004E137B /* TextMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE4F1C880BC8004E137B /* TextMessagePresenter.swift */; };
 		E553FE521C880BE7004E137B /* BaseMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE511C880BE7004E137B /* BaseMessagePresenter.swift */; };
 		E553FE541C880C91004E137B /* BaseMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE531C880C91004E137B /* BaseMessageViewModel.swift */; };
+		E5BF8FC01C882B4F0041AF71 /* PhotoMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */; };
 		E5CC40301C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */; };
 		E5D671C91C59BD0C005C9598 /* MessageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D671C81C59BD0C005C9598 /* MessageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672121C59C354005C9598 /* MessageViewController.swift */; };
@@ -44,6 +45,14 @@
 		E5E16F3E1C8814F600065288 /* TextBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F3D1C8814F600065288 /* TextBubbleView.swift */; };
 		E5E16F401C88151400065288 /* TextMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F3F1C88151400065288 /* TextMessageCollectionViewCell.swift */; };
 		E5E16F421C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F411C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift */; };
+		E5E16F451C88260800065288 /* PhotoMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F441C88260800065288 /* PhotoMessageModel.swift */; };
+		E5E16F471C88261700065288 /* PhotoMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F461C88261700065288 /* PhotoMessagePresenter.swift */; };
+		E5E16F491C88262600065288 /* PhotoMessagePresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F481C88262600065288 /* PhotoMessagePresenterBuilder.swift */; };
+		E5E16F4B1C88263300065288 /* PhotoMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F4A1C88263300065288 /* PhotoMessageViewModel.swift */; };
+		E5E16F4D1C88277200065288 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F4C1C88277200065288 /* Observable.swift */; };
+		E5E16F501C8827CA00065288 /* PhotoMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F4F1C8827CA00065288 /* PhotoMessageCollectionViewCell.swift */; };
+		E5E16F521C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F511C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift */; };
+		E5E16F541C88282200065288 /* PhotoBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F531C88282200065288 /* PhotoBubbleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +76,7 @@
 		E553FE4F1C880BC8004E137B /* TextMessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessagePresenter.swift; sourceTree = "<group>"; };
 		E553FE511C880BE7004E137B /* BaseMessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessagePresenter.swift; sourceTree = "<group>"; };
 		E553FE531C880C91004E137B /* BaseMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageViewModel.swift; sourceTree = "<group>"; };
+		E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhotoMessageAssets.xcassets; sourceTree = "<group>"; };
 		E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D671C51C59BD0C005C9598 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D671C81C59BD0C005C9598 /* MessageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKit.h; sourceTree = "<group>"; };
@@ -86,6 +96,14 @@
 		E5E16F3D1C8814F600065288 /* TextBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextBubbleView.swift; sourceTree = "<group>"; };
 		E5E16F3F1C88151400065288 /* TextMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5E16F411C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageCollectionViewCellDefaultStyle.swift; sourceTree = "<group>"; };
+		E5E16F441C88260800065288 /* PhotoMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessageModel.swift; sourceTree = "<group>"; };
+		E5E16F461C88261700065288 /* PhotoMessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessagePresenter.swift; sourceTree = "<group>"; };
+		E5E16F481C88262600065288 /* PhotoMessagePresenterBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessagePresenterBuilder.swift; sourceTree = "<group>"; };
+		E5E16F4A1C88263300065288 /* PhotoMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessageViewModel.swift; sourceTree = "<group>"; };
+		E5E16F4C1C88277200065288 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		E5E16F4F1C8827CA00065288 /* PhotoMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessageCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5E16F511C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessageCollectionViewCellDefaultStyle.swift; sourceTree = "<group>"; };
+		E5E16F531C88282200065288 /* PhotoBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBubbleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +120,7 @@
 		E553FE401C87D2D2004E137B /* Addentions */ = {
 			isa = PBXGroup;
 			children = (
+				E5E16F431C8825D800065288 /* PhtotMessage */,
 				E553FE441C87D390004E137B /* TextMessage */,
 				E553FE411C87D31E004E137B /* BaseMessage */,
 			);
@@ -238,6 +257,7 @@
 		E5D6723D1C5B1961005C9598 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E5E16F4C1C88277200065288 /* Observable.swift */,
 				E5E16F321C8811FF00065288 /* Utils.swift */,
 				E5D6723E1C5B19BF005C9598 /* NSBundle+Message.swift */,
 				E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */,
@@ -252,6 +272,29 @@
 				E5E16F3D1C8814F600065288 /* TextBubbleView.swift */,
 				E5E16F3F1C88151400065288 /* TextMessageCollectionViewCell.swift */,
 				E5E16F411C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E5E16F431C8825D800065288 /* PhtotMessage */ = {
+			isa = PBXGroup;
+			children = (
+				E5E16F441C88260800065288 /* PhotoMessageModel.swift */,
+				E5E16F461C88261700065288 /* PhotoMessagePresenter.swift */,
+				E5E16F481C88262600065288 /* PhotoMessagePresenterBuilder.swift */,
+				E5E16F4A1C88263300065288 /* PhotoMessageViewModel.swift */,
+				E5E16F4E1C8827B900065288 /* Views */,
+			);
+			name = PhtotMessage;
+			sourceTree = "<group>";
+		};
+		E5E16F4E1C8827B900065288 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */,
+				E5E16F531C88282200065288 /* PhotoBubbleView.swift */,
+				E5E16F4F1C8827CA00065288 /* PhotoMessageCollectionViewCell.swift */,
+				E5E16F511C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -324,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5BF8FC01C882B4F0041AF71 /* PhotoMessageAssets.xcassets in Resources */,
 				E5D6723C1C5B179B005C9598 /* Images.xcassets in Resources */,
 				E5E16F371C8812A100065288 /* BaseMessageAssets.xcassets in Resources */,
 			);
@@ -349,6 +393,7 @@
 				E553FE541C880C91004E137B /* BaseMessageViewModel.swift in Sources */,
 				E553FE4A1C87E0A0004E137B /* SerialTaskQueueProtocol.swift in Sources */,
 				E5E16F351C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift in Sources */,
+				E5E16F4D1C88277200065288 /* Observable.swift in Sources */,
 				E5E16F311C8810BA00065288 /* AccessoryViewRevealer.swift in Sources */,
 				E553FE3F1C86ED55004E137B /* DummyMessageItemPresenter.swift in Sources */,
 				E553FE501C880BC8004E137B /* TextMessagePresenter.swift in Sources */,
@@ -356,18 +401,25 @@
 				E5E16F391C88144600065288 /* TextMessageViewModel.swift in Sources */,
 				E5E16F2F1C880F4800065288 /* BaseMessageItemPresenter.swift in Sources */,
 				E553FE371C86E5A4004E137B /* MessageItemProtocol.swift in Sources */,
+				E5E16F491C88262600065288 /* PhotoMessagePresenterBuilder.swift in Sources */,
+				E5E16F521C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift in Sources */,
 				E5E16F401C88151400065288 /* TextMessageCollectionViewCell.swift in Sources */,
+				E5E16F471C88261700065288 /* PhotoMessagePresenter.swift in Sources */,
 				E553FE521C880BE7004E137B /* BaseMessagePresenter.swift in Sources */,
 				E553FE311C86E123004E137B /* MessageViewController+scrolling.swift in Sources */,
 				E553FE481C87D85A004E137B /* MessageViewController+Changes.swift in Sources */,
 				E5E16F3B1C88149F00065288 /* TextMessagePresenterBuilder.swift in Sources */,
 				E5CC40301C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift in Sources */,
+				E5E16F451C88260800065288 /* PhotoMessageModel.swift in Sources */,
+				E5E16F541C88282200065288 /* PhotoBubbleView.swift in Sources */,
 				E5D672571C5C7F9C005C9598 /* UIView+Constraint.swift in Sources */,
 				E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */,
 				E5E16F3E1C8814F600065288 /* TextBubbleView.swift in Sources */,
 				E52366AA1C5CB94C009032D3 /* Reusable.swift in Sources */,
 				E5D6723F1C5B19BF005C9598 /* NSBundle+Message.swift in Sources */,
 				E553FE331C86E4B7004E137B /* MessageViewController+Presenters.swift in Sources */,
+				E5E16F4B1C88263300065288 /* PhotoMessageViewModel.swift in Sources */,
+				E5E16F501C8827CA00065288 /* PhotoMessageCollectionViewCell.swift in Sources */,
 				E553FE4C1C87E1A2004E137B /* CollectionChanges.swift in Sources */,
 				E5E16F421C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift in Sources */,
 			);
