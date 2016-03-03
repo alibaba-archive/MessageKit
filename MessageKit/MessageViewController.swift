@@ -99,7 +99,7 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Trailing, relatedBy: .Equal, toItem: self.collectionView, attribute: .Trailing, multiplier: 1, constant: 0))
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        self.accessoryViewRevealer = AccessoryViewRevealer(collectionView: self.collectionView)
+//        self.accessoryViewRevealer = AccessoryViewRevealer(collectionView: self.collectionView)
 //
         self.presenterBuildersByType = self.createPresenterBuilders()
 //
