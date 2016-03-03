@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 public class MessageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     public struct Constants {
@@ -23,22 +22,39 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
     
     public var constants = Constants()
     var decoratedMessageItems = [DecoratedMessageItem]()
+    var accessoryViewRevealer: AccessoryViewRevealer!
     var presenterBuildersByType = [MessageItemType: [ItemPresenterBuilderProtocol]]()
-    
+    var autoLoadingEnabled: Bool = false
+    var layoutModel = MessageCollectionViewLayoutModel.createModel(0, itemsLayoutData: [])
     let presentersByMessageItem = NSMapTable(keyOptions: .WeakMemory, valueOptions: .StrongMemory)
     let presentersByCell = NSMapTable(keyOptions: .WeakMemory, valueOptions: .WeakMemory)
+    var updateQueue: SerialTaskQueueProtocol = SerialTaskQueue()
     public private(set) var collectionView: UICollectionView!
 
+    public var isFirstLayout: Bool = true
+    public var messageItemsDecorator: MessageItemsDecoratorProtocol?
     
     deinit {
-        self.collectionView.delegate = nil
-        self.collectionView.dataSource = nil
+        collectionView.delegate = nil
+        collectionView.dataSource = nil
     }
     
     public var messageDataSource: MessageDataSourceProtocol? {
         didSet {
-            
+            messageDataSource?.delegate = self
+            enqueueModelUpdate(context: .Reload)
         }
+    }
+    
+    public func createPresenterBuilders() -> [MessageItemType: [ItemPresenterBuilderProtocol]] {
+        assert(false, "Override in subclass")
+        return [MessageItemType: [ItemPresenterBuilderProtocol]]()
+    }
+    
+    public var collectionViewLayout: UICollectionViewLayout {
+        let layout = MessageCollectionViewLayout()
+        layout.delegate = self
+        return layout
     }
     
     override public func viewDidLoad() {
@@ -50,14 +66,18 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
        super.viewDidAppear(animated)
     }
     
+    
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
     
-    public var collectionViewLayout: UICollectionViewLayout {
-        let layout = MessageCollectionViewLayout()
-        return layout
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if self.isFirstLayout {
+            updateQueue.start()
+            isFirstLayout = false
+        }
     }
     
     private func addCollectionView() {
@@ -79,21 +99,15 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Trailing, relatedBy: .Equal, toItem: self.collectionView, attribute: .Trailing, multiplier: 1, constant: 0))
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-//        self.accessoryViewRevealer = AccessoryViewRevealer(collectionView: self.collectionView)
-//        
-//        self.presenterBuildersByType = self.createPresenterBuilders()
-//        
-//        for presenterBuilder in self.presenterBuildersByType.flatMap({ $0.1 }) {
-//            presenterBuilder.presenterType.registerCells(self.collectionView)
-//        }
-//        DummyChatItemPresenter.registerCells(self.collectionView)
+        self.accessoryViewRevealer = AccessoryViewRevealer(collectionView: self.collectionView)
+//
+        self.presenterBuildersByType = self.createPresenterBuilders()
+//
+        for presenterBuilder in self.presenterBuildersByType.flatMap({ $0.1 }) {
+            presenterBuilder.presenterType.registerCells(self.collectionView)
+        }
+        DummyMessageItemPresenter.registerCells(self.collectionView)
     }
-    
-
-}
-
-
-extension MessageViewController {
     
     func rectAtIndexPath(indexPath: NSIndexPath?) -> CGRect? {
         if let indexPath = indexPath {
@@ -101,6 +115,12 @@ extension MessageViewController {
         }
         return nil
     }
+}
+
+
+extension MessageViewController {
+    
+    
     
     public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)

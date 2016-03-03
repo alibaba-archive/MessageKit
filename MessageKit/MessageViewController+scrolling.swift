@@ -27,6 +27,22 @@ extension MessageViewController {
         return self.isIndexPathVisible(lastIndexPath, atEdge: .Bottom)
     }
     
+    public func isScrolledAtTop() -> Bool {
+        guard self.collectionView.numberOfSections() > 0 && self.collectionView.numberOfItemsInSection(0) > 0 else { return true }
+        let firstIndexPath = NSIndexPath(forItem: 0, inSection: 0)
+        return self.isIndexPathVisible(firstIndexPath, atEdge: .Top)
+    }
+    
+    public func isCloseToBottom() -> Bool {
+        guard self.collectionView.contentSize.height > 0 else { return true }
+        return (self.visibleRect().maxY / self.collectionView.contentSize.height) > (1 - self.constants.autoloadingFractionalThreshold)
+    }
+    
+    public func isCloseToTop() -> Bool {
+        guard self.collectionView.contentSize.height > 0 else { return true }
+        return (self.visibleRect().minY / self.collectionView.contentSize.height) < self.constants.autoloadingFractionalThreshold
+    }
+    
     
     public func isIndexPathVisible(indexPath: NSIndexPath, atEdge edge: CellVerticalEdge) -> Bool {
         if let attributes = self.collectionView.collectionViewLayout.layoutAttributesForItemAtIndexPath(indexPath) {

@@ -11,4 +11,5 @@ import Foundation
 public protocol ItemPresenterBuilderProtocol {
     func canHandleMessageItem(messageItem: MessageItemProtocol) -> Bool
     func createPresenterWithMessageItem(messageItem: MessageItemProtocol) -> ItemPresenterProtocol
+    var presenterType: ItemPresenterProtocol.Type { get }
 }

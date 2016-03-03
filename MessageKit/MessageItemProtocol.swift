@@ -10,6 +10,11 @@ import Foundation
 
 public typealias MessageItemType = String
 
-public protocol MessageItemProtocol: class {
+public protocol MessageItemProtocol: class, UniqueIdentificable {
     var type: MessageItemType { get }
+}
+
+
+public protocol UniqueIdentificable {
+    var uid: String { get }
 }

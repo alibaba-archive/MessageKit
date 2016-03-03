@@ -8,7 +8,8 @@
 
 import Foundation
 
-extension MessageViewController {
+extension MessageViewController: MessageCollectionViewLayoutDelegate {
+    
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return decoratedMessageItems.count
     }

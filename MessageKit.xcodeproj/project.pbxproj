@@ -18,12 +18,32 @@
 		E553FE3B1C86E6C4004E137B /* ItemPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE3A1C86E6C4004E137B /* ItemPresenterProtocol.swift */; };
 		E553FE3D1C86E9B3004E137B /* ItemPresenterBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE3C1C86E9B3004E137B /* ItemPresenterBuilderProtocol.swift */; };
 		E553FE3F1C86ED55004E137B /* DummyMessageItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE3E1C86ED55004E137B /* DummyMessageItemPresenter.swift */; };
+		E553FE431C87D333004E137B /* BaseMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE421C87D333004E137B /* BaseMessageModel.swift */; };
+		E553FE461C87D3B8004E137B /* TextMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE451C87D3B8004E137B /* TextMessageModel.swift */; };
+		E553FE481C87D85A004E137B /* MessageViewController+Changes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE471C87D85A004E137B /* MessageViewController+Changes.swift */; };
+		E553FE4A1C87E0A0004E137B /* SerialTaskQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE491C87E0A0004E137B /* SerialTaskQueueProtocol.swift */; };
+		E553FE4C1C87E1A2004E137B /* CollectionChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE4B1C87E1A2004E137B /* CollectionChanges.swift */; };
+		E553FE4E1C87E332004E137B /* MessageItemsDecoratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE4D1C87E332004E137B /* MessageItemsDecoratorProtocol.swift */; };
+		E553FE501C880BC8004E137B /* TextMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE4F1C880BC8004E137B /* TextMessagePresenter.swift */; };
+		E553FE521C880BE7004E137B /* BaseMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE511C880BE7004E137B /* BaseMessagePresenter.swift */; };
+		E553FE541C880C91004E137B /* BaseMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE531C880C91004E137B /* BaseMessageViewModel.swift */; };
+		E5CC40301C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */; };
 		E5D671C91C59BD0C005C9598 /* MessageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D671C81C59BD0C005C9598 /* MessageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672121C59C354005C9598 /* MessageViewController.swift */; };
 		E5D6723C1C5B179B005C9598 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D6723B1C5B179B005C9598 /* Images.xcassets */; };
 		E5D6723F1C5B19BF005C9598 /* NSBundle+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6723E1C5B19BF005C9598 /* NSBundle+Message.swift */; };
 		E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */; };
 		E5D672571C5C7F9C005C9598 /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672561C5C7F9C005C9598 /* UIView+Constraint.swift */; };
+		E5E16F2F1C880F4800065288 /* BaseMessageItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F2E1C880F4800065288 /* BaseMessageItemPresenter.swift */; };
+		E5E16F311C8810BA00065288 /* AccessoryViewRevealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F301C8810BA00065288 /* AccessoryViewRevealer.swift */; };
+		E5E16F331C8811FF00065288 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F321C8811FF00065288 /* Utils.swift */; };
+		E5E16F351C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F341C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift */; };
+		E5E16F371C8812A100065288 /* BaseMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5E16F361C8812A100065288 /* BaseMessageAssets.xcassets */; };
+		E5E16F391C88144600065288 /* TextMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F381C88144600065288 /* TextMessageViewModel.swift */; };
+		E5E16F3B1C88149F00065288 /* TextMessagePresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F3A1C88149F00065288 /* TextMessagePresenterBuilder.swift */; };
+		E5E16F3E1C8814F600065288 /* TextBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F3D1C8814F600065288 /* TextBubbleView.swift */; };
+		E5E16F401C88151400065288 /* TextMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F3F1C88151400065288 /* TextMessageCollectionViewCell.swift */; };
+		E5E16F421C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F411C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +58,16 @@
 		E553FE3A1C86E6C4004E137B /* ItemPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemPresenterProtocol.swift; sourceTree = "<group>"; };
 		E553FE3C1C86E9B3004E137B /* ItemPresenterBuilderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemPresenterBuilderProtocol.swift; sourceTree = "<group>"; };
 		E553FE3E1C86ED55004E137B /* DummyMessageItemPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyMessageItemPresenter.swift; sourceTree = "<group>"; };
+		E553FE421C87D333004E137B /* BaseMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageModel.swift; sourceTree = "<group>"; };
+		E553FE451C87D3B8004E137B /* TextMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageModel.swift; sourceTree = "<group>"; };
+		E553FE471C87D85A004E137B /* MessageViewController+Changes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessageViewController+Changes.swift"; sourceTree = "<group>"; };
+		E553FE491C87E0A0004E137B /* SerialTaskQueueProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialTaskQueueProtocol.swift; sourceTree = "<group>"; };
+		E553FE4B1C87E1A2004E137B /* CollectionChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionChanges.swift; sourceTree = "<group>"; };
+		E553FE4D1C87E332004E137B /* MessageItemsDecoratorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItemsDecoratorProtocol.swift; sourceTree = "<group>"; };
+		E553FE4F1C880BC8004E137B /* TextMessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessagePresenter.swift; sourceTree = "<group>"; };
+		E553FE511C880BE7004E137B /* BaseMessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessagePresenter.swift; sourceTree = "<group>"; };
+		E553FE531C880C91004E137B /* BaseMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageViewModel.swift; sourceTree = "<group>"; };
+		E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D671C51C59BD0C005C9598 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D671C81C59BD0C005C9598 /* MessageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKit.h; sourceTree = "<group>"; };
 		E5D671CA1C59BD0C005C9598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +76,16 @@
 		E5D6723E1C5B19BF005C9598 /* NSBundle+Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Message.swift"; sourceTree = "<group>"; };
 		E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Mask.swift"; sourceTree = "<group>"; };
 		E5D672561C5C7F9C005C9598 /* UIView+Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
+		E5E16F2E1C880F4800065288 /* BaseMessageItemPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageItemPresenter.swift; sourceTree = "<group>"; };
+		E5E16F301C8810BA00065288 /* AccessoryViewRevealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewRevealer.swift; sourceTree = "<group>"; };
+		E5E16F321C8811FF00065288 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		E5E16F341C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCellDefaultSyle.swift; sourceTree = "<group>"; };
+		E5E16F361C8812A100065288 /* BaseMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BaseMessageAssets.xcassets; sourceTree = "<group>"; };
+		E5E16F381C88144600065288 /* TextMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageViewModel.swift; sourceTree = "<group>"; };
+		E5E16F3A1C88149F00065288 /* TextMessagePresenterBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessagePresenterBuilder.swift; sourceTree = "<group>"; };
+		E5E16F3D1C8814F600065288 /* TextBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextBubbleView.swift; sourceTree = "<group>"; };
+		E5E16F3F1C88151400065288 /* TextMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5E16F411C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageCollectionViewCellDefaultStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +99,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E553FE401C87D2D2004E137B /* Addentions */ = {
+			isa = PBXGroup;
+			children = (
+				E553FE441C87D390004E137B /* TextMessage */,
+				E553FE411C87D31E004E137B /* BaseMessage */,
+			);
+			name = Addentions;
+			sourceTree = "<group>";
+		};
+		E553FE411C87D31E004E137B /* BaseMessage */ = {
+			isa = PBXGroup;
+			children = (
+				E553FE421C87D333004E137B /* BaseMessageModel.swift */,
+				E553FE511C880BE7004E137B /* BaseMessagePresenter.swift */,
+				E553FE531C880C91004E137B /* BaseMessageViewModel.swift */,
+				E553FE551C880E14004E137B /* Views */,
+			);
+			name = BaseMessage;
+			sourceTree = "<group>";
+		};
+		E553FE441C87D390004E137B /* TextMessage */ = {
+			isa = PBXGroup;
+			children = (
+				E553FE451C87D3B8004E137B /* TextMessageModel.swift */,
+				E553FE4F1C880BC8004E137B /* TextMessagePresenter.swift */,
+				E5E16F3A1C88149F00065288 /* TextMessagePresenterBuilder.swift */,
+				E5E16F381C88144600065288 /* TextMessageViewModel.swift */,
+				E5E16F3C1C8814DE00065288 /* Views */,
+			);
+			name = TextMessage;
+			sourceTree = "<group>";
+		};
+		E553FE551C880E14004E137B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5E16F361C8812A100065288 /* BaseMessageAssets.xcassets */,
+				E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */,
+				E5E16F341C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		E5D671BB1C59BD0C005C9598 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +160,7 @@
 		E5D671C71C59BD0C005C9598 /* MessageKit */ = {
 			isa = PBXGroup;
 			children = (
+				E553FE401C87D2D2004E137B /* Addentions */,
 				E5D6723D1C5B1961005C9598 /* Extensions */,
 				E5D6723A1C5B1745005C9598 /* Assert */,
 				E5D672301C5A00A3005C9598 /* Protocol */,
@@ -110,10 +193,13 @@
 			isa = PBXGroup;
 			children = (
 				E5D672121C59C354005C9598 /* MessageViewController.swift */,
-				E553FE2E1C86D876004E137B /* MessageDataSourceProtocol.swift */,
 				E553FE301C86E123004E137B /* MessageViewController+scrolling.swift */,
 				E553FE321C86E4B7004E137B /* MessageViewController+Presenters.swift */,
+				E553FE471C87D85A004E137B /* MessageViewController+Changes.swift */,
 				E553FE3E1C86ED55004E137B /* DummyMessageItemPresenter.swift */,
+				E553FE4B1C87E1A2004E137B /* CollectionChanges.swift */,
+				E5E16F2E1C880F4800065288 /* BaseMessageItemPresenter.swift */,
+				E5E16F301C8810BA00065288 /* AccessoryViewRevealer.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -134,6 +220,9 @@
 				E553FE381C86E5F7004E137B /* ItemDecorationAttributesProtocol.swift */,
 				E553FE3A1C86E6C4004E137B /* ItemPresenterProtocol.swift */,
 				E553FE3C1C86E9B3004E137B /* ItemPresenterBuilderProtocol.swift */,
+				E553FE491C87E0A0004E137B /* SerialTaskQueueProtocol.swift */,
+				E553FE4D1C87E332004E137B /* MessageItemsDecoratorProtocol.swift */,
+				E553FE2E1C86D876004E137B /* MessageDataSourceProtocol.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -149,11 +238,22 @@
 		E5D6723D1C5B1961005C9598 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E5E16F321C8811FF00065288 /* Utils.swift */,
 				E5D6723E1C5B19BF005C9598 /* NSBundle+Message.swift */,
 				E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */,
 				E5D672561C5C7F9C005C9598 /* UIView+Constraint.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		E5E16F3C1C8814DE00065288 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5E16F3D1C8814F600065288 /* TextBubbleView.swift */,
+				E5E16F3F1C88151400065288 /* TextMessageCollectionViewCell.swift */,
+				E5E16F411C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5D6723C1C5B179B005C9598 /* Images.xcassets in Resources */,
+				E5E16F371C8812A100065288 /* BaseMessageAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,19 +338,38 @@
 			files = (
 				E553FE2D1C86D25C004E137B /* MessageCollectionViewLayout.swift in Sources */,
 				E553FE3D1C86E9B3004E137B /* ItemPresenterBuilderProtocol.swift in Sources */,
+				E553FE431C87D333004E137B /* BaseMessageModel.swift in Sources */,
+				E5E16F331C8811FF00065288 /* Utils.swift in Sources */,
 				E553FE391C86E5F7004E137B /* ItemDecorationAttributesProtocol.swift in Sources */,
 				E553FE2F1C86D876004E137B /* MessageDataSourceProtocol.swift in Sources */,
 				E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */,
+				E553FE461C87D3B8004E137B /* TextMessageModel.swift in Sources */,
 				E553FE3B1C86E6C4004E137B /* ItemPresenterProtocol.swift in Sources */,
 				E553FE351C86E518004E137B /* DecoratedMessageItem.swift in Sources */,
+				E553FE541C880C91004E137B /* BaseMessageViewModel.swift in Sources */,
+				E553FE4A1C87E0A0004E137B /* SerialTaskQueueProtocol.swift in Sources */,
+				E5E16F351C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift in Sources */,
+				E5E16F311C8810BA00065288 /* AccessoryViewRevealer.swift in Sources */,
 				E553FE3F1C86ED55004E137B /* DummyMessageItemPresenter.swift in Sources */,
+				E553FE501C880BC8004E137B /* TextMessagePresenter.swift in Sources */,
+				E553FE4E1C87E332004E137B /* MessageItemsDecoratorProtocol.swift in Sources */,
+				E5E16F391C88144600065288 /* TextMessageViewModel.swift in Sources */,
+				E5E16F2F1C880F4800065288 /* BaseMessageItemPresenter.swift in Sources */,
 				E553FE371C86E5A4004E137B /* MessageItemProtocol.swift in Sources */,
+				E5E16F401C88151400065288 /* TextMessageCollectionViewCell.swift in Sources */,
+				E553FE521C880BE7004E137B /* BaseMessagePresenter.swift in Sources */,
 				E553FE311C86E123004E137B /* MessageViewController+scrolling.swift in Sources */,
+				E553FE481C87D85A004E137B /* MessageViewController+Changes.swift in Sources */,
+				E5E16F3B1C88149F00065288 /* TextMessagePresenterBuilder.swift in Sources */,
+				E5CC40301C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift in Sources */,
 				E5D672571C5C7F9C005C9598 /* UIView+Constraint.swift in Sources */,
 				E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */,
+				E5E16F3E1C8814F600065288 /* TextBubbleView.swift in Sources */,
 				E52366AA1C5CB94C009032D3 /* Reusable.swift in Sources */,
 				E5D6723F1C5B19BF005C9598 /* NSBundle+Message.swift in Sources */,
 				E553FE331C86E4B7004E137B /* MessageViewController+Presenters.swift in Sources */,
+				E553FE4C1C87E1A2004E137B /* CollectionChanges.swift in Sources */,
+				E5E16F421C88152F00065288 /* TextMessageCollectionViewCellDefaultStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
