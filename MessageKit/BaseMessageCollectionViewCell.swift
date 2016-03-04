@@ -29,13 +29,14 @@ public protocol BaseMessageCollectionViewCellStyleProtocol {
 }
 
 public struct BaseMessageCollectionViewCellLayoutConstants {
-    let horizontalMargin: CGFloat = 11
+    let horizontalMargin: CGFloat = 15
+    let avatarWidth: CGFloat = 36
     let horizontalInterspacing: CGFloat = 4
     let maxContainerWidthPercentageForBubbleView: CGFloat = 0.68
 }
 
 
-public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:UIView, BubbleViewType:MaximumLayoutWidthSpecificable, BubbleViewType: BackgroundSizingQueryable>: UICollectionViewCell, BackgroundSizingQueryable, AccessoryViewRevealable, UIGestureRecognizerDelegate {
+public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:UIView, BubbleViewType:MaximumLayoutWidthSpecificable, BubbleViewType: BackgroundSizingQueryable>: UICollectionViewCell, BackgroundSizingQueryable, UIGestureRecognizerDelegate {
     
     public var animationDuration: CFTimeInterval = 0.33
     public var viewContext: ViewContext = .Normal
@@ -100,6 +101,21 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
         return nil
     }
     
+    public private(set) var avatarView: UIImageView!
+    
+    func createAvatarView() -> UIImageView! {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "avatar", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+        
+        return imageView
+    }
+    
+    public private(set) var timestampLabel: UILabel!
+    func createTimestampView() -> UILabel! {
+        let label = UILabel()
+        return label
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -122,11 +138,15 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
     }()
     
     private func commonInit() {
-        self.bubbleView = self.createBubbleView()
+        self.bubbleView = createBubbleView()
         self.bubbleView.addGestureRecognizer(self.tapGestureRecognizer)
         self.bubbleView.addGestureRecognizer(self.longPressGestureRecognizer)
+        self.avatarView = createAvatarView()
+        self.timestampLabel = createTimestampView()
         self.contentView.addSubview(self.bubbleView)
+        self.contentView.addSubview(self.avatarView)
         self.contentView.addSubview(self.failedButton)
+        self.contentView.addSubview(self.timestampLabel)
         self.contentView.exclusiveTouch = true
         self.exclusiveTouch = true
     }
@@ -141,7 +161,6 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
     
     public override func prepareForReuse() {
         super.prepareForReuse()
-        self.removeAccessoryView()
     }
     
     private lazy var failedButton: UIButton = {
@@ -163,37 +182,25 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
         } else {
             self.failedButton.alpha = 0
         }
-        self.accessoryTimestamp?.attributedText = style.attributedStringForDate(viewModel.date)
+        self.timestampLabel.attributedText = self.baseStyle?.attributedStringForDate(self.messageViewModel.date)
         self.setNeedsLayout()
     }
     
     // MARK: layout
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
         let layoutModel = self.calculateLayout(availableWidth: self.contentView.bounds.width)
         self.failedButton.bma_rect = layoutModel.failedViewFrame
         self.bubbleView.bma_rect = layoutModel.bubbleViewFrame
+        self.timestampLabel.frame = layoutModel.timestampLabelFrame
+        self.avatarView.frame = CGRect(x: layoutConstants.horizontalMargin, y: 0, width: layoutConstants.avatarWidth, height: layoutConstants.avatarWidth)
+        avatarView.kt_addCorner(radius: 18)
         self.bubbleView.preferredMaxLayoutWidth = layoutModel.preferredMaxWidthForBubble
         self.bubbleView.layoutIfNeeded()
         
-        // TODO: refactor accessorView?
         
-        if let accessoryView = self.accessoryTimestamp {
-            accessoryView.bounds = CGRect(origin: CGPoint.zero, size: accessoryView.intrinsicContentSize())
-            let accessoryViewWidth = CGRectGetWidth(accessoryView.bounds)
-            let accessoryViewMargin: CGFloat = 10
-            let leftDisplacement = max(0, min(self.timestampMaxVisibleOffset, accessoryViewWidth + accessoryViewMargin))
-            var contentViewframe = self.contentView.frame
-            if self.messageViewModel.isIncoming {
-                contentViewframe.origin = CGPoint.zero
-            } else {
-                contentViewframe.origin.x = -leftDisplacement
-            }
-            self.contentView.frame = contentViewframe
-            accessoryView.center = CGPoint(x: CGRectGetWidth(self.bounds) - leftDisplacement + accessoryViewWidth / 2, y: self.contentView.center.y)
-        }
-    }
+        
+}
     
     public override func sizeThatFits(size: CGSize) -> CGSize {
         return self.calculateLayout(availableWidth: size.width).size
@@ -207,60 +214,13 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
             failedButtonSize: self.failedIcon.size,
             maxContainerWidthPercentageForBubbleView: self.layoutConstants.maxContainerWidthPercentageForBubbleView,
             bubbleView: self.bubbleView,
+            timestampLabel: self.timestampLabel,
             isIncoming: self.messageViewModel.isIncoming,
             isFailed: self.messageViewModel.showsFailedIcon
         )
         var layoutModel = BaseMessageLayoutModel()
         layoutModel.calculateLayout(parameters: parameters)
         return layoutModel
-    }
-    
-    
-    // MARK: timestamp revealing
-    var timestampMaxVisibleOffset: CGFloat = 0 {
-        didSet {
-            self.setNeedsLayout()
-        }
-    }
-    var accessoryTimestamp: UILabel?
-    public func revealAccessoryView(maximumOffset offset: CGFloat, animated: Bool) {
-        if self.accessoryTimestamp == nil {
-            if offset > 0 {
-                let accessoryTimestamp = UILabel()
-                accessoryTimestamp.attributedText = self.baseStyle?.attributedStringForDate(self.messageViewModel.date)
-                self.addSubview(accessoryTimestamp)
-                self.accessoryTimestamp = accessoryTimestamp
-                self.layoutIfNeeded()
-            }
-            
-            if animated {
-                UIView.animateWithDuration(self.animationDuration, animations: { () -> Void in
-                    self.timestampMaxVisibleOffset = offset
-                    self.layoutIfNeeded()
-                })
-            } else {
-                self.timestampMaxVisibleOffset = offset
-            }
-        } else {
-            if animated {
-                UIView.animateWithDuration(self.animationDuration, animations: { () -> Void in
-                    self.timestampMaxVisibleOffset = offset
-                    self.layoutIfNeeded()
-                    }, completion: { (finished) -> Void in
-                        if offset == 0 {
-                            self.removeAccessoryView()
-                        }
-                })
-                
-            } else {
-                self.timestampMaxVisibleOffset = offset
-            }
-        }
-    }
-    
-    func removeAccessoryView() {
-        self.accessoryTimestamp?.removeFromSuperview()
-        self.accessoryTimestamp = nil
     }
     
     
@@ -294,6 +254,7 @@ struct BaseMessageLayoutModel {
     private (set) var size = CGSize.zero
     private (set) var failedViewFrame = CGRect.zero
     private (set) var bubbleViewFrame = CGRect.zero
+    private (set) var timestampLabelFrame = CGRect.zero
     private (set) var preferredMaxWidthForBubble: CGFloat = 0
     
     mutating func calculateLayout(parameters parameters: BaseMessageLayoutModelParameters) {
@@ -302,16 +263,19 @@ struct BaseMessageLayoutModel {
         let isFailed = parameters.isFailed
         let failedButtonSize = parameters.failedButtonSize
         let bubbleView = parameters.bubbleView
+        let timestampView = parameters.timestampLabel
         let horizontalMargin = parameters.horizontalMargin
         let horizontalInterspacing = parameters.horizontalInterspacing
         
         let preferredWidthForBubble = containerWidth * parameters.maxContainerWidthPercentageForBubbleView
         let bubbleSize = bubbleView.sizeThatFits(CGSize(width: preferredWidthForBubble, height: CGFloat.max))
-        let containerRect = CGRect(origin: CGPoint.zero, size: CGSize(width: containerWidth, height: bubbleSize.height))
+        let timestampSize = timestampView.sizeThatFits(CGSize(width: CGFloat.max, height: 20))
+        let containerRect = CGRect(origin: CGPoint.zero, size: CGSize(width: containerWidth, height: bubbleSize.height + 20))
         
         
-        self.bubbleViewFrame = bubbleSize.bma_rect(inContainer: containerRect, xAlignament: .Center, yAlignment: .Center, dx: 0, dy: 0)
+        self.bubbleViewFrame = bubbleSize.bma_rect(inContainer: containerRect, xAlignament: .Center, yAlignment: .Top, dx: 0, dy: 0)
         self.failedViewFrame = failedButtonSize.bma_rect(inContainer: containerRect, xAlignament: .Center, yAlignment: .Center, dx: 0, dy: 0)
+        self.timestampLabelFrame.size = timestampSize
         
         // Adjust horizontal positions
         
@@ -319,13 +283,16 @@ struct BaseMessageLayoutModel {
         if isIncoming {
             currentX = horizontalMargin
             if isFailed {
-                self.failedViewFrame.origin.x = currentX
+                self.bubbleViewFrame.origin.x = currentX + 45
+                self.failedViewFrame.origin.x = currentX + 45 + bubbleViewFrame.width
                 currentX += failedButtonSize.width
                 currentX += horizontalInterspacing
             } else {
                 self.failedViewFrame.origin.x = -failedButtonSize.width
+                self.bubbleViewFrame.origin.x = currentX + 45
             }
-            self.bubbleViewFrame.origin.x = currentX
+            self.timestampLabelFrame.origin.x = 70
+            self.timestampLabelFrame.origin.y = bubbleSize.height
         } else {
             currentX = containerRect.maxX - horizontalMargin
             if isFailed {
@@ -337,6 +304,9 @@ struct BaseMessageLayoutModel {
             }
             currentX -= bubbleSize.width
             self.bubbleViewFrame.origin.x = currentX
+            
+            self.timestampLabelFrame.origin.x = UIScreen.mainScreen().bounds.width - timestampSize.width - horizontalMargin - 30
+            self.timestampLabelFrame.origin.y = bubbleSize.height
         }
         
         self.size = containerRect.size
@@ -351,6 +321,7 @@ struct BaseMessageLayoutModelParameters {
     let failedButtonSize: CGSize
     let maxContainerWidthPercentageForBubbleView: CGFloat // in [0, 1]
     let bubbleView: UIView
+    let timestampLabel: UILabel
     let isIncoming: Bool
     let isFailed: Bool
 }

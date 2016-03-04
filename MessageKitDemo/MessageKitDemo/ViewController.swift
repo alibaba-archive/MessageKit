@@ -91,13 +91,15 @@ struct testModel {
     var type: senderType
     var isIncoming: Bool
     var text: String
+    var isSuccess: Bool
     
-    init(uid: String, sid: String, type: senderType, coming: Bool, text: String) {
+    init(uid: String, sid: String, type: senderType, coming: Bool, text: String, isSuccess: Bool = true) {
         self.uid = uid
         self.senderId = sid
         self.type = type
         self.isIncoming = coming
         self.text = text
+        self.isSuccess = isSuccess
     }
     
 }
@@ -115,7 +117,7 @@ class ViewController: MessageViewController {
         let modelData = [
             testModel(uid:"1", sid: "dd", type: .Text, coming: true, text: "你好呀!"),
             testModel(uid:"2", sid: "dd", type: .Text, coming: false, text: "您好"),
-            testModel(uid:"3", sid: "dd", type: .Text, coming: true, text: "中巴经济走廊，以通过互联互通更好地发掘贸易和投资机遇为目标，预计将为巴基斯坦的能源、交通和基础设施的发展做出显著贡献。巴基斯坦原先缓慢发展的经济通过转型将为普通民众带来长期繁荣。即便中巴经济走廊遇到挑战，两国已庄严承诺，将坚定面对挑战，把夙愿变成现实。"),
+            testModel(uid:"3", sid: "dd", type: .Text, coming: true, text: "中巴经济走廊，以通过互联互通更好地发掘贸易和投资机遇为目标，预计将为巴基斯坦的能源、交通和基础设施的发展做出显著贡献。巴基斯坦原先缓慢发展的经济通过转型将为普通民众带来长期繁荣。即便中巴经济走廊遇到挑战，两国已庄严承诺，将坚定面对挑战，把夙愿变成现实。", isSuccess: true),
             testModel(uid:"4", sid: "dd", type: .Text, coming: false, text: "饰，那么该子类的方法会把原来继承过来的父类的方法隐藏，而不是重写。通俗的讲就是父类的方法和子类的方法是两个没有关系的方法，具体调用哪一个方法是看是哪个对象的引用；这种父子类方法也不在存在多态的性质。《Java编程思想》中这样提到“只有普通的方法调用可以是多态的”。下面代码为例"),
             testModel(uid:"5", sid: "dd", type: .Photo, coming: true, text: "dsfsd"),
             testModel(uid:"6", sid: "dd", type: .Text, coming: false, text: "静态的方法不能覆写，也不能被重写。总之，静态的没有重写"),
@@ -129,21 +131,27 @@ class ViewController: MessageViewController {
             testModel(uid:"14", sid: "dd", type: .Text, coming: false, text: "dsfsd"),
             testModel(uid:"15", sid: "dd", type: .Text, coming: true, text: "dsfsd"),
             testModel(uid:"16", sid: "dd", type: .Photo, coming: false, text: "dsfsd"),
-            testModel(uid:"17", sid: "dd", type: .Text, coming: true, text: "www.baidu.com"),
-            testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd"),
-            testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置")
+            testModel(uid:"17", sid: "dd", type: .Text, coming: true, text: "www.baidu.com", isSuccess: true),
+            testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd", isSuccess: true),
+            testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true)
         ]
         
         var source = [MessageItemProtocol]()
         
         for m in modelData {
+            var status: MessageStatus
+            if m.isSuccess {
+                status = .Success
+            } else {
+                status = .Failed
+            }
             if m.type == .Text {
-                let messageModel = MessageModel(uid: m.uid, senderId: m.senderId, type: "text-message", isIncoming: m.isIncoming, date: NSDate(), status: .Success)
+                let messageModel = MessageModel(uid: m.uid, senderId: m.senderId, type: "text-message", isIncoming: m.isIncoming, date: NSDate(), status: status)
                 let textMessageModel = TextMessageModel(messageModel: messageModel, text: m.text)
                 source.append(textMessageModel)
             } else {
-                let photoMessageModel1 = MessageModel(uid: m.uid, senderId: "dsfsdfsdf", type: "photo-message", isIncoming: m.isIncoming, date: NSDate(), status: .Success)
-                let photoMessageModelIncoming = PhotoMessageModel(messageModel: photoMessageModel1, imageSize: CGSize(width: 300, height: 300), image: UIImage(named: "hujiang")!)
+                let photoMessageModel1 = MessageModel(uid: m.uid, senderId: "dsfsdfsdf", type: "photo-message", isIncoming: m.isIncoming, date: NSDate(), status: status)
+                let photoMessageModelIncoming = PhotoMessageModel(messageModel: photoMessageModel1, imageSize: CGSize(width: 300, height: 600), image: UIImage(named: "hujiang")!)
                 source.append(photoMessageModelIncoming)
             }
         }
