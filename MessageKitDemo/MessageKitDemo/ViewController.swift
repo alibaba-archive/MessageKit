@@ -8,20 +8,21 @@
 
 import UIKit
 import MessageKit
+import GrowingTextView
 
 class TextMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     typealias ViewModelT = TextMessageViewModel
     
     func userDidTapOnFailIcon(viewModel viewModel: ViewModelT) {
-        
+        print("点击失败按钮")
     }
     
     func userDidTapOnBubble(viewModel viewModel: ViewModelT) {
-        
+        print("点击bubble")
     }
     
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
-        
+        print("长按bubble")
     }
 }
 
@@ -105,7 +106,6 @@ struct testModel {
 }
 
 class ViewController: MessageViewController {
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,7 +158,6 @@ class ViewController: MessageViewController {
         
 
         fake.chatItems = source
-        
         fake.delegate = self
         self.messageDataSource = fake
         self.messageItemsDecorator = ddd()
@@ -179,7 +178,12 @@ class ViewController: MessageViewController {
             ]
         ]
     }
-
+    
+    override func createInputView() -> UIView {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 44))
+        view.backgroundColor = UIColor.redColor()
+        return view
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

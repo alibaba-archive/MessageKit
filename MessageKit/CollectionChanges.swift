@@ -69,7 +69,6 @@ func generateChanges(oldCollection oldCollection: [UniqueIdentificable], newColl
                 movedIndexPaths.append(CollectionChangeMove(indexPathOld: NSIndexPath(forItem: oldIndex, inSection: 0), indexPathNew: newIndexPath))
             }
         } else {
-            // It's new
             insertedIndexPaths.insert(newIndexPath)
         }
     }

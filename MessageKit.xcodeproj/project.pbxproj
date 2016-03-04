@@ -216,8 +216,8 @@
 				E553FE321C86E4B7004E137B /* MessageViewController+Presenters.swift */,
 				E553FE471C87D85A004E137B /* MessageViewController+Changes.swift */,
 				E553FE3E1C86ED55004E137B /* DummyMessageItemPresenter.swift */,
-				E553FE4B1C87E1A2004E137B /* CollectionChanges.swift */,
 				E5E16F2E1C880F4800065288 /* BaseMessageItemPresenter.swift */,
+				E553FE4B1C87E1A2004E137B /* CollectionChanges.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
