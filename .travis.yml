@@ -1,0 +1,8 @@
+language: objective-c
+osx_image: xcode7
+xcode_workspace: MessageKit.xcworkspace
+xcode_scheme: MessageKit
+xcode_sdk: iphonesimulator
+before_install:
+  - brew update
+  - brew uninstall xctool && brew install --HEAD xctool
