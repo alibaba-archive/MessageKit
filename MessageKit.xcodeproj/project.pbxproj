@@ -53,6 +53,13 @@
 		E5E16F501C8827CA00065288 /* PhotoMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F4F1C8827CA00065288 /* PhotoMessageCollectionViewCell.swift */; };
 		E5E16F521C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F511C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift */; };
 		E5E16F541C88282200065288 /* PhotoBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F531C88282200065288 /* PhotoBubbleView.swift */; };
+		E5E724B81C8D258300B57E99 /* FileMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E724B71C8D258300B57E99 /* FileMessageModel.swift */; };
+		E5E724BA1C8D30A400B57E99 /* FileMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E724B91C8D30A400B57E99 /* FileMessagePresenter.swift */; };
+		E5E724BD1C8D313900B57E99 /* FileBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E724BC1C8D313900B57E99 /* FileBubbleView.swift */; };
+		E5E724BF1C8D31A000B57E99 /* FileMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E724BE1C8D31A000B57E99 /* FileMessageCollectionViewCell.swift */; };
+		E5E724C11C8D31B600B57E99 /* FileMessageCollectionViewCellDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E724C01C8D31B600B57E99 /* FileMessageCollectionViewCellDefaultStyle.swift */; };
+		E5E724C31C8D4E7F00B57E99 /* FileMessagePresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E724C21C8D4E7F00B57E99 /* FileMessagePresenterBuilder.swift */; };
+		E5E724C51C8D4E9D00B57E99 /* FileMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E724C41C8D4E9D00B57E99 /* FileMessageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +111,13 @@
 		E5E16F4F1C8827CA00065288 /* PhotoMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5E16F511C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMessageCollectionViewCellDefaultStyle.swift; sourceTree = "<group>"; };
 		E5E16F531C88282200065288 /* PhotoBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBubbleView.swift; sourceTree = "<group>"; };
+		E5E724B71C8D258300B57E99 /* FileMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMessageModel.swift; sourceTree = "<group>"; };
+		E5E724B91C8D30A400B57E99 /* FileMessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMessagePresenter.swift; sourceTree = "<group>"; };
+		E5E724BC1C8D313900B57E99 /* FileBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBubbleView.swift; sourceTree = "<group>"; };
+		E5E724BE1C8D31A000B57E99 /* FileMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMessageCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5E724C01C8D31B600B57E99 /* FileMessageCollectionViewCellDefaultStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMessageCollectionViewCellDefaultStyle.swift; sourceTree = "<group>"; };
+		E5E724C21C8D4E7F00B57E99 /* FileMessagePresenterBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMessagePresenterBuilder.swift; sourceTree = "<group>"; };
+		E5E724C41C8D4E9D00B57E99 /* FileMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMessageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +134,7 @@
 		E553FE401C87D2D2004E137B /* Addentions */ = {
 			isa = PBXGroup;
 			children = (
+				E5E724B61C8D254100B57E99 /* FileMessage */,
 				E5E16F431C8825D800065288 /* PhtotMessage */,
 				E553FE441C87D390004E137B /* TextMessage */,
 				E553FE411C87D31E004E137B /* BaseMessage */,
@@ -299,6 +314,28 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		E5E724B61C8D254100B57E99 /* FileMessage */ = {
+			isa = PBXGroup;
+			children = (
+				E5E724B71C8D258300B57E99 /* FileMessageModel.swift */,
+				E5E724B91C8D30A400B57E99 /* FileMessagePresenter.swift */,
+				E5E724C21C8D4E7F00B57E99 /* FileMessagePresenterBuilder.swift */,
+				E5E724C41C8D4E9D00B57E99 /* FileMessageViewModel.swift */,
+				E5E724BB1C8D312600B57E99 /* Views */,
+			);
+			name = FileMessage;
+			sourceTree = "<group>";
+		};
+		E5E724BB1C8D312600B57E99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5E724BC1C8D313900B57E99 /* FileBubbleView.swift */,
+				E5E724BE1C8D31A000B57E99 /* FileMessageCollectionViewCell.swift */,
+				E5E724C01C8D31B600B57E99 /* FileMessageCollectionViewCellDefaultStyle.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -380,9 +417,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5E724C31C8D4E7F00B57E99 /* FileMessagePresenterBuilder.swift in Sources */,
 				E553FE2D1C86D25C004E137B /* MessageCollectionViewLayout.swift in Sources */,
 				E553FE3D1C86E9B3004E137B /* ItemPresenterBuilderProtocol.swift in Sources */,
+				E5E724BA1C8D30A400B57E99 /* FileMessagePresenter.swift in Sources */,
 				E553FE431C87D333004E137B /* BaseMessageModel.swift in Sources */,
+				E5E724BD1C8D313900B57E99 /* FileBubbleView.swift in Sources */,
 				E5E16F331C8811FF00065288 /* Utils.swift in Sources */,
 				E553FE391C86E5F7004E137B /* ItemDecorationAttributesProtocol.swift in Sources */,
 				E553FE2F1C86D876004E137B /* MessageDataSourceProtocol.swift in Sources */,
@@ -390,9 +430,13 @@
 				E553FE461C87D3B8004E137B /* TextMessageModel.swift in Sources */,
 				E553FE3B1C86E6C4004E137B /* ItemPresenterProtocol.swift in Sources */,
 				E553FE351C86E518004E137B /* DecoratedMessageItem.swift in Sources */,
+				E5E724C51C8D4E9D00B57E99 /* FileMessageViewModel.swift in Sources */,
+				E5E724BF1C8D31A000B57E99 /* FileMessageCollectionViewCell.swift in Sources */,
 				E553FE541C880C91004E137B /* BaseMessageViewModel.swift in Sources */,
+				E5E724C11C8D31B600B57E99 /* FileMessageCollectionViewCellDefaultStyle.swift in Sources */,
 				E553FE4A1C87E0A0004E137B /* SerialTaskQueueProtocol.swift in Sources */,
 				E5E16F351C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift in Sources */,
+				E5E724B81C8D258300B57E99 /* FileMessageModel.swift in Sources */,
 				E5E16F4D1C88277200065288 /* Observable.swift in Sources */,
 				E553FE3F1C86ED55004E137B /* DummyMessageItemPresenter.swift in Sources */,
 				E553FE501C880BC8004E137B /* TextMessagePresenter.swift in Sources */,

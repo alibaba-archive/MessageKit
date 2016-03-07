@@ -56,7 +56,17 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
         return UIView()
     }
     
-    public var collectionViewLayout: UICollectionViewLayout {
+    public func sendNewMessage(message: MessageItemProtocol) {
+        
+//        var newItem = messageDataSource?.messageItems
+//        newItem?.append(message)
+//        let newDataSource = messageDataSource
+//
+//        
+    }
+    
+    
+    var collectionViewLayout: UICollectionViewLayout {
         let layout = MessageCollectionViewLayout()
         layout.delegate = self
         return layout
@@ -126,7 +136,7 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
         self.view.addConstraint(self.inputContainerBottomConstraint)
         
         let inputView = createInputView()
-//        inputView.translatesAutoresizingMaskIntoConstraints = false
+        inputView.translatesAutoresizingMaskIntoConstraints = false
         self.inputContainer.addSubview(inputView)
         self.inputContainer.addConstraint(NSLayoutConstraint(item: self.inputContainer, attribute: .Top, relatedBy: .Equal, toItem: inputView, attribute: .Top, multiplier: 1, constant: 0))
         self.inputContainer.addConstraint(NSLayoutConstraint(item: self.inputContainer, attribute: .Leading, relatedBy: .Equal, toItem: inputView, attribute: .Leading, multiplier: 1, constant: 0))

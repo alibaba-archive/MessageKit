@@ -23,7 +23,7 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
     }
     
     public func enqueueModelUpdate(context context: UpdateContext) {
-        let newItems = self.messageDataSource?.chatItems ?? []
+        let newItems = self.messageDataSource?.messageItems ?? []
         self.updateQueue.addTask({ [weak self] (completion) -> () in
             guard let sSelf = self else { return }
             
@@ -38,7 +38,7 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
     }
     
     public func enqueueMessageCountReductionIfNeeded() {
-        guard let preferredMaxMessageCount = self.constants.preferredMaxMessageCount where (self.messageDataSource?.chatItems.count ?? 0) > preferredMaxMessageCount else { return }
+        guard let preferredMaxMessageCount = self.constants.preferredMaxMessageCount where (self.messageDataSource?.messageItems.count ?? 0) > preferredMaxMessageCount else { return }
         self.updateQueue.addTask { [weak self] (completion) -> () in
             guard let sSelf = self else { return }
             sSelf.messageDataSource?.adjustNumberOfMessages(preferredMaxCount: sSelf.constants.preferredMaxMessageCountAdjustment, focusPosition: sSelf.focusPosition, completion: { (didAdjust) -> Void in
@@ -46,7 +46,7 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
                     completion()
                     return
                 }
-                let newItems = sSelf.messageDataSource?.chatItems ?? []
+                let newItems = sSelf.messageDataSource?.messageItems ?? []
                 let oldItems = sSelf.decoratedMessageItems.map { $0.messageItem }
                 sSelf.updateModels(newItems: newItems, oldItems: oldItems, context: .MessageCountReduction, completion: completion )
             })

@@ -8,7 +8,6 @@
 
 import UIKit
 import MessageKit
-import GrowingTextView
 
 class TextMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     typealias ViewModelT = TextMessageViewModel
@@ -42,18 +41,34 @@ class PhotoMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     }
 }
 
+class FileMessageTestHandler: BaseMessageInteractionHandlerProtocol {
+    typealias ViewModelT = FileMessageViewModel
+    
+    func userDidTapOnFailIcon(viewModel viewModel: ViewModelT) {
+        
+    }
+    
+    func userDidTapOnBubble(viewModel viewModel: ViewModelT) {
+        
+    }
+    
+    func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
+        
+    }
+}
+
 class FakeDataSource: MessageDataSourceProtocol {
     var hasMoreNext = true
     var hasMorePrevious = true
     var wasRequestedForPrevious = false
     var wasRequestedForMessageCountContention = false
     var chatItemsForLoadNext: [MessageItemProtocol]?
-    var chatItems = [MessageItemProtocol]()
+    var messageItems = [MessageItemProtocol]()
     weak var delegate: MessageDataSourceDelegateProtocol?
     
     func loadNext(completion: () -> Void) {
         if let chatItemsForLoadNext = self.chatItemsForLoadNext {
-            self.chatItems = chatItemsForLoadNext
+            self.messageItems = chatItemsForLoadNext
         }
         completion()
     }
@@ -85,6 +100,7 @@ struct testModel {
     enum senderType: String {
         case Text = "text-message"
         case Photo = "photo-message"
+        case File = "file-message"
     }
     
     var uid: String
@@ -113,6 +129,7 @@ class ViewController: MessageViewController {
         let label = FPSLabel(frame: CGRect(x: 0, y: 0, width: 100, height: 64))
         self.navigationController?.view.addSubview(label)
         self.title = "聊天测试"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .Done, target: self, action: "addNewMessage")
         let fake = FakeDataSource()
         let modelData = [
             testModel(uid:"1", sid: "dd", type: .Text, coming: true, text: "你好呀!"),
@@ -126,12 +143,14 @@ class ViewController: MessageViewController {
             testModel(uid:"9", sid: "dd", type: .Text, coming: true, text: "以前在网上瞎转悠的时候就发现很多人为用Java实现QQ登陆后的面板的问题感到十分头疼，最近我因在写模拟QQ的项目，故不可或缺的遇到了这一个问题，在网上我google了，百度了，最终发现的是有很多人被这一问题困扰，却没有解决的方案，估计是那些写出来了的人，没有发布到网上来，如今，经过自己的多方面查找资料，终于把他写出来了，也不枉昨晚熬夜了，呵呵"),
             testModel(uid:"10", sid: "dd", type: .Text, coming: false, text: "dsfsd"),
             testModel(uid:"11", sid: "dd", type: .Photo, coming: true, text: "dsfsd"),
-            testModel(uid:"12", sid: "dd", type: .Text, coming: false, text: "dsfsd"),
+            testModel(uid:"12", sid: "dd", type: .File, coming: false, text: "dsfsd"),
             testModel(uid:"13", sid: "dd", type: .Text, coming: true, text: "18717824984"),
             testModel(uid:"14", sid: "dd", type: .Text, coming: false, text: "dsfsd"),
             testModel(uid:"15", sid: "dd", type: .Text, coming: true, text: "dsfsd"),
             testModel(uid:"16", sid: "dd", type: .Photo, coming: false, text: "dsfsd"),
             testModel(uid:"17", sid: "dd", type: .Text, coming: true, text: "www.baidu.com", isSuccess: false),
+            testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: false),
+            testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: false),
             testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd", isSuccess: false),
             testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: false)
         ]
@@ -145,19 +164,22 @@ class ViewController: MessageViewController {
             } else {
                 status = .Failed
             }
+            let baseMessageModel = MessageModel(uid: m.uid, senderId: m.senderId, type: m.type.rawValue, isIncoming: m.isIncoming, date: NSDate(), status: status)
             if m.type == .Text {
-                let messageModel = MessageModel(uid: m.uid, senderId: m.senderId, type: "text-message", isIncoming: m.isIncoming, date: NSDate(), status: status)
-                let textMessageModel = TextMessageModel(messageModel: messageModel, text: m.text)
+                
+                let textMessageModel = TextMessageModel(messageModel: baseMessageModel, text: m.text)
                 source.append(textMessageModel)
-            } else {
-                let photoMessageModel1 = MessageModel(uid: m.uid, senderId: "dsfsdfsdf", type: "photo-message", isIncoming: m.isIncoming, date: NSDate(), status: status)
-                let photoMessageModelIncoming = PhotoMessageModel(messageModel: photoMessageModel1, imageSize: CGSize(width: 300, height: 600), image: UIImage(named: "hujiang")!)
+            } else if m.type == .Photo{
+                let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize: CGSize(width: 300, height: 600), image: UIImage(named: "hujiang")!)
                 source.append(photoMessageModelIncoming)
+            } else {
+                let fileMessageModel = FileMessageModel(messageModel: baseMessageModel, fileName: "dsfsdf", fileSize: 1000, fileFolderColor: UIColor.redColor())
+                source.append(fileMessageModel)
             }
         }
         
-
-        fake.chatItems = source
+        
+        fake.messageItems = source
         fake.delegate = self
         self.messageDataSource = fake
         self.messageItemsDecorator = ddd()
@@ -168,6 +190,8 @@ class ViewController: MessageViewController {
         
         let photobuilder = PhotoMessagePresenterBuilder(viewModelBuilder: PhotoMessageViewModelDefaultBuilder(), interactionHandler: PhotoMessageTestHandler())
         
+        let filebuilder = FileMessagePresenterBuilder(viewModelBuilder: FileMessageViewModelDefaultBuilder(), interactionHandler: FileMessageTestHandler())
+        
         return [
             "text-message" : [
                 builder
@@ -175,7 +199,11 @@ class ViewController: MessageViewController {
             ,
             "photo-message": [
                 photobuilder
+            ],
+            "file-message": [
+                filebuilder
             ]
+            
         ]
     }
     
@@ -187,6 +215,17 @@ class ViewController: MessageViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addNewMessage() {
+        let dataSource = FakeDataSource()
+        var items = self.messageDataSource?.messageItems
+        let messageModel = MessageModel(uid: "dsfsdf", senderId: "dsfsdf", type: "text-message", isIncoming: true, date: NSDate(), status: .Success)
+        let textMessageModel = TextMessageModel(messageModel: messageModel, text: "dsfsdfsdfsdfsdf")
+        items?.append(textMessageModel)
+        dataSource.messageItems = items!
+        dataSource.delegate = self
+        self.messageDataSource = dataSource
     }
     
 }

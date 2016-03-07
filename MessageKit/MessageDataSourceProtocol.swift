@@ -16,7 +16,7 @@ public protocol MessageDataSourceProtocol: class {
     
     var hasMoreNext: Bool { get }
     var hasMorePrevious: Bool { get }
-    var chatItems: [MessageItemProtocol] { get }
+    var messageItems: [MessageItemProtocol] { get }
     weak var delegate: MessageDataSourceDelegateProtocol? { get set }
     
     func loadNext(completion: () -> Void)
