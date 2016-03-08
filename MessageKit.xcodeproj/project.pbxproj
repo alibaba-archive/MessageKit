@@ -30,6 +30,8 @@
 		E5AC72421C8E70300047981F /* FileMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */; };
 		E5BF8FC01C882B4F0041AF71 /* PhotoMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */; };
 		E5BF8FCE1C89525C0041AF71 /* UIImageView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BF8FCD1C89525C0041AF71 /* UIImageView+CornerRadius.swift */; };
+		E5C440541C8EE20600E40000 /* MessageKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C440531C8EE20600E40000 /* MessageKitTests.swift */; };
+		E5C440561C8EE20600E40000 /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D671C51C59BD0C005C9598 /* MessageKit.framework */; };
 		E5CC40301C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */; };
 		E5D671C91C59BD0C005C9598 /* MessageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D671C81C59BD0C005C9598 /* MessageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672121C59C354005C9598 /* MessageViewController.swift */; };
@@ -63,6 +65,16 @@
 		E5E724C51C8D4E9D00B57E99 /* FileMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E724C41C8D4E9D00B57E99 /* FileMessageViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E5C440571C8EE20600E40000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5D671BC1C59BD0C005C9598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5D671C41C59BD0C005C9598;
+			remoteInfo = MessageKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		E52366A91C5CB94C009032D3 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		E553FE2C1C86D25C004E137B /* MessageCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -87,6 +99,9 @@
 		E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FileMessageAssets.xcassets; sourceTree = "<group>"; };
 		E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhotoMessageAssets.xcassets; sourceTree = "<group>"; };
 		E5BF8FCD1C89525C0041AF71 /* UIImageView+CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CornerRadius.swift"; sourceTree = "<group>"; };
+		E5C440511C8EE20600E40000 /* MessageKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5C440531C8EE20600E40000 /* MessageKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageKitTests.swift; sourceTree = "<group>"; };
+		E5C440551C8EE20600E40000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D671C51C59BD0C005C9598 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D671C81C59BD0C005C9598 /* MessageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKit.h; sourceTree = "<group>"; };
@@ -123,6 +138,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E5C4404E1C8EE20600E40000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5C440561C8EE20600E40000 /* MessageKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5D671C11C59BD0C005C9598 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,10 +208,20 @@
 			name = AudioMessage;
 			sourceTree = "<group>";
 		};
+		E5C440521C8EE20600E40000 /* MessageKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E5C440531C8EE20600E40000 /* MessageKitTests.swift */,
+				E5C440551C8EE20600E40000 /* Info.plist */,
+			);
+			path = MessageKitTests;
+			sourceTree = "<group>";
+		};
 		E5D671BB1C59BD0C005C9598 = {
 			isa = PBXGroup;
 			children = (
 				E5D671C71C59BD0C005C9598 /* MessageKit */,
+				E5C440521C8EE20600E40000 /* MessageKitTests */,
 				E5D671C61C59BD0C005C9598 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -197,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D671C51C59BD0C005C9598 /* MessageKit.framework */,
+				E5C440511C8EE20600E40000 /* MessageKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,6 +395,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E5C440501C8EE20600E40000 /* MessageKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5C4405B1C8EE20600E40000 /* Build configuration list for PBXNativeTarget "MessageKitTests" */;
+			buildPhases = (
+				E5C4404D1C8EE20600E40000 /* Sources */,
+				E5C4404E1C8EE20600E40000 /* Frameworks */,
+				E5C4404F1C8EE20600E40000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E5C440581C8EE20600E40000 /* PBXTargetDependency */,
+			);
+			name = MessageKitTests;
+			productName = MessageKitTests;
+			productReference = E5C440511C8EE20600E40000 /* MessageKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E5D671C41C59BD0C005C9598 /* MessageKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5D671CD1C59BD0C005C9598 /* Build configuration list for PBXNativeTarget "MessageKit" */;
@@ -385,9 +437,13 @@
 		E5D671BC1C59BD0C005C9598 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = HarriesChen;
 				TargetAttributes = {
+					E5C440501C8EE20600E40000 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					E5D671C41C59BD0C005C9598 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -406,11 +462,19 @@
 			projectRoot = "";
 			targets = (
 				E5D671C41C59BD0C005C9598 /* MessageKit */,
+				E5C440501C8EE20600E40000 /* MessageKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E5C4404F1C8EE20600E40000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5D671C31C59BD0C005C9598 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +489,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E5C4404D1C8EE20600E40000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5C440541C8EE20600E40000 /* MessageKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5D671C01C59BD0C005C9598 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -483,7 +555,35 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E5C440581C8EE20600E40000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E5D671C41C59BD0C005C9598 /* MessageKit */;
+			targetProxy = E5C440571C8EE20600E40000 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		E5C440591C8EE20600E40000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MessageKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E5C4405A1C8EE20600E40000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MessageKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E5D671CB1C59BD0C005C9598 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -611,6 +711,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E5C4405B1C8EE20600E40000 /* Build configuration list for PBXNativeTarget "MessageKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5C440591C8EE20600E40000 /* Debug */,
+				E5C4405A1C8EE20600E40000 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E5D671BF1C59BD0C005C9598 /* Build configuration list for PBXProject "MessageKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

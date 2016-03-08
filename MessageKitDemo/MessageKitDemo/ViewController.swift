@@ -148,11 +148,11 @@ class ViewController: MessageViewController {
             testModel(uid:"14", sid: "dd", type: .Text, coming: false, text: "dsfsd"),
             testModel(uid:"15", sid: "dd", type: .Text, coming: true, text: "dsfsd"),
             testModel(uid:"16", sid: "dd", type: .Photo, coming: false, text: "dsfsd"),
-            testModel(uid:"17", sid: "dd", type: .Text, coming: true, text: "www.baidu.com", isSuccess: false),
+            testModel(uid:"17", sid: "dd", type: .Text, coming: true, text: "www.baidu.com", isSuccess: true),
             testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
             testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
-            testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd", isSuccess: false),
-            testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: false)
+            testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd", isSuccess: true),
+            testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true)
         ]
         
         var source = [MessageItemProtocol]()
