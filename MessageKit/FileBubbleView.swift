@@ -114,7 +114,9 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         self.coverImageView.image = self.fileMessageStyle.folderImage(viewModel: viewModel, isSelected: self.selected)
         self.titleLabel.text = viewModel.fileName
         self.titleLabel.font = fileMessageStyle.titleFont(viewModel: viewModel, isSelected: self.selected)
-        titleLabel.sizeToFit()
+        var size = titleLabel.sizeThatFits(CGSize(width: 40, height: CGFloat.max))
+        size.width = 120
+        self.titleLabel.frame = CGRect(origin: CGPoint.zero, size: size)
         self.sizeLabel.text = viewModel.fileSize
         self.sizeLabel.font = fileMessageStyle.textFont(viewModel: viewModel, isSelected: self.selected)
         self.sizeLabel.sizeToFit()

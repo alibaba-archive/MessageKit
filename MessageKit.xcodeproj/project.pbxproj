@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E52366AA1C5CB94C009032D3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52366A91C5CB94C009032D3 /* Reusable.swift */; };
 		E553FE2D1C86D25C004E137B /* MessageCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE2C1C86D25C004E137B /* MessageCollectionViewLayout.swift */; };
 		E553FE2F1C86D876004E137B /* MessageDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE2E1C86D876004E137B /* MessageDataSourceProtocol.swift */; };
 		E553FE311C86E123004E137B /* MessageViewController+scrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE301C86E123004E137B /* MessageViewController+scrolling.swift */; };
@@ -76,7 +75,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E52366A91C5CB94C009032D3 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		E553FE2C1C86D25C004E137B /* MessageCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E553FE2E1C86D876004E137B /* MessageDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDataSourceProtocol.swift; sourceTree = "<group>"; };
 		E553FE301C86E123004E137B /* MessageViewController+scrolling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessageViewController+scrolling.swift"; sourceTree = "<group>"; };
@@ -245,18 +243,10 @@
 				E5D6722F1C59FF92005C9598 /* Models */,
 				E5D6722C1C59F629005C9598 /* Controllers */,
 				E5D672191C59C589005C9598 /* Layout */,
-				E5D672161C59C4ED005C9598 /* Views */,
 				E5D671C81C59BD0C005C9598 /* MessageKit.h */,
 				E5D671CA1C59BD0C005C9598 /* Info.plist */,
 			);
 			path = MessageKit;
-			sourceTree = "<group>";
-		};
-		E5D672161C59C4ED005C9598 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		E5D672191C59C589005C9598 /* Layout */ = {
@@ -292,7 +282,6 @@
 		E5D672301C5A00A3005C9598 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				E52366A91C5CB94C009032D3 /* Reusable.swift */,
 				E553FE361C86E5A4004E137B /* MessageItemProtocol.swift */,
 				E553FE381C86E5F7004E137B /* ItemDecorationAttributesProtocol.swift */,
 				E553FE3A1C86E6C4004E137B /* ItemPresenterProtocol.swift */,
@@ -543,7 +532,6 @@
 				E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */,
 				E5BF8FCE1C89525C0041AF71 /* UIImageView+CornerRadius.swift in Sources */,
 				E5E16F3E1C8814F600065288 /* TextBubbleView.swift in Sources */,
-				E52366AA1C5CB94C009032D3 /* Reusable.swift in Sources */,
 				E5D6723F1C5B19BF005C9598 /* NSBundle+Message.swift in Sources */,
 				E553FE331C86E4B7004E137B /* MessageViewController+Presenters.swift in Sources */,
 				E5E16F4B1C88263300065288 /* PhotoMessageViewModel.swift in Sources */,
@@ -621,7 +609,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -663,7 +651,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -718,6 +706,7 @@
 				E5C4405A1C8EE20600E40000 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5D671BF1C59BD0C005C9598 /* Build configuration list for PBXProject "MessageKit" */ = {
 			isa = XCConfigurationList;
