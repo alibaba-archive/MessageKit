@@ -29,15 +29,15 @@ class PhotoMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     typealias ViewModelT = PhotoMessageViewModel
     
     func userDidTapOnFailIcon(viewModel viewModel: ViewModelT) {
-        
+        print("点击图片失败")
     }
     
     func userDidTapOnBubble(viewModel viewModel: ViewModelT) {
-        
+        print("点击图片")
     }
     
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
-        
+        print("长按图片")
     }
 }
 
@@ -49,7 +49,7 @@ class FileMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     }
     
     func userDidTapOnBubble(viewModel viewModel: ViewModelT) {
-        
+        print("点击文件")
     }
     
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
@@ -149,8 +149,8 @@ class ViewController: MessageViewController {
             testModel(uid:"15", sid: "dd", type: .Text, coming: true, text: "dsfsd"),
             testModel(uid:"16", sid: "dd", type: .Photo, coming: false, text: "dsfsd"),
             testModel(uid:"17", sid: "dd", type: .Text, coming: true, text: "www.baidu.com", isSuccess: false),
-            testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: false),
-            testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: false),
+            testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
+            testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
             testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd", isSuccess: false),
             testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: false)
         ]
@@ -173,7 +173,7 @@ class ViewController: MessageViewController {
                 let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize: CGSize(width: 300, height: 600), image: UIImage(named: "hujiang")!)
                 source.append(photoMessageModelIncoming)
             } else {
-                let fileMessageModel = FileMessageModel(messageModel: baseMessageModel, fileName: "dsfsdf", fileSize: 1000, fileFolderColor: UIColor.redColor())
+                let fileMessageModel = FileMessageModel(messageModel: baseMessageModel, fileName: "测试文件的的.txt", fileSize: "30M", fileFolderColor: UIColor.redColor())
                 source.append(fileMessageModel)
             }
         }
@@ -218,10 +218,18 @@ class ViewController: MessageViewController {
     }
     
     func addNewMessage() {
+        
+        let randomNumber: Int = Int(arc4random() % 3)
+        let a = [
+            "你好呀!",
+            "我挺好的",
+            "你真的很好嘛?"
+        ]
+        
         let dataSource = FakeDataSource()
         var items = self.messageDataSource?.messageItems
         let messageModel = MessageModel(uid: "dsfsdf", senderId: "dsfsdf", type: "text-message", isIncoming: true, date: NSDate(), status: .Success)
-        let textMessageModel = TextMessageModel(messageModel: messageModel, text: "dsfsdfsdfsdfsdf")
+        let textMessageModel = TextMessageModel(messageModel: messageModel, text: "dsfsdfsdfsdfsdf\(a[randomNumber])")
         items?.append(textMessageModel)
         dataSource.messageItems = items!
         dataSource.delegate = self

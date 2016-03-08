@@ -27,6 +27,7 @@
 		E553FE501C880BC8004E137B /* TextMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE4F1C880BC8004E137B /* TextMessagePresenter.swift */; };
 		E553FE521C880BE7004E137B /* BaseMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE511C880BE7004E137B /* BaseMessagePresenter.swift */; };
 		E553FE541C880C91004E137B /* BaseMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553FE531C880C91004E137B /* BaseMessageViewModel.swift */; };
+		E5AC72421C8E70300047981F /* FileMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */; };
 		E5BF8FC01C882B4F0041AF71 /* PhotoMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */; };
 		E5BF8FCE1C89525C0041AF71 /* UIImageView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BF8FCD1C89525C0041AF71 /* UIImageView+CornerRadius.swift */; };
 		E5CC40301C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */; };
@@ -83,6 +84,7 @@
 		E553FE4F1C880BC8004E137B /* TextMessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessagePresenter.swift; sourceTree = "<group>"; };
 		E553FE511C880BE7004E137B /* BaseMessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessagePresenter.swift; sourceTree = "<group>"; };
 		E553FE531C880C91004E137B /* BaseMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageViewModel.swift; sourceTree = "<group>"; };
+		E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FileMessageAssets.xcassets; sourceTree = "<group>"; };
 		E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhotoMessageAssets.xcassets; sourceTree = "<group>"; };
 		E5BF8FCD1C89525C0041AF71 /* UIImageView+CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CornerRadius.swift"; sourceTree = "<group>"; };
 		E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -134,8 +136,9 @@
 		E553FE401C87D2D2004E137B /* Addentions */ = {
 			isa = PBXGroup;
 			children = (
+				E5AC72401C8E6FFA0047981F /* AudioMessage */,
 				E5E724B61C8D254100B57E99 /* FileMessage */,
-				E5E16F431C8825D800065288 /* PhtotMessage */,
+				E5E16F431C8825D800065288 /* PhotoMessage */,
 				E553FE441C87D390004E137B /* TextMessage */,
 				E553FE411C87D31E004E137B /* BaseMessage */,
 			);
@@ -173,6 +176,13 @@
 				E5E16F341C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		E5AC72401C8E6FFA0047981F /* AudioMessage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AudioMessage;
 			sourceTree = "<group>";
 		};
 		E5D671BB1C59BD0C005C9598 = {
@@ -291,7 +301,7 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		E5E16F431C8825D800065288 /* PhtotMessage */ = {
+		E5E16F431C8825D800065288 /* PhotoMessage */ = {
 			isa = PBXGroup;
 			children = (
 				E5E16F441C88260800065288 /* PhotoMessageModel.swift */,
@@ -300,7 +310,7 @@
 				E5E16F4A1C88263300065288 /* PhotoMessageViewModel.swift */,
 				E5E16F4E1C8827B900065288 /* Views */,
 			);
-			name = PhtotMessage;
+			name = PhotoMessage;
 			sourceTree = "<group>";
 		};
 		E5E16F4E1C8827B900065288 /* Views */ = {
@@ -329,6 +339,7 @@
 		E5E724BB1C8D312600B57E99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */,
 				E5E724BC1C8D313900B57E99 /* FileBubbleView.swift */,
 				E5E724BE1C8D31A000B57E99 /* FileMessageCollectionViewCell.swift */,
 				E5E724C01C8D31B600B57E99 /* FileMessageCollectionViewCellDefaultStyle.swift */,
@@ -406,6 +417,7 @@
 			files = (
 				E5BF8FC01C882B4F0041AF71 /* PhotoMessageAssets.xcassets in Resources */,
 				E5D6723C1C5B179B005C9598 /* Images.xcassets in Resources */,
+				E5AC72421C8E70300047981F /* FileMessageAssets.xcassets in Resources */,
 				E5E16F371C8812A100065288 /* BaseMessageAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@
 import Foundation
 
 public protocol FileBubbleViewStyleProtocol {
+    func folderImage(viewModel viewModel: FileMessageViewModelProtocol, isSelected: Bool) -> UIImage
     func bubbleImage(viewModel viewModel: FileMessageViewModelProtocol, isSelected: Bool) -> UIImage
     func bubbleImageBorder(viewModel viewModel: FileMessageViewModelProtocol, isSelected: Bool) -> UIImage?
     func titleFont(viewModel viewModel: FileMessageViewModelProtocol, isSelected: Bool) -> UIFont
@@ -24,6 +25,8 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
     public var preferredMaxLayoutWidth: CGFloat = 0
     public var fileWidth: CGFloat = 186
     public var fileHeight: CGFloat = 58
+    public var fileBubbleViewSize = CGSize(width: 186, height: 58)
+    public var fileIconSize = CGSize(width: 32, height: 40)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,27 +40,28 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
     
     private func commonInit() {
         self.autoresizesSubviews = false
-        self.addSubview(self.imageView)
+        self.addSubview(self.bubbleImageView)
+        self.addSubview(self.folderIconView)
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.sizeLabel)
     }
     
-    private lazy var imageView: UIImageView = {
+    private lazy var bubbleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.autoresizingMask = .None
-        imageView.clipsToBounds = true
-        imageView.autoresizesSubviews = false
-        imageView.autoresizingMask = .None
-        imageView.contentMode = .ScaleAspectFill
-        imageView.addSubview(self.borderView)
+        imageView.addSubview(self.borderImageView)
         return imageView
     }()
     
-    private lazy var borderView = UIImageView()
-    
-    private lazy var overlayView: UIView = {
-        let view = UIView()
-        return view
+    private lazy var folderIconView: UIView = {
+        let iconView = UIView()
+        iconView.addSubview(self.coverImageView)
+        return iconView
     }()
     
+    private var borderImageView: UIImageView = UIImageView()
+    private var coverImageView: UIImageView = UIImageView()
+    private var titleLabel: UILabel = UILabel()
+    private var sizeLabel: UILabel = UILabel()
     
     public var fileMessageViewModel: FileMessageViewModelProtocol! {
         didSet {
@@ -100,50 +104,46 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
     private func updateViews() {
         if self.viewContext == .Sizing { return }
         if isUpdating { return }
-        guard let _ = self.fileMessageViewModel else {
+        guard let _ = self.fileMessageViewModel, viewModel = self.fileMessageViewModel else {
             return
         }
-        
-        let bubbleImage = self.fileMessageStyle.bubbleImage(viewModel: fileMessageViewModel, isSelected: selected)
-        
-        let borderImage = self.fileMessageStyle.bubbleImageBorder(viewModel: fileMessageViewModel, isSelected: selected)
-        
-        if imageView != bubbleImage {
-            imageView.image = bubbleImage
-        }
-        if self.borderView.image != borderImage {
-            self.borderView.image = borderImage
-        }
+        let bubbleImage = self.fileMessageStyle.bubbleImage(viewModel: viewModel, isSelected: self.selected)
+        let borderImage = self.fileMessageStyle.bubbleImageBorder(viewModel: viewModel, isSelected: self.selected)
+        if self.bubbleImageView.image != bubbleImage { self.bubbleImageView.image = bubbleImage }
+        if self.borderImageView.image != borderImage { self.borderImageView.image = borderImage }
+        self.coverImageView.image = self.fileMessageStyle.folderImage(viewModel: viewModel, isSelected: self.selected)
+        self.titleLabel.text = viewModel.fileName
+        self.titleLabel.font = fileMessageStyle.titleFont(viewModel: viewModel, isSelected: self.selected)
+        titleLabel.sizeToFit()
+        self.sizeLabel.text = viewModel.fileSize
+        self.sizeLabel.font = fileMessageStyle.textFont(viewModel: viewModel, isSelected: self.selected)
+        self.sizeLabel.sizeToFit()
         self.setNeedsLayout()
     }
     
     // MARK: Layout
-    
+ 
     public override func sizeThatFits(size: CGSize) -> CGSize {
         return CGSize(width: fileWidth, height: fileHeight)
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-//        let layout = self.calculateTextBubbleLayout(maximumWidth: self.preferredMaxLayoutWidth)
-//        //        self.progressIndicatorView.center = layout.visualCenter
-//        self.placeholderIconView.center = layout.visualCenter
-//        self.placeholderIconView.bounds = CGRect(origin: CGPoint.zero, size: self.placeholderIconView.image?.size ?? CGSize.zero)
-//        self.imageView.bma_rect = layout.photoFrame
-        self.imageView.frame = CGRect(x: 0, y: 0, width: fileWidth, height: fileHeight)
-//        self.imageView.layer.mask?.frame = self.imageView.layer.bounds
-//        self.overlayView.bma_rect = self.imageView.bounds
-//        self.borderView.bma_rect = self.imageView.bounds
+        let layout = self.calculateFileBubbleLayout(maximumWidth: self.preferredMaxLayoutWidth)
+        self.bubbleImageView.bma_rect = CGRect(x: 0, y: 0, width: fileWidth, height: fileHeight)
+        self.folderIconView.bma_rect = layout.folderIconFrame
+        self.coverImageView.bma_rect = folderIconView.bounds
+        self.borderImageView.bma_rect = self.bubbleImageView.bounds
+        self.titleLabel.bma_rect = CGRect(origin: layout.fileTitleLabelFrame, size: titleLabel.frame.size)
+        self.sizeLabel.bma_rect = CGRect(origin: layout.fileSizeLabelFrame, size: sizeLabel.frame.size)
     }
     
-//    private func calculateFileBubbleLayout(maximumWidth maximumWidth: CGFloat) -> FileBubbleLayoutModel {
-//        let layoutContext = FileBubbleLayoutModel.LayoutContext(photoMessageViewModel: self.fileMessageViewModel, style: self.fileMessageStyle, containerWidth: maximumWidth)
-//        
-//        FileBubbleLayoutModel.LayoutContext(photoMessageViewModel: <#T##PhotoMessageViewModelProtocol#>, style: <#T##PhotoBubbleViewStyleProtocol#>, containerWidth: <#T##CGFloat#>)
-//        let layoutModel = FileBubbleLayoutModel(layoutContext: layoutContext)
-//        layoutModel.calculateLayout()
-//        return layoutModel
-//    }
+    private func calculateFileBubbleLayout(maximumWidth maximumWidth: CGFloat) -> FileBubbleLayoutModel {
+        let layoutContext = FileBubbleLayoutModel.LayoutContext(folderIconSize: fileIconSize, preferredMaxLayoutWidth: maximumWidth)
+        let layoutModel = FileBubbleLayoutModel(layoutContext: layoutContext)
+        layoutModel.calculateLayout()
+        return layoutModel
+    }
     
     public var canCalculateSizeInBackground: Bool {
         return true
@@ -151,27 +151,18 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
     
 }
 
-
 private class FileBubbleLayoutModel {
-    var photoFrame: CGRect = CGRect.zero
-    var visualCenter: CGPoint = CGPoint.zero
-    var size: CGSize = CGSize.zero
+    var folderIconFrame: CGRect = CGRect.zero
+    var fileTitleLabelFrame: CGPoint = CGPoint.zero
+    var fileSizeLabelFrame: CGPoint = CGPoint.zero
     
     struct LayoutContext {
-        let photoSize: CGSize
+        let folderIconSize: CGSize
         let preferredMaxLayoutWidth: CGFloat
-        let isIncoming: Bool
-        let tailWidth: CGFloat
         
-        init(photoSize: CGSize, tailWidth: CGFloat, isIncoming: Bool, preferredMaxLayoutWidth width: CGFloat) {
-            self.photoSize = photoSize
-            self.tailWidth = tailWidth
-            self.isIncoming = isIncoming
+        init(folderIconSize: CGSize, preferredMaxLayoutWidth width: CGFloat) {
             self.preferredMaxLayoutWidth = width
-        }
-        
-        init(photoMessageViewModel model: PhotoMessageViewModelProtocol, style: PhotoBubbleViewStyleProtocol, containerWidth width: CGFloat) {
-            self.init(photoSize: style.bubbleSize(viewModel: model), tailWidth:style.tailWidth(viewModel: model), isIncoming: model.isIncoming, preferredMaxLayoutWidth: width)
+            self.folderIconSize = folderIconSize
         }
     }
     
@@ -181,10 +172,25 @@ private class FileBubbleLayoutModel {
     }
     
     func calculateLayout() {
-        let photoSize = self.layoutContext.photoSize
-        self.photoFrame = CGRect(origin: CGPoint.zero, size: photoSize)
-        let offsetX: CGFloat = 0.5 * self.layoutContext.tailWidth * (self.layoutContext.isIncoming ? 1.0 : -1.0)
-        self.visualCenter = self.photoFrame.bma_center.bma_offsetBy(dx: offsetX, dy: 0)
-        self.size = photoSize
+        
+        folderIconFrame.size = layoutContext.folderIconSize
+        
+        //adjust X
+        var currentX: CGFloat = 0.0
+        currentX += 15
+        folderIconFrame.origin.x = currentX
+        currentX += folderIconFrame.size.width
+        currentX += 10
+        fileTitleLabelFrame.x = currentX
+        fileSizeLabelFrame.x = currentX
+        
+        //adjust Y
+        var currentY: CGFloat = 0.0
+        currentY += 9
+        folderIconFrame.origin.y = currentY
+        fileTitleLabelFrame.y = currentY
+        
+        currentY += 22
+        fileSizeLabelFrame.y = currentY
     }
 }

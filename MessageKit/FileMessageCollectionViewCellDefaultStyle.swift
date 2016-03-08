@@ -22,13 +22,21 @@ public class FileMessageCollectionViewCellDefaultStyle: FileMessageCollectionVie
         ]
     }()
     
+    lazy var folderCoverImage: UIImage = {
+        return UIImage(named: "folder-cover", inBundle: NSBundle(forClass: FileMessageCollectionViewCellDefaultStyle.self), compatibleWithTraitCollection: nil)!
+    }()
+    
     lazy var titleFont = {
-        return UIFont.systemFontOfSize(16)
+        return UIFont.systemFontOfSize(17)
     }()
     
     lazy var textFont = {
         return UIFont.systemFontOfSize(14)
     }()
+    
+    public func folderImage(viewModel viewModel: FileMessageViewModelProtocol, isSelected: Bool) -> UIImage {
+        return folderCoverImage
+    }
     
     public func bubbleImage(viewModel viewModel: FileMessageViewModelProtocol, isSelected: Bool) -> UIImage {
         let key = self.imageKey(isIncoming: viewModel.isIncoming, status: viewModel.status, showsTail: viewModel.showsTail, isSelected: isSelected)
@@ -66,7 +74,7 @@ public class FileMessageCollectionViewCellDefaultStyle: FileMessageCollectionVie
     }
     
     private func createImage(templateImage image: UIImage, isIncoming: Bool, status: MessageViewModelStatus, isSelected: Bool) -> UIImage {
-        var color = isIncoming ? self.baseStyle.baseColorIncoming : self.baseStyle.baseColorOutgoing
+        var color = self.baseStyle.baseColorIncoming
         
         switch status {
         case .Success:

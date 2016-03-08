@@ -10,17 +10,17 @@ import Foundation
 
 public protocol FileMessageModelProtocol: DecoratedMessageModelProtocol {
     var fileName: String { get }
-    var fileSize: Int { get }
+    var fileSize: String { get }
     var fileFolderColor: UIColor { get }
 }
 
 public class FileMessageModel: FileMessageModelProtocol {
     public let messageModel: MessageModelProtocol
     public var fileName: String
-    public var fileSize: Int
+    public var fileSize: String
     public var fileFolderColor: UIColor
     
-    public init(messageModel: MessageModelProtocol, fileName: String, fileSize: Int, fileFolderColor: UIColor) {
+    public init(messageModel: MessageModelProtocol, fileName: String, fileSize: String, fileFolderColor: UIColor) {
         self.messageModel = messageModel
         self.fileName = fileName
         self.fileSize = fileSize
