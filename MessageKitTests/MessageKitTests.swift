@@ -2,7 +2,7 @@
 //  MessageKitTests.swift
 //  MessageKitTests
 //
-//  Created by ChenHao on 16/3/8.
+//  Created by ChenHao on 16/3/9.
 //  Copyright © 2016年 HarriesChen. All rights reserved.
 //
 

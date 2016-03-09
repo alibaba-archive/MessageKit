@@ -27,7 +27,7 @@ public class FileMessageCollectionViewCellDefaultStyle: FileMessageCollectionVie
     }()
     
     lazy var titleFont = {
-        return UIFont.systemFontOfSize(17)
+        return UIFont.systemFontOfSize(16)
     }()
     
     lazy var textFont = {

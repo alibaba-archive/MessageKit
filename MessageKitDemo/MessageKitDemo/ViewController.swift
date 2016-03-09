@@ -173,7 +173,7 @@ class ViewController: MessageViewController {
                 let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize: CGSize(width: 300, height: 600), image: UIImage(named: "hujiang")!)
                 source.append(photoMessageModelIncoming)
             } else {
-                let fileMessageModel = FileMessageModel(messageModel: baseMessageModel, fileName: "测试文件的的.txt", fileSize: "30M", fileFolderColor: UIColor.redColor())
+                let fileMessageModel = FileMessageModel(messageModel: baseMessageModel, fileName: "iPad Design.psd", fileSize: "30M", fileFolderColor: UIColor.redColor())
                 source.append(fileMessageModel)
             }
         }
@@ -226,14 +226,19 @@ class ViewController: MessageViewController {
             "你真的很好嘛?"
         ]
         
+        
+        
         let dataSource = FakeDataSource()
         var items = self.messageDataSource?.messageItems
-        let messageModel = MessageModel(uid: "dsfsdf", senderId: "dsfsdf", type: "text-message", isIncoming: true, date: NSDate(), status: .Success)
+        let messageModel = MessageModel(uid: "dsfsdf\(Int(arc4random() % 300))", senderId: "dsfsdf", type: "text-message", isIncoming: true, date: NSDate(), status: .Success)
         let textMessageModel = TextMessageModel(messageModel: messageModel, text: "dsfsdfsdfsdfsdf\(a[randomNumber])")
-        items?.append(textMessageModel)
-        dataSource.messageItems = items!
-        dataSource.delegate = self
-        self.messageDataSource = dataSource
+        
+        sendNewMessage(textMessageModel)
+        
+//        items?.append(textMessageModel)
+//        dataSource.messageItems = items!
+//        dataSource.delegate = self
+//        self.messageDataSource = dataSource
     }
     
 }

@@ -55,11 +55,18 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
     private lazy var folderIconView: UIView = {
         let iconView = UIView()
         iconView.addSubview(self.coverImageView)
+        iconView.addSubview(self.typeLabel)
         return iconView
     }()
     
     private var borderImageView: UIImageView = UIImageView()
     private var coverImageView: UIImageView = UIImageView()
+    private lazy var typeLabel: UILabel = {
+        let typeLabel = UILabel()
+        typeLabel.font = UIFont.systemFontOfSize(10)
+        typeLabel.textColor = UIColor.whiteColor()
+        return typeLabel
+    }()
     private var titleLabel: UILabel = UILabel()
     private var sizeLabel: UILabel = UILabel()
     
@@ -120,6 +127,8 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         self.sizeLabel.text = viewModel.fileSize
         self.sizeLabel.font = fileMessageStyle.textFont(viewModel: viewModel, isSelected: self.selected)
         self.sizeLabel.sizeToFit()
+        self.typeLabel.text = "PSD"
+        self.typeLabel.sizeToFit()
         self.setNeedsLayout()
     }
     
@@ -138,6 +147,7 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         self.borderImageView.bma_rect = self.bubbleImageView.bounds
         self.titleLabel.bma_rect = CGRect(origin: layout.fileTitleLabelFrame, size: titleLabel.frame.size)
         self.sizeLabel.bma_rect = CGRect(origin: layout.fileSizeLabelFrame, size: sizeLabel.frame.size)
+        self.typeLabel.center = self.coverImageView.center
     }
     
     private func calculateFileBubbleLayout(maximumWidth maximumWidth: CGFloat) -> FileBubbleLayoutModel {
@@ -182,7 +192,7 @@ private class FileBubbleLayoutModel {
         currentX += 15
         folderIconFrame.origin.x = currentX
         currentX += folderIconFrame.size.width
-        currentX += 10
+        currentX += 8
         fileTitleLabelFrame.x = currentX
         fileSizeLabelFrame.x = currentX
         

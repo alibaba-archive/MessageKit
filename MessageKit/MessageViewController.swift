@@ -57,12 +57,10 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
     }
     
     public func sendNewMessage(message: MessageItemProtocol) {
-        
-//        var newItem = messageDataSource?.messageItems
-//        newItem?.append(message)
-//        let newDataSource = messageDataSource
-//
-//        
+        var newItem = self.messageDataSource?.messageItems
+        newItem?.append(message)
+        self.messageDataSource?.messageItems = newItem!
+        enqueueModelUpdate(context: .Normal)
     }
     
     

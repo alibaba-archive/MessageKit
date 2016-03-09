@@ -29,8 +29,6 @@
 		E5AC72421C8E70300047981F /* FileMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */; };
 		E5BF8FC01C882B4F0041AF71 /* PhotoMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */; };
 		E5BF8FCE1C89525C0041AF71 /* UIImageView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BF8FCD1C89525C0041AF71 /* UIImageView+CornerRadius.swift */; };
-		E5C440541C8EE20600E40000 /* MessageKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C440531C8EE20600E40000 /* MessageKitTests.swift */; };
-		E5C440561C8EE20600E40000 /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D671C51C59BD0C005C9598 /* MessageKit.framework */; };
 		E5CC40301C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */; };
 		E5D671C91C59BD0C005C9598 /* MessageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D671C81C59BD0C005C9598 /* MessageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5D672141C59C354005C9598 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672121C59C354005C9598 /* MessageViewController.swift */; };
@@ -38,6 +36,8 @@
 		E5D6723F1C5B19BF005C9598 /* NSBundle+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6723E1C5B19BF005C9598 /* NSBundle+Message.swift */; };
 		E5D672441C5B3F68005C9598 /* UIImage+Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */; };
 		E5D672571C5C7F9C005C9598 /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672561C5C7F9C005C9598 /* UIView+Constraint.swift */; };
+		E5DB764A1C8FD040006B599B /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D671C51C59BD0C005C9598 /* MessageKit.framework */; };
+		E5DB76531C8FD081006B599B /* MessageKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DB76511C8FD081006B599B /* MessageKitTests.swift */; };
 		E5E16F2F1C880F4800065288 /* BaseMessageItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F2E1C880F4800065288 /* BaseMessageItemPresenter.swift */; };
 		E5E16F331C8811FF00065288 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F321C8811FF00065288 /* Utils.swift */; };
 		E5E16F351C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E16F341C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift */; };
@@ -65,7 +65,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E5C440571C8EE20600E40000 /* PBXContainerItemProxy */ = {
+		E5DB764B1C8FD040006B599B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E5D671BC1C59BD0C005C9598 /* Project object */;
 			proxyType = 1;
@@ -97,9 +97,6 @@
 		E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FileMessageAssets.xcassets; sourceTree = "<group>"; };
 		E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhotoMessageAssets.xcassets; sourceTree = "<group>"; };
 		E5BF8FCD1C89525C0041AF71 /* UIImageView+CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CornerRadius.swift"; sourceTree = "<group>"; };
-		E5C440511C8EE20600E40000 /* MessageKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5C440531C8EE20600E40000 /* MessageKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageKitTests.swift; sourceTree = "<group>"; };
-		E5C440551C8EE20600E40000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D671C51C59BD0C005C9598 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D671C81C59BD0C005C9598 /* MessageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageKit.h; sourceTree = "<group>"; };
@@ -109,6 +106,9 @@
 		E5D6723E1C5B19BF005C9598 /* NSBundle+Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Message.swift"; sourceTree = "<group>"; };
 		E5D672431C5B3F68005C9598 /* UIImage+Mask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Mask.swift"; sourceTree = "<group>"; };
 		E5D672561C5C7F9C005C9598 /* UIView+Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
+		E5DB76451C8FD040006B599B /* MessageKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5DB76501C8FD081006B599B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5DB76511C8FD081006B599B /* MessageKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKitTests.swift; sourceTree = "<group>"; };
 		E5E16F2E1C880F4800065288 /* BaseMessageItemPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageItemPresenter.swift; sourceTree = "<group>"; };
 		E5E16F321C8811FF00065288 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E5E16F341C88127C00065288 /* BaseMessageCollectionViewCellDefaultSyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCellDefaultSyle.swift; sourceTree = "<group>"; };
@@ -136,18 +136,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E5C4404E1C8EE20600E40000 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E5C440561C8EE20600E40000 /* MessageKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E5D671C11C59BD0C005C9598 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5DB76421C8FD040006B599B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5DB764A1C8FD040006B599B /* MessageKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,20 +206,11 @@
 			name = AudioMessage;
 			sourceTree = "<group>";
 		};
-		E5C440521C8EE20600E40000 /* MessageKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				E5C440531C8EE20600E40000 /* MessageKitTests.swift */,
-				E5C440551C8EE20600E40000 /* Info.plist */,
-			);
-			path = MessageKitTests;
-			sourceTree = "<group>";
-		};
 		E5D671BB1C59BD0C005C9598 = {
 			isa = PBXGroup;
 			children = (
 				E5D671C71C59BD0C005C9598 /* MessageKit */,
-				E5C440521C8EE20600E40000 /* MessageKitTests */,
+				E5DB76461C8FD040006B599B /* MessageKitTests */,
 				E5D671C61C59BD0C005C9598 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -228,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D671C51C59BD0C005C9598 /* MessageKit.framework */,
-				E5C440511C8EE20600E40000 /* MessageKitTests.xctest */,
+				E5DB76451C8FD040006B599B /* MessageKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -314,6 +305,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		E5DB76461C8FD040006B599B /* MessageKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E5DB76501C8FD081006B599B /* Info.plist */,
+				E5DB76511C8FD081006B599B /* MessageKitTests.swift */,
+			);
+			path = MessageKitTests;
+			sourceTree = "<group>";
+		};
 		E5E16F3C1C8814DE00065288 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,24 +384,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E5C440501C8EE20600E40000 /* MessageKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E5C4405B1C8EE20600E40000 /* Build configuration list for PBXNativeTarget "MessageKitTests" */;
-			buildPhases = (
-				E5C4404D1C8EE20600E40000 /* Sources */,
-				E5C4404E1C8EE20600E40000 /* Frameworks */,
-				E5C4404F1C8EE20600E40000 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E5C440581C8EE20600E40000 /* PBXTargetDependency */,
-			);
-			name = MessageKitTests;
-			productName = MessageKitTests;
-			productReference = E5C440511C8EE20600E40000 /* MessageKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		E5D671C41C59BD0C005C9598 /* MessageKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5D671CD1C59BD0C005C9598 /* Build configuration list for PBXNativeTarget "MessageKit" */;
@@ -420,6 +402,24 @@
 			productReference = E5D671C51C59BD0C005C9598 /* MessageKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E5DB76441C8FD040006B599B /* MessageKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5DB764D1C8FD040006B599B /* Build configuration list for PBXNativeTarget "MessageKitTests" */;
+			buildPhases = (
+				E5DB76411C8FD040006B599B /* Sources */,
+				E5DB76421C8FD040006B599B /* Frameworks */,
+				E5DB76431C8FD040006B599B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E5DB764C1C8FD040006B599B /* PBXTargetDependency */,
+			);
+			name = MessageKitTests;
+			productName = MessageKitTests;
+			productReference = E5DB76451C8FD040006B599B /* MessageKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -430,11 +430,11 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = HarriesChen;
 				TargetAttributes = {
-					E5C440501C8EE20600E40000 = {
-						CreatedOnToolsVersion = 7.2.1;
-					};
 					E5D671C41C59BD0C005C9598 = {
 						CreatedOnToolsVersion = 7.2;
+					};
+					E5DB76441C8FD040006B599B = {
+						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
 			};
@@ -451,19 +451,12 @@
 			projectRoot = "";
 			targets = (
 				E5D671C41C59BD0C005C9598 /* MessageKit */,
-				E5C440501C8EE20600E40000 /* MessageKitTests */,
+				E5DB76441C8FD040006B599B /* MessageKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E5C4404F1C8EE20600E40000 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E5D671C31C59BD0C005C9598 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -475,17 +468,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		E5C4404D1C8EE20600E40000 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		E5DB76431C8FD040006B599B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5C440541C8EE20600E40000 /* MessageKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		E5D671C01C59BD0C005C9598 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -541,37 +533,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5DB76411C8FD040006B599B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5DB76531C8FD081006B599B /* MessageKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E5C440581C8EE20600E40000 /* PBXTargetDependency */ = {
+		E5DB764C1C8FD040006B599B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E5D671C41C59BD0C005C9598 /* MessageKit */;
-			targetProxy = E5C440571C8EE20600E40000 /* PBXContainerItemProxy */;
+			targetProxy = E5DB764B1C8FD040006B599B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		E5C440591C8EE20600E40000 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = MessageKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		E5C4405A1C8EE20600E40000 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = MessageKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		E5D671CB1C59BD0C005C9598 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -696,18 +676,34 @@
 			};
 			name = Release;
 		};
+		E5DB764E1C8FD040006B599B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = MessageKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E5DB764F1C8FD040006B599B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = MessageKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E5C4405B1C8EE20600E40000 /* Build configuration list for PBXNativeTarget "MessageKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E5C440591C8EE20600E40000 /* Debug */,
-				E5C4405A1C8EE20600E40000 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E5D671BF1C59BD0C005C9598 /* Build configuration list for PBXProject "MessageKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -725,6 +721,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E5DB764D1C8FD040006B599B /* Build configuration list for PBXNativeTarget "MessageKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5DB764E1C8FD040006B599B /* Debug */,
+				E5DB764F1C8FD040006B599B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
