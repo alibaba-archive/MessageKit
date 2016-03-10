@@ -118,7 +118,11 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         let font = style.textFont(viewModel: viewModel, isSelected: self.selected)
         let textColor = style.textColor(viewModel: viewModel, isSelected: self.selected)
         let bubbleImage = self.style.bubbleImage(viewModel: self.textMessageViewModel, isSelected: self.selected)
-        let borderImage = self.style.bubbleImageBorder(viewModel: self.textMessageViewModel, isSelected: self.selected)
+        if viewModel.showsBorder {
+            let borderImage = self.style.bubbleImageBorder(viewModel: self.textMessageViewModel, isSelected: self.selected)
+            if self.borderImageView.image != borderImage { self.borderImageView.image = borderImage }
+        }
+        
         
         if self.textView.font != font { self.textView.font = font}
         if self.textView.text != viewModel.text {self.textView.text = viewModel.text}
@@ -130,7 +134,7 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
             ]
         }
         if self.bubbleImageView.image != bubbleImage { self.bubbleImageView.image = bubbleImage}
-        if self.borderImageView.image != borderImage { self.borderImageView.image = borderImage }
+        
     }
     
     private func bubbleImage() -> UIImage {

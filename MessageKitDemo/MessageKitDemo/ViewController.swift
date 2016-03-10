@@ -166,7 +166,7 @@ class ViewController: MessageViewController {
                 status = .Failed
             }
             
-            let baseMessageModel = MessageModel(uid: m.uid, senderId: m.senderId, type: m.type.rawValue, isIncoming: m.isIncoming, date: NSDate(), status: status, avatarClosure: { imageView in
+            let baseMessageModel = MessageModel(uid: m.uid, senderId: m.senderId, type: m.type.rawValue, isIncoming: m.isIncoming, showsBorder: false, date: NSDate(), status: status, avatarClosure: { imageView in
                 imageView.kf_setImageWithURL(NSURL(string: "https://striker.teambition.net/thumbnail/110771552384086e16cb0e32133ba589cf98/w/200/h/200")!, placeholderImage: nil)
             })
             
@@ -233,7 +233,7 @@ class ViewController: MessageViewController {
         
         let dataSource = FakeDataSource()
         var items = self.messageDataSource?.messageItems
-        let messageModel = MessageModel(uid: "dsfsdf\(Int(arc4random() % 300))", senderId: "dsfsdf", type: "text-message", isIncoming: true, date: NSDate(), status: .Success, avatarClosure: { imageView in
+        let messageModel = MessageModel(uid: "dsfsdf\(Int(arc4random() % 300))", senderId: "dsfsdf", type: "text-message", isIncoming: true, showsBorder: false, date: NSDate(), status: .Success, avatarClosure: { imageView in
             
         })
         let textMessageModel = TextMessageModel(messageModel: messageModel, text: "dsfsdfsdfsdfsdf\(a[randomNumber])")

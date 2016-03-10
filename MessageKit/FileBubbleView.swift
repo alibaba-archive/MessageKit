@@ -115,9 +115,13 @@ public final class FileBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
             return
         }
         let bubbleImage = self.fileMessageStyle.bubbleImage(viewModel: viewModel, isSelected: self.selected)
-        let borderImage = self.fileMessageStyle.bubbleImageBorder(viewModel: viewModel, isSelected: self.selected)
-        if self.bubbleImageView.image != bubbleImage { self.bubbleImageView.image = bubbleImage }
-        if self.borderImageView.image != borderImage { self.borderImageView.image = borderImage }
+         if self.bubbleImageView.image != bubbleImage { self.bubbleImageView.image = bubbleImage }
+        
+        if viewModel.showsBorder {
+            let borderImage = self.fileMessageStyle.bubbleImageBorder(viewModel: viewModel, isSelected: self.selected)
+            if self.borderImageView.image != borderImage { self.borderImageView.image = borderImage }
+        }
+       
         self.coverImageView.image = self.fileMessageStyle.folderImage(viewModel: viewModel, isSelected: self.selected)
         self.titleLabel.text = viewModel.fileName
         self.titleLabel.font = fileMessageStyle.titleFont(viewModel: viewModel, isSelected: self.selected)

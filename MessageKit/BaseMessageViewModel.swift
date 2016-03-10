@@ -31,6 +31,7 @@ public protocol MessageViewModelProtocol: class {
     var isIncoming: Bool { get }
     var showsTail: Bool { get set }
     var showsFailedIcon: Bool { get }
+    var showsBorder: Bool { get }
     var date: String { get }
     var status: MessageViewModelStatus { get }
     var messageModel: MessageModelProtocol { get }
@@ -53,6 +54,11 @@ extension DecoratedMessageViewModelProtocol {
             self.messageViewModel.showsTail = newValue
         }
     }
+    
+    public var showsBorder: Bool {
+        return self.messageViewModel.showsBorder
+    }
+
     public var date: String {
         return self.messageViewModel.date
     }
@@ -104,6 +110,10 @@ public class MessageViewModel: MessageViewModelProtocol {
     
     public var avatarClosure: AvatarClosure? {
         return self.messageModel.avatarClosure
+    }
+    
+    public var showsBorder: Bool {
+        return self.messageModel.showsBorder
     }
 }
 

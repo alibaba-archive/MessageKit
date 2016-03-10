@@ -20,6 +20,7 @@ public protocol MessageModelProtocol: MessageItemProtocol {
     
     var senderId: String { get }
     var isIncoming: Bool { get }
+    var showsBorder: Bool { get }
     var date: NSDate { get }
     var status: MessageStatus { get set }
     var avatarClosure: AvatarClosure? { get }
@@ -46,6 +47,10 @@ public extension DecoratedMessageModelProtocol {
         return self.messageModel.isIncoming
     }
     
+    var showsBorder: Bool {
+        return self.messageModel.showsBorder
+    }
+    
     var date: NSDate {
         return self.messageModel.date
     }
@@ -68,16 +73,18 @@ public class MessageModel: MessageModelProtocol {
     public var uid: String
     public var senderId: String
     public var type: String
+    public var showsBorder: Bool
     public var isIncoming: Bool
     public var date: NSDate
     public var status: MessageStatus
     public var avatarClosure: AvatarClosure?
     
-    public init(uid: String, senderId: String, type: String, isIncoming: Bool, date: NSDate, status: MessageStatus, avatarClosure: AvatarClosure) {
+    public init(uid: String, senderId: String, type: String, isIncoming: Bool, showsBorder: Bool, date: NSDate, status: MessageStatus, avatarClosure: AvatarClosure) {
         self.uid = uid
         self.senderId = senderId
         self.type = type
         self.isIncoming = isIncoming
+        self.showsBorder = showsBorder
         self.date = date
         self.status = status
         self.avatarClosure = avatarClosure
