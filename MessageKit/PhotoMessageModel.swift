@@ -14,6 +14,7 @@ public protocol PhotoMessageModelProtocol: DecoratedMessageModelProtocol {
 }
 
 public class PhotoMessageModel: PhotoMessageModelProtocol {
+    
     public let messageModel: MessageModelProtocol
     public let image: UIImage
     public let imageSize: CGSize

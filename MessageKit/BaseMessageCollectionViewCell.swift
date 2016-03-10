@@ -105,8 +105,6 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
     
     func createAvatarView() -> UIImageView! {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "avatar", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
-        
         return imageView
     }
     
@@ -183,6 +181,10 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
             self.failedButton.alpha = 0
         }
         self.timestampLabel.attributedText = style.attributedStringForDate(self.messageViewModel.date)
+        if let avatar = self.messageViewModel.avatarClosure {
+            avatar(imageview: self.avatarView)
+        }
+        
         self.setNeedsLayout()
     }
     

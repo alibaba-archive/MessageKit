@@ -14,11 +14,15 @@ public enum MessageStatus {
     case Success
 }
 
+public typealias AvatarClosure =  (imageview: UIImageView) -> ()
+
 public protocol MessageModelProtocol: MessageItemProtocol {
+    
     var senderId: String { get }
     var isIncoming: Bool { get }
     var date: NSDate { get }
     var status: MessageStatus { get set }
+    var avatarClosure: AvatarClosure? { get }
 }
 
 public protocol DecoratedMessageModelProtocol: MessageModelProtocol {
@@ -54,6 +58,10 @@ public extension DecoratedMessageModelProtocol {
             self.messageModel.status = newValue
         }
     }
+    
+    var avatarClosure: AvatarClosure? {
+        return self.messageModel.avatarClosure
+    }
 }
 
 public class MessageModel: MessageModelProtocol {
@@ -63,13 +71,15 @@ public class MessageModel: MessageModelProtocol {
     public var isIncoming: Bool
     public var date: NSDate
     public var status: MessageStatus
+    public var avatarClosure: AvatarClosure?
     
-    public init(uid: String, senderId: String, type: String, isIncoming: Bool, date: NSDate, status: MessageStatus) {
+    public init(uid: String, senderId: String, type: String, isIncoming: Bool, date: NSDate, status: MessageStatus, avatarClosure: AvatarClosure) {
         self.uid = uid
         self.senderId = senderId
         self.type = type
         self.isIncoming = isIncoming
         self.date = date
         self.status = status
+        self.avatarClosure = avatarClosure
     }
 }

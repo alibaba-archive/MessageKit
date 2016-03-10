@@ -34,6 +34,7 @@ public protocol MessageViewModelProtocol: class {
     var date: String { get }
     var status: MessageViewModelStatus { get }
     var messageModel: MessageModelProtocol { get }
+    var avatarClosure: AvatarClosure? { get }
 }
 
 public protocol DecoratedMessageViewModelProtocol: MessageViewModelProtocol {
@@ -67,6 +68,11 @@ extension DecoratedMessageViewModelProtocol {
     public var messageModel: MessageModelProtocol {
         return self.messageViewModel.messageModel
     }
+    
+    public var avatarClosure: AvatarClosure? {
+        return self.messageViewModel.avatarClosure
+    }
+
 }
 
 public class MessageViewModel: MessageViewModelProtocol {
@@ -94,6 +100,10 @@ public class MessageViewModel: MessageViewModelProtocol {
     
     public var showsFailedIcon: Bool {
         return self.status == .Failed
+    }
+    
+    public var avatarClosure: AvatarClosure? {
+        return self.messageModel.avatarClosure
     }
 }
 
