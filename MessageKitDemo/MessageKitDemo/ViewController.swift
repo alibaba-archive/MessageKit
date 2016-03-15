@@ -188,6 +188,7 @@ class ViewController: MessageViewController {
         fake.delegate = self
         self.messageDataSource = fake
         self.messageItemsDecorator = ddd()
+        self.inputContainerBottomConstraint.constant = 400
     }
     
     override func createPresenterBuilders() -> [MessageItemType : [ItemPresenterBuilderProtocol]] {

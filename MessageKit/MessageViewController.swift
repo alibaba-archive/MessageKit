@@ -30,7 +30,7 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
     let presentersByCell = NSMapTable(keyOptions: .WeakMemory, valueOptions: .WeakMemory)
     var updateQueue: SerialTaskQueueProtocol = SerialTaskQueue()
     public private(set) var collectionView: UICollectionView!
-    private var inputContainerBottomConstraint: NSLayoutConstraint!
+    public var inputContainerBottomConstraint: NSLayoutConstraint!
     public var isFirstLayout: Bool = true
     public var messageItemsDecorator: MessageItemsDecoratorProtocol?
     
