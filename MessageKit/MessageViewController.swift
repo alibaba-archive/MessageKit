@@ -34,11 +34,6 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
     public var isFirstLayout: Bool = true
     public var messageItemsDecorator: MessageItemsDecoratorProtocol?
     
-    deinit {
-        collectionView.delegate = nil
-        collectionView.dataSource = nil
-    }
-    
     public var messageDataSource: MessageDataSourceProtocol? {
         didSet {
             messageDataSource?.delegate = self

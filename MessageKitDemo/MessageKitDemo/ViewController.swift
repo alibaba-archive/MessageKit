@@ -230,9 +230,6 @@ class ViewController: MessageViewController {
             "我挺好的",
             "你真的很好嘛?"
         ]
-        
-        let dataSource = FakeDataSource()
-        var items = self.messageDataSource?.messageItems
         let messageModel = MessageModel(uid: "dsfsdf\(Int(arc4random() % 300))", senderId: "dsfsdf", type: "text-message", isIncoming: true, showsBorder: false, date: NSDate(), status: .Success, avatarClosure: { imageView in
             
         })
@@ -240,10 +237,6 @@ class ViewController: MessageViewController {
         
         sendNewMessage(textMessageModel)
         
-//        items?.append(textMessageModel)
-//        dataSource.messageItems = items!
-//        dataSource.delegate = self
-//        self.messageDataSource = dataSource
     }
     
 }
