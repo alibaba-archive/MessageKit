@@ -181,6 +181,7 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
             self.failedButton.alpha = 0
         }
         self.timestampLabel.attributedText = style.attributedStringForDate(self.messageViewModel.date)
+        self.timestampLabel.textColor = UIColor.bma_color(rgb: 0xAAAAAA)
         if let avatar = self.messageViewModel.avatarClosure {
             avatar(imageview: self.avatarView)
         }

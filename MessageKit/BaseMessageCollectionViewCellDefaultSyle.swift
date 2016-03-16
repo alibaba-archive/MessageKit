@@ -14,6 +14,7 @@ public class BaseMessageCollectionViewCellDefaultSyle: BaseMessageCollectionView
     
     lazy var baseColorIncoming = UIColor.bma_color(rgb: 0xF2F2F2)
     lazy var baseColorOutgoing = UIColor.bma_color(rgb: 0x03A9F4)
+    public lazy var baseColorTimestampText = UIColor.bma_color(rgb: 0xAAAAAA)
     
     lazy var borderIncomingTail: UIImage = {
         return UIImage(named: "bubble-incoming-border-tail", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!

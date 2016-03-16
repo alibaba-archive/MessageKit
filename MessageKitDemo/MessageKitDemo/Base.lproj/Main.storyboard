@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="1570" y="-426"/>
         </scene>
-        <!--Root View Controller-->
+        <!--测试-->
         <scene sceneID="x3o-Tu-p8Z">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="LMu-rQ-d7B" customClass="TableViewController" customModule="MessageKitDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,7 +50,7 @@
                             <outlet property="delegate" destination="LMu-rQ-d7B" id="d44-zU-wQL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="omM-MN-ON3"/>
+                    <navigationItem key="navigationItem" title="测试" id="omM-MN-ON3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMH-zL-MVE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,13 +9,8 @@
 import Foundation
 
 public protocol CustomBubbleViewStyleProtocol {
-    func folderImage(viewModel viewModel: CustomMessageViewModelProtocol, isSelected: Bool) -> UIImage
     func bubbleImage(viewModel viewModel: CustomMessageViewModelProtocol, isSelected: Bool) -> UIImage
     func bubbleImageBorder(viewModel viewModel: CustomMessageViewModelProtocol, isSelected: Bool) -> UIImage?
-    func titleFont(viewModel viewModel: CustomMessageViewModelProtocol, isSelected: Bool) -> UIFont
-    func titleColor(viewModel viewModel: CustomMessageViewModelProtocol, isSelected: Bool) -> UIColor
-    func textFont(viewModel viewModel: CustomMessageViewModelProtocol, isSelected: Bool) -> UIFont
-    func textColor(viewModel viewModel: CustomMessageViewModelProtocol, isSelected: Bool) -> UIColor
 }
 
 public final class CustomBubbleView: UIView, MaximumLayoutWidthSpecificable, BackgroundSizingQueryable {
@@ -84,7 +79,7 @@ public final class CustomBubbleView: UIView, MaximumLayoutWidthSpecificable, Bac
             updateAndRefreshViews()
         }
     }
-    
+
     private func updateViews() {
         if self.viewContext == .Sizing { return }
         if isUpdating { return }
@@ -98,7 +93,6 @@ public final class CustomBubbleView: UIView, MaximumLayoutWidthSpecificable, Bac
             let borderImage = self.customMessageStyle.bubbleImageBorder(viewModel: viewModel, isSelected: self.selected)
             if self.borderImageView.image != borderImage { self.borderImageView.image = borderImage }
         }
-        
         self.setNeedsLayout()
     }
     
@@ -125,7 +119,6 @@ public final class CustomBubbleView: UIView, MaximumLayoutWidthSpecificable, Bac
     public var canCalculateSizeInBackground: Bool {
         return true
     }
-    
 }
 
 private class CustomBubbleLayoutModel {

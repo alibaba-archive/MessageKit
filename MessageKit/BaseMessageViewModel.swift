@@ -92,14 +92,12 @@ public class MessageViewModel: MessageViewModelProtocol {
     
     public var showsTail: Bool
     public lazy var date: String = {
-        return self.dateFormatter.stringFromDate(self.messageModel.date)
+        return self.messageModel.dateLabel
     }()
     
-    public let dateFormatter: NSDateFormatter
     public private(set) var messageModel: MessageModelProtocol
     
-    public init(dateFormatter: NSDateFormatter, showsTail: Bool, messageModel: MessageModelProtocol) {
-        self.dateFormatter = dateFormatter
+    public init(showsTail: Bool, messageModel: MessageModelProtocol) {
         self.showsTail = showsTail
         self.messageModel = messageModel
     }
@@ -121,13 +119,7 @@ public class MessageViewModelDefaultBuilder {
     
     public init() {}
     
-    static let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter
-    }()
-    
     public func createMessageViewModel(message: MessageModelProtocol) -> MessageViewModelProtocol {
-        return MessageViewModel(dateFormatter: self.dynamicType.dateFormatter, showsTail: false, messageModel: message)
+        return MessageViewModel(showsTail: false, messageModel: message)
     }
 }
