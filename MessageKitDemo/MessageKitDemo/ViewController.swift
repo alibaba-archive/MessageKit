@@ -58,6 +58,22 @@ class FileMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     }
 }
 
+class CustomMessageTestHandler: BaseMessageInteractionHandlerProtocol {
+    typealias ViewModelT = CustomMessageViewModel
+    
+    func userDidTapOnFailIcon(viewModel viewModel: ViewModelT) {
+        
+    }
+    
+    func userDidTapOnBubble(viewModel viewModel: ViewModelT) {
+        print("点击自定义")
+    }
+    
+    func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
+        
+    }
+}
+
 class FakeDataSource: MessageDataSourceProtocol {
     var hasMoreNext = true
     var hasMorePrevious = true
@@ -102,6 +118,7 @@ struct testModel {
         case Text = "text-message"
         case Photo = "photo-message"
         case File = "file-message"
+        case Custom = "custom-message"
     }
     
     var uid: String
@@ -153,7 +170,7 @@ class ViewController: MessageViewController {
             testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
             testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
             testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd", isSuccess: true),
-            testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true)
+            testModel(uid:"19", sid: "dd", type: .Custom, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true)
         ]
         
         var source = [MessageItemProtocol]()
@@ -171,15 +188,19 @@ class ViewController: MessageViewController {
             })
             
             if m.type == .Text {
-                
                 let textMessageModel = TextMessageModel(messageModel: baseMessageModel, text: m.text)
                 source.append(textMessageModel)
             } else if m.type == .Photo{
                 let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize: CGSize(width: 300, height: 600), image: UIImage(named: "hujiang")!)
                 source.append(photoMessageModelIncoming)
-            } else {
+            } else if m.type == .File {
                 let fileMessageModel = FileMessageModel(messageModel: baseMessageModel, fileName: "iPad Design.psd", fileSize: "30M", fileFolderColor: UIColor.redColor())
                 source.append(fileMessageModel)
+            } else {
+                let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+                view.backgroundColor = UIColor.redColor()
+                let customMessageModel = CustomMessageModel(messageModel: baseMessageModel, customView: view)
+                source.append(customMessageModel)
             }
         }
         
@@ -188,7 +209,7 @@ class ViewController: MessageViewController {
         fake.delegate = self
         self.messageDataSource = fake
         self.messageItemsDecorator = ddd()
-        self.inputContainerBottomConstraint.constant = 400
+        self.inputContainerBottomConstraint.constant = 0
     }
     
     override func createPresenterBuilders() -> [MessageItemType : [ItemPresenterBuilderProtocol]] {
@@ -197,6 +218,8 @@ class ViewController: MessageViewController {
         let photobuilder = PhotoMessagePresenterBuilder(viewModelBuilder: PhotoMessageViewModelDefaultBuilder(), interactionHandler: PhotoMessageTestHandler())
         
         let filebuilder = FileMessagePresenterBuilder(viewModelBuilder: FileMessageViewModelDefaultBuilder(), interactionHandler: FileMessageTestHandler())
+        
+        let custombuilder = CustomMessagePresenterBuilder(viewModelBuilder: CustomMessageViewModelDefaultBuilder(), interactionHandler: CustomMessageTestHandler())
         
         return [
             "text-message" : [
@@ -208,8 +231,10 @@ class ViewController: MessageViewController {
             ],
             "file-message": [
                 filebuilder
+            ],
+            "custom-message": [
+                custombuilder
             ]
-            
         ]
     }
     

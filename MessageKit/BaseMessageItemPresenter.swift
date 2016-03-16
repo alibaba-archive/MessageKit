@@ -63,11 +63,6 @@ public class BaseMessageItemPresenter<CellT: UICollectionViewCell>: ItemPresente
     }
     
     public final func cellWasHidden(cell: UICollectionViewCell) {
-        // Carefull!! This doesn't mean that this is no longer visible
-        // If cell is replaced (due to a reload for instance) we can have the following sequence:
-        //   - New cell is taken from the pool and configured. We'll get cellWillBeShown
-        //   - Old cell is removed. We'll get cellWasHidden
-        // --> We need to check that this cell is the last one made visible
         if let cell = cell as? CellT {
             if cell === self.cell {
                 self.cell = nil
