@@ -184,7 +184,7 @@ class ViewController: MessageViewController {
             testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
             testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd", isSuccess: true),
             testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
-            testModel(uid:"18", sid: "dd", type: .Text, coming: true, text: "dsfsd", isSuccess: true),
+            testModel(uid:"18", sid: "dd", type: .Custom, coming: false, text: "dsfsd", isSuccess: true),
             testModel(uid:"19", sid: "dd", type: .Custom, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true)
         ]
         
