@@ -105,6 +105,7 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
     
     func createAvatarView() -> UIImageView! {
         let imageView = UIImageView()
+        imageView.userInteractionEnabled = true
         return imageView
     }
     
@@ -129,6 +130,11 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
         return tapGestureRecognizer
     }()
     
+    public private(set) lazy var tapAvatarGestureRecognizer: UITapGestureRecognizer = {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "avatarTapped:")
+        return tapGestureRecognizer
+    }()
+    
     public private (set) lazy var longPressGestureRecognizer: UILongPressGestureRecognizer = {
         let longpressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "bubbleLongPressed:")
         longpressGestureRecognizer.delegate = self
@@ -140,6 +146,7 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
         self.bubbleView.addGestureRecognizer(self.tapGestureRecognizer)
         self.bubbleView.addGestureRecognizer(self.longPressGestureRecognizer)
         self.avatarView = createAvatarView()
+        self.avatarView.addGestureRecognizer(self.tapAvatarGestureRecognizer)
         self.timestampLabel = createTimestampView()
         self.contentView.addSubview(self.bubbleView)
         self.contentView.addSubview(self.avatarView)
@@ -252,6 +259,12 @@ public class BaseMessageCollectionViewCell<BubbleViewType where BubbleViewType:U
     
     func bubbleLongPressed() {
         self.onBubbleLongPressed?(cell: self)
+    }
+    
+    public var onAvatarTapped: ((cell: BaseMessageCollectionViewCell) -> Void)?
+    @objc
+    private func avatarTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        self.onAvatarTapped?(cell: self)
     }
 }
 

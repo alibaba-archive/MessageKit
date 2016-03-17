@@ -24,6 +24,10 @@ class TextMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
         print("长按bubble")
     }
+    
+    func userDidTapOnAvatar(viewModel viewModel: ViewModelT) {
+        print("点击头像")
+    }
 }
 
 class PhotoMessageTestHandler: BaseMessageInteractionHandlerProtocol {
@@ -39,6 +43,9 @@ class PhotoMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
         print("长按图片")
+    }
+    func userDidTapOnAvatar(viewModel viewModel: ViewModelT) {
+        print("点击头像")
     }
 }
 
@@ -56,6 +63,9 @@ class FileMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
         
     }
+    func userDidTapOnAvatar(viewModel viewModel: ViewModelT) {
+        print("点击头像")
+    }
 }
 
 class CustomMessageTestHandler: BaseMessageInteractionHandlerProtocol {
@@ -71,6 +81,9 @@ class CustomMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT) {
         
+    }
+    func userDidTapOnAvatar(viewModel viewModel: ViewModelT) {
+        print("点击头像")
     }
 }
 
@@ -170,6 +183,8 @@ class ViewController: MessageViewController {
             testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
             testModel(uid:"19", sid: "dd", type: .File, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
             testModel(uid:"18", sid: "dd", type: .Text, coming: false, text: "dsfsd", isSuccess: true),
+            testModel(uid:"19", sid: "dd", type: .Text, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true),
+            testModel(uid:"18", sid: "dd", type: .Text, coming: true, text: "dsfsd", isSuccess: true),
             testModel(uid:"19", sid: "dd", type: .Custom, coming: true, text: "标题位置可以分别设置为上下左右，4个位置", isSuccess: true)
         ]
         
