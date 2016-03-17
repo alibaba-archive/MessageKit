@@ -28,6 +28,7 @@ public protocol BaseMessageInteractionHandlerProtocol {
     func userDidTapOnFailIcon(viewModel viewModel: ViewModelT)
     func userDidTapOnBubble(viewModel viewModel: ViewModelT)
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT)
+    func userDidTapOnAvatar(viewModel viewModel: ViewModelT)
 }
 
 public class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandlerT where
@@ -101,6 +102,10 @@ BubbleViewT: UIView, BubbleViewT:MaximumLayoutWidthSpecificable, BubbleViewT: Ba
             cell.onFailedButtonTapped = { [weak self] (cell) in
                 guard let sSelf = self else { return }
                 sSelf.interactionHandler?.userDidTapOnFailIcon(viewModel: sSelf.messageViewModel)
+            }
+            cell.onAvatarTapped = { [weak self] (cell) in
+                guard let sSelf = self else { return }
+                sSelf.interactionHandler?.userDidTapOnAvatar(viewModel: sSelf.messageViewModel)
             }
             additionalConfiguration?()
         }, animated: animated, completion: nil)

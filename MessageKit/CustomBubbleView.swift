@@ -99,14 +99,15 @@ public final class CustomBubbleView: UIView, MaximumLayoutWidthSpecificable, Bac
     // MARK: Layout
     
     public override func sizeThatFits(size: CGSize) -> CGSize {
-        return self.calculateCustomBubbleLayout(maximumWidth: self.preferredMaxLayoutWidth).size
+        return self.calculateCustomBubbleLayout(maximumWidth: self.preferredMaxLayoutWidth).frame.size
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let _ = self.calculateCustomBubbleLayout(maximumWidth: self.preferredMaxLayoutWidth)
+        let layout = self.calculateCustomBubbleLayout(maximumWidth: self.preferredMaxLayoutWidth)
         
         self.addSubview(self.customMessageViewModel.customView)
+        customMessageViewModel.customView.frame = layout.frame
     }
     
     private func calculateCustomBubbleLayout(maximumWidth maximumWidth: CGFloat) -> CustomBubbleLayoutModel {
@@ -122,7 +123,7 @@ public final class CustomBubbleView: UIView, MaximumLayoutWidthSpecificable, Bac
 }
 
 private class CustomBubbleLayoutModel {
-    var size: CGSize = CGSize.zero
+    var frame: CGRect = CGRect.zero
     
     struct LayoutContext {
         let customViewSize: CGSize
@@ -140,6 +141,10 @@ private class CustomBubbleLayoutModel {
     }
     
     func calculateLayout() {
-        size = layoutContext.customViewSize
+        //adjust X
+        var currentX: CGFloat = 0.0
+        currentX += 8
+        frame.origin.x = currentX
+        frame.size = layoutContext.customViewSize
     }
 }
