@@ -141,16 +141,28 @@ public final class PhotoBubbleView: UIView, MaximumLayoutWidthSpecificable, Back
 //    }
     
     private func updateImages() {
-        if let image = self.photoMessageViewModel.image.value {
-            self.imageView.image = image
-            self.placeholderIconView.hidden = true
-        } else {
-            self.imageView.image = self.photoMessageStyle.placeholderBackgroundImage(viewModel: self.photoMessageViewModel)
-            let (icon, tintColor) = photoMessageStyle.placeholderIconImage(viewModel: self.photoMessageViewModel)
-            self.placeholderIconView.image = icon
-            self.placeholderIconView.tintColor = tintColor
-            self.placeholderIconView.hidden = false
-        }
+//        if let image = self.photoMessageViewModel.image.value {
+//            self.imageView.image = image
+//            self.placeholderIconView.hidden = true
+//        } else {
+//            self.imageView.image = self.photoMessageStyle.placeholderBackgroundImage(viewModel: self.photoMessageViewModel)
+//            let (icon, tintColor) = photoMessageStyle.placeholderIconImage(viewModel: self.photoMessageViewModel)
+//            self.placeholderIconView.image = icon
+//            self.placeholderIconView.tintColor = tintColor
+//            self.placeholderIconView.hidden = false
+//        }
+//        
+//        if let imageClosure = self.photoMessageViewModel.imageClosure {
+//        
+//        } else {
+//            self.imageView.image = self.photoMessageStyle.placeholderBackgroundImage(viewModel: self.photoMessageViewModel)
+//            let (icon, tintColor) = photoMessageStyle.placeholderIconImage(viewModel: self.photoMessageViewModel)
+//            self.placeholderIconView.image = icon
+//            self.placeholderIconView.tintColor = tintColor
+//            self.placeholderIconView.hidden = false
+//        }
+        
+        self.photoMessageViewModel.imageClosure(imageview: self.imageView)
         
         if let overlayColor = self.photoMessageStyle.overlayColor(viewModel: self.photoMessageViewModel) {
             self.overlayView.backgroundColor = overlayColor

@@ -206,7 +206,12 @@ class ViewController: MessageViewController {
                 let textMessageModel = TextMessageModel(messageModel: baseMessageModel, text: m.text)
                 source.append(textMessageModel)
             } else if m.type == .Photo{
-                let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize: CGSize(width: 300, height: 600), image: UIImage(named: "hujiang")!)
+//                let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize: CGSize(width: 300, height: 600), image: UIImage())
+                
+                let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize:  CGSize(width: 300, height: 600), imageClosure: { (imageview) -> () in
+                    imageview.kf_setImageWithURL(NSURL(string: "https://striker.teambition.net/thumbnail/110771552384086e16cb0e32133ba589cf981/w/800/h/200")!, placeholderImage: nil)
+                })
+                
                 source.append(photoMessageModelIncoming)
             } else if m.type == .File {
                 let fileMessageModel = FileMessageModel(messageModel: baseMessageModel, fileName: "iPad Design.psd", fileSize: "30M", fileFolderColor: UIColor.redColor())

@@ -24,7 +24,8 @@ public protocol PhotoMessageViewModelProtocol: DecoratedMessageViewModelProtocol
     var transferDirection: Observable<TransferDirection> { get set }
     var transferProgress: Observable<Double> { get  set} // in [0,1]
     var transferStatus: Observable<TransferStatus> { get set }
-    var image: Observable<UIImage?> { get set }
+//    var image: Observable<UIImage?> { get set }
+    var imageClosure: PhotoClosure { get set }
     var imageSize: CGSize { get }
     func willBeShown() // Optional
     func wasHidden() // Optional
@@ -40,7 +41,8 @@ public class PhotoMessageViewModel: PhotoMessageViewModelProtocol {
     public var transferStatus: Observable<TransferStatus> = Observable(.Idle)
     public var transferProgress: Observable<Double> = Observable(0)
     public var transferDirection: Observable<TransferDirection> = Observable(.Download)
-    public var image: Observable<UIImage?>
+//    public var image: Observable<UIImage?>
+    public var imageClosure: PhotoClosure
     public var imageSize: CGSize {
         return self.photoMessage.imageSize
     }
@@ -51,7 +53,8 @@ public class PhotoMessageViewModel: PhotoMessageViewModelProtocol {
     
     public init(photoMessage: PhotoMessageModelProtocol, messageViewModel: MessageViewModelProtocol) {
         self.photoMessage = photoMessage
-        self.image = Observable(photoMessage.image)
+//        self.image = Observable(photoMessage.image)
+        self.imageClosure = photoMessage.imageClosure
         self.messageViewModel = messageViewModel
     }
     

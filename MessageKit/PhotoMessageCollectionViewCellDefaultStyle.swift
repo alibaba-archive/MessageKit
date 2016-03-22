@@ -76,10 +76,10 @@ public class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionV
     }
     
     public func placeholderIconImage(viewModel viewModel: PhotoMessageViewModelProtocol) -> (icon: UIImage?, tintColor: UIColor?) {
-        if viewModel.image.value == nil && viewModel.transferStatus.value == .Failed {
-            let tintColor = viewModel.isIncoming ? self.styleConstants.placeholderIconTintIncoming : self.styleConstants.placeholderIconTintOugoing
-            return (self.placeholderIcon, tintColor)
-        }
+//        if viewModel.image.value == nil && viewModel.transferStatus.value == .Failed {
+//            let tintColor = viewModel.isIncoming ? self.styleConstants.placeholderIconTintIncoming : self.styleConstants.placeholderIconTintOugoing
+//            return (self.placeholderIcon, tintColor)
+//        }
         return (nil, nil)
     }
     
@@ -104,8 +104,9 @@ public class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionV
     }
     
     public func overlayColor(viewModel viewModel: PhotoMessageViewModelProtocol) -> UIColor? {
-        let showsOverlay = viewModel.image.value != nil && (viewModel.transferStatus.value == .Transfering || viewModel.status != MessageViewModelStatus.Success)
-        return showsOverlay ? self.styleConstants.overlayColor : nil
+//        let showsOverlay = viewModel.image.value != nil && (viewModel.transferStatus.value == .Transfering || viewModel.status != MessageViewModelStatus.Success)
+//        return showsOverlay ? self.styleConstants.overlayColor : nil
+        return nil
     }
     
 }
