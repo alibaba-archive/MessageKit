@@ -50,7 +50,8 @@ public class PhotoMessagePresenter<ViewModelBuilderT, InteractionHandlerT where
         let updateClosure = { [weak self] (old: Any, new: Any) -> () in
             self?.updateCurrentCell()
         }
-        viewModel.image.observe(self, closure: updateClosure)
+//        viewModel.image.observe(self, closure: updateClosure)
+        viewModel.imageClosure = messageModel.imageClosure
         viewModel.transferDirection.observe(self, closure: updateClosure)
         viewModel.transferProgress.observe(self, closure: updateClosure)
         viewModel.transferStatus.observe(self, closure: updateClosure)
