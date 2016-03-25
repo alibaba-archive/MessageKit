@@ -8,7 +8,7 @@
 
 import UIKit
 import MessageKit
-import Kingfisher
+//import Kingfisher
 
 class TextMessageTestHandler: BaseMessageInteractionHandlerProtocol {
     typealias ViewModelT = TextMessageViewModel
@@ -160,7 +160,11 @@ class ViewController: MessageViewController {
         let label = FPSLabel(frame: CGRect(x: 0, y: 0, width: 100, height: 64))
         self.navigationController?.view.addSubview(label)
         self.title = "聊天测试"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .Done, target: self, action: "addNewMessage")
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(title: "一组", style: .Done, target: self, action: #selector(addNewMessages)),
+            UIBarButtonItem(title: "一个", style: .Done, target: self, action: #selector(addNewMessage))
+        ]
+        
         let fake = FakeDataSource()
         let modelData = [
             testModel(uid:"1", sid: "dd", type: .Text, coming: true, text: "你好呀!"),
@@ -199,7 +203,7 @@ class ViewController: MessageViewController {
             }
             
             let baseMessageModel = MessageModel(uid: m.uid, senderId: m.senderId, type: m.type.rawValue, isIncoming: m.isIncoming, showsBorder: false, dateLabel: "dsfdsf", status: status, avatarClosure: { imageView in
-                imageView.kf_setImageWithURL(NSURL(string: "https://striker.teambition.net/thumbnail/110771552384086e16cb0e32133ba589cf98/w/200/h/200")!, placeholderImage: nil)
+//                imageView.kf_setImageWithURL(NSURL(string: "https://striker.teambition.net/thumbnail/110771552384086e16cb0e32133ba589cf98/w/200/h/200")!, placeholderImage: nil)
             })
             
             if m.type == .Text {
@@ -209,7 +213,7 @@ class ViewController: MessageViewController {
 //                let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize: CGSize(width: 300, height: 600), image: UIImage())
                 
                 let photoMessageModelIncoming = PhotoMessageModel(messageModel: baseMessageModel, imageSize:  CGSize(width: 300, height: 600), imageClosure: { (imageview) -> () in
-                    imageview.kf_setImageWithURL(NSURL(string: "https://striker.teambition.net/thumbnail/110771552384086e16cb0e32133ba589cf981/w/800/h/200")!, placeholderImage: nil)
+//                    imageview.kf_setImageWithURL(NSURL(string: "https://striker.teambition.net/thumbnail/110771552384086e16cb0e32133ba589cf981/w/800/h/200")!, placeholderImage: nil)
                 })
                 
                 source.append(photoMessageModelIncoming)
@@ -269,7 +273,17 @@ class ViewController: MessageViewController {
     }
     
     func addNewMessage() {
+    
+        sendNewMessage(randomModel())
+    }
+    
+    func addNewMessages() {
         
+        let array = [randomModel(),randomModel(),randomModel()]
+        sendNewMessages(array)
+    }
+    
+    func randomModel() -> MessageItemProtocol {
         let randomNumber: Int = Int(arc4random() % 3)
         let a = [
             "你好呀!",
@@ -280,8 +294,6 @@ class ViewController: MessageViewController {
             
         })
         let textMessageModel = TextMessageModel(messageModel: messageModel, text: "dsfsdfsdfsdfsdf\(a[randomNumber])")
-        
-        sendNewMessage(textMessageModel)
+        return textMessageModel
     }
-    
 }

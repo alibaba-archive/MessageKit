@@ -58,6 +58,14 @@ public class MessageViewController: UIViewController, UICollectionViewDataSource
         enqueueModelUpdate(context: .Normal)
     }
     
+    public func sendNewMessages(messages: [MessageItemProtocol]) {
+        var newItem = self.messageDataSource?.messageItems
+        messages.forEach { (message) in
+            newItem?.append(message)
+        }
+        self.messageDataSource?.messageItems = newItem!
+        enqueueModelUpdate(context: .Normal)
+    }
     
     var collectionViewLayout: UICollectionViewLayout {
         let layout = MessageCollectionViewLayout()
