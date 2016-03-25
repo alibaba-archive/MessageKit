@@ -18,13 +18,13 @@ public struct ItemDecorationAttributes: ItemDecorationAttributesProtocol {
 }
 
 public protocol ViewModelBuilderProtocol {
-    typealias ModelT: MessageModelProtocol
-    typealias ViewModelT: MessageViewModelProtocol
+    associatedtype ModelT: MessageModelProtocol
+    associatedtype ViewModelT: MessageViewModelProtocol
     func createViewModel(model: ModelT) -> ViewModelT
 }
 
 public protocol BaseMessageInteractionHandlerProtocol {
-    typealias ViewModelT
+    associatedtype ViewModelT
     func userDidTapOnFailIcon(viewModel viewModel: ViewModelT)
     func userDidTapOnBubble(viewModel viewModel: ViewModelT)
     func userDidLongPressOnBubble(viewModel viewModel: ViewModelT)
@@ -131,7 +131,8 @@ BubbleViewT: UIView, BubbleViewT:MaximumLayoutWidthSpecificable, BubbleViewT: Ba
             return false
         }
         cell.bubbleView.userInteractionEnabled = false // This is a hack for UITextView, shouldn't harm to all bubbles
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "willShowMenu:", name: UIMenuControllerWillShowMenuNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(willShowMenu), name: UIMenuControllerWillShowMenuNotification, object: nil)
         return true
     }
     

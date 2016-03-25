@@ -16,7 +16,7 @@ class FPSLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        link = CADisplayLink(target: self, selector: "tick:")
+        link = CADisplayLink(target: self, selector: #selector(tick))
         link.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
         self.backgroundColor = UIColor.redColor()
     }
@@ -30,7 +30,7 @@ class FPSLabel: UILabel {
             lastTime = link.timestamp
             return
         }
-        count++
+        count += 1
         let delta = link.timestamp - lastTime
         if delta < 1 { return }
         

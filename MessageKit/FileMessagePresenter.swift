@@ -65,7 +65,7 @@ public class FileMessagePresenter<ViewModelBuilderT, InteractionHandlerT where
     }
     
     public override func canPerformMenuControllerAction(action: Selector) -> Bool {
-        return action == "copy:"
+        return action.description == "copy:"
     }
     
 //    public override func performMenuControllerAction(action: Selector) {
