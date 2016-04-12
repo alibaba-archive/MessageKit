@@ -280,7 +280,16 @@ class ViewController: MessageViewController {
     func addNewMessages() {
         
         let array = [randomModel(),randomModel(),randomModel()]
-        sendNewMessages(array)
+//        sendNewMessages(array)
+        
+        
+        var datasource = messageDataSource?.messageItems
+        datasource?.insertContentsOf(array, at: 0)
+        
+        
+        var newDatasource = messageDataSource
+        newDatasource?.messageItems = datasource!
+        messageDataSource = newDatasource
     }
     
     func randomModel() -> MessageItemProtocol {

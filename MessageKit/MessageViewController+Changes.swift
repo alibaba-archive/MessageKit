@@ -71,17 +71,17 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
     }
 
     
-    private func updateModels(newItems newItems: [MessageItemProtocol], oldItems: [MessageItemProtocol], var context: UpdateContext, completion: () -> Void) {
+    private func updateModels(newItems newItems: [MessageItemProtocol], oldItems: [MessageItemProtocol], context: UpdateContext, completion: () -> Void) {
         let collectionViewWidth = self.collectionView.bounds.width
-        context = self.isFirstLayout ? .FirstLoad : context
-        let performInBackground = context != .FirstLoad
+        let newContext = self.isFirstLayout ? .FirstLoad : context
+        let performInBackground = newContext != .FirstLoad
         
         self.autoLoadingEnabled = false
         let perfomBatchUpdates: (changes: CollectionChanges, updateModelClosure: () -> Void) -> ()  = { [weak self] modelUpdate in
             self?.performBatchUpdates(
                 updateModelClosure: modelUpdate.updateModelClosure,
                 changes: modelUpdate.changes,
-                context: context,
+                context: newContext,
                 completion: { () -> Void in
                     self?.autoLoadingEnabled = true
                     completion()
