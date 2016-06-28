@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		E5259E5B1C7DB06E00C503FF /* FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5259E5A1C7DB06E00C503FF /* FPSLabel.swift */; };
-		E5BCD6881C97E3E5009BA3B8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCD6871C97E3E5009BA3B8 /* TableViewController.swift */; };
+		E564C5AB1D01BDC6007D8948 /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E564C5AA1D01BDC6007D8948 /* MessageKit.framework */; };
+		E564C5AC1D01BDC6007D8948 /* MessageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E564C5AA1D01BDC6007D8948 /* MessageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5D672011C59BE77005C9598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672001C59BE77005C9598 /* AppDelegate.swift */; };
 		E5D672031C59BE77005C9598 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672021C59BE77005C9598 /* ViewController.swift */; };
 		E5D672061C59BE77005C9598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D672041C59BE77005C9598 /* Main.storyboard */; };
 		E5D672081C59BE77005C9598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D672071C59BE77005C9598 /* Assets.xcassets */; };
 		E5D6720B1C59BE77005C9598 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D672091C59BE77005C9598 /* LaunchScreen.storyboard */; };
-		E5D6721F1C59E31A005C9598 /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D6721E1C59E31A005C9598 /* MessageKit.framework */; };
-		E5D672201C59E31A005C9598 /* MessageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5D6721E1C59E31A005C9598 /* MessageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E5D672201C59E31A005C9598 /* MessageKit.framework in Embed Frameworks */,
+				E564C5AC1D01BDC6007D8948 /* MessageKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -34,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		E5259E5A1C7DB06E00C503FF /* FPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSLabel.swift; sourceTree = "<group>"; };
-		E5BCD6871C97E3E5009BA3B8 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		E564C5AA1D01BDC6007D8948 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = MessageKit.framework; path = "/Users/mrche/Library/Developer/Xcode/DerivedData/MessageKit-fzznhgfnvrjvrodimphquzmlhber/Build/Products/Debug-iphonesimulator/MessageKit.framework"; sourceTree = "<absolute>"; };
 		E5D671FD1C59BE77005C9598 /* MessageKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D672001C59BE77005C9598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5D672021C59BE77005C9598 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +41,6 @@
 		E5D672071C59BE77005C9598 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5D6720A1C59BE77005C9598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5D6720C1C59BE77005C9598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5D6721E1C59E31A005C9598 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = MessageKit.framework; path = "/Users/mrche/Library/Developer/Xcode/DerivedData/MessageKit-fzznhgfnvrjvrodimphquzmlhber/Build/Products/Debug-iphoneos/MessageKit.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5D6721F1C59E31A005C9598 /* MessageKit.framework in Frameworks */,
+				E564C5AB1D01BDC6007D8948 /* MessageKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +58,7 @@
 		E5D671F41C59BE77005C9598 = {
 			isa = PBXGroup;
 			children = (
-				E5D6721E1C59E31A005C9598 /* MessageKit.framework */,
+				E564C5AA1D01BDC6007D8948 /* MessageKit.framework */,
 				E5D671FF1C59BE77005C9598 /* MessageKitDemo */,
 				E5D671FE1C59BE77005C9598 /* Products */,
 			);
@@ -79,7 +77,6 @@
 			children = (
 				E5259E5A1C7DB06E00C503FF /* FPSLabel.swift */,
 				E5D672001C59BE77005C9598 /* AppDelegate.swift */,
-				E5BCD6871C97E3E5009BA3B8 /* TableViewController.swift */,
 				E5D672021C59BE77005C9598 /* ViewController.swift */,
 				E5D672041C59BE77005C9598 /* Main.storyboard */,
 				E5D672071C59BE77005C9598 /* Assets.xcassets */,
@@ -164,7 +161,6 @@
 				E5D672031C59BE77005C9598 /* ViewController.swift in Sources */,
 				E5D672011C59BE77005C9598 /* AppDelegate.swift in Sources */,
 				E5259E5B1C7DB06E00C503FF /* FPSLabel.swift in Sources */,
-				E5BCD6881C97E3E5009BA3B8 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

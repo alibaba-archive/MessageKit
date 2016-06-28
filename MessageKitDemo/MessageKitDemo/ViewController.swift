@@ -274,32 +274,37 @@ class ViewController: MessageViewController {
     
     func addNewMessage() {
     
-        sendNewMessage(randomModel())
+        for _ in 1...1000 {
+            sendNewMessage(randomModel())
+        }
+        
     }
     
     func addNewMessages() {
         
-        let array = [randomModel(),randomModel(),randomModel()]
+        var array = self.messageDataSource!.messageItems
+        for _ in 0...300 {
+            array.append(randomModel())
+        }
+
 //        sendNewMessages(array)
         
         
-        var datasource = messageDataSource?.messageItems
-        datasource?.insertContentsOf(array, at: 0)
-        
-        
-        var newDatasource = messageDataSource
-        newDatasource?.messageItems = datasource!
+        let newDatasource = FakeDataSource()
+        newDatasource.messageItems = array
+        newDatasource.delegate = self
         messageDataSource = newDatasource
     }
     
     func randomModel() -> MessageItemProtocol {
         let randomNumber: Int = Int(arc4random() % 3)
+        let uid = NSUUID().UUIDString
         let a = [
             "你好呀!",
             "我挺好的",
             "你真的很好嘛?"
         ]
-        let messageModel = MessageModel(uid: "dsfsdf\(Int(arc4random() % 300))", senderId: "dsfsdf", type: "text-message", isIncoming: true, showsBorder: false, dateLabel: "", status: .Success, avatarClosure: { imageView in
+        let messageModel = MessageModel(uid: uid, senderId: "dsfsdf", type: "text-message", isIncoming: true, showsBorder: false, dateLabel: "", status: .Success, avatarClosure: { imageView in
             
         })
         let textMessageModel = TextMessageModel(messageModel: messageModel, text: "dsfsdfsdfsdfsdf\(a[randomNumber])")

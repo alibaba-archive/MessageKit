@@ -13,7 +13,11 @@ extension MessageViewController: MessageCollectionViewLayoutDelegate {
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return decoratedMessageItems.count
     }
-   
+
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let presenter = presenterForIndexPath(indexPath)
         let cell = presenter.dequeueCell(collectionView: collectionView, indexPath: indexPath)
