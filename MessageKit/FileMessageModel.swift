@@ -9,22 +9,25 @@
 import Foundation
 
 public protocol FileMessageModelProtocol: DecoratedMessageModelProtocol {
+
     var fileName: String { get }
     var fileSize: String { get }
     var fileFolderColor: UIColor { get }
 }
 
-public class FileMessageModel: FileMessageModelProtocol {
-    public let messageModel: MessageModelProtocol
-    public var fileName: String
-    public var fileSize: String
-    public var fileFolderColor: UIColor
-    
+open class FileMessageModel: FileMessageModelProtocol {
+
+    open let messageModel: MessageModelProtocol
+    open var fileName: String
+    open var fileSize: String
+    open var fileFolderColor: UIColor
+    open var uid: String { return messageModel.uid }
+
     public init(messageModel: MessageModelProtocol, fileName: String, fileSize: String, fileFolderColor: UIColor) {
         self.messageModel = messageModel
         self.fileName = fileName
         self.fileSize = fileSize
         self.fileFolderColor = fileFolderColor
     }
-    public var uid: String { return messageModel.uid }
+
 }

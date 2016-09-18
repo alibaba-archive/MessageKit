@@ -1,0 +1,33 @@
+disabled_rules: # rule identifiers to exclude from running
+  - line_length
+  - nesting
+  - variable_name_min_length
+  - cyclomatic_complexity
+included: # paths to include during linting. `--path` is ignored if present. takes precendence over `excluded`.
+excluded: # paths to ignore during linting. overridden by `included`.
+  - Carthage
+  - Teambition/Universal/Extension/StoryBoard+Definition.swift
+  - Teambition/Universal/Extension/UIImage+Asset.swift
+# parameterized rules can be customized from this configuration file
+line_length: 300 
+type_name:
+  min_length: 3 # only warning
+  max_length: # warning and error
+    warning: 300
+    error: 300
+  excluded:
+    - iPhone
+
+function_parameter_count: 10
+function_body_length:
+  - 300
+  - 300
+type_body_length:
+  - 500 # warning
+  - 500 # error
+file_length:
+  - 2000 # warning
+  - 2500 # error
+variable_name:
+  min_length: 2
+  max_length: 80

@@ -8,16 +8,16 @@
 
 import UIKit
 
-extension UIView{
-    
-    func pinSubview(subview: UIView, toEdge attribute: NSLayoutAttribute) {
-        addConstraint(NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .Equal, toItem: subview, attribute: attribute, multiplier: 1.0, constant: 0))
+extension UIView {
+
+    func pinSubview(_ subview: UIView, toEdge attribute: NSLayoutAttribute) {
+        addConstraint(NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: subview, attribute: attribute, multiplier: 1.0, constant: 0))
     }
-    
-    func pinAllEdgesOfSubview(subview: UIView) {
-        pinSubview(subview, toEdge: .Top)
-        pinSubview(subview, toEdge: .Bottom)
-        pinSubview(subview, toEdge: .Left)
-        pinSubview(subview, toEdge: .Right)
+
+    func pinAllEdgesOfSubview(_ subview: UIView) {
+        pinSubview(subview, toEdge: .top)
+        pinSubview(subview, toEdge: .bottom)
+        pinSubview(subview, toEdge: .left)
+        pinSubview(subview, toEdge: .right)
     }
 }

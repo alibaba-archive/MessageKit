@@ -9,19 +9,19 @@
 import UIKit
 
 extension UIImage {
-    func imageMaskedWithColor(color: UIColor) -> UIImage {
+    func imageMasked(with color: UIColor) -> UIImage {
         let imageRect = CGRect(x: 0.0, y: 0.0, width: self.size.width, height: self.size.height)
-        
+
         var newImage: UIImage
         UIGraphicsBeginImageContextWithOptions(imageRect.size, false, self.scale)
-        let context: CGContextRef? = UIGraphicsGetCurrentContext()
-        CGContextScaleCTM(context, 1.0, -1.0)
-        CGContextTranslateCTM(context, 0.0, -(imageRect.size.height))
-        
-        CGContextClipToMask(context, imageRect, self.CGImage)
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextFillRect(context, imageRect)
-        newImage = UIGraphicsGetImageFromCurrentImageContext()
+        let context: CGContext? = UIGraphicsGetCurrentContext()
+        context?.scaleBy(x: 1.0, y: -1.0)
+        context?.translateBy(x: 0.0, y: -(imageRect.size.height))
+
+        context?.clip(to: imageRect, mask: self.cgImage!)
+        context?.setFillColor(color.cgColor)
+        context?.fill(imageRect)
+        newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return newImage
     }

@@ -9,15 +9,15 @@
 import Foundation
 
 public enum MessageStatus {
-    case Failed
-    case Sending
-    case Success
+    case failed
+    case sending
+    case success
 }
 
-public typealias AvatarClosure =  (imageview: UIImageView) -> ()
+public typealias AvatarClosure =  (_ imageview: UIImageView) -> ()
 
 public protocol MessageModelProtocol: MessageItemProtocol {
-    
+
     var senderId: String { get }
     var isIncoming: Bool { get }
     var showsBorder: Bool { get }
@@ -27,34 +27,36 @@ public protocol MessageModelProtocol: MessageItemProtocol {
 }
 
 public protocol DecoratedMessageModelProtocol: MessageModelProtocol {
+
     var messageModel: MessageModelProtocol { get }
 }
 
 public extension DecoratedMessageModelProtocol {
+
     var uid: String {
         return self.messageModel.uid
     }
-    
+
     var senderId: String {
         return self.messageModel.senderId
     }
-    
+
     var type: String {
         return self.messageModel.type
     }
-    
+
     var isIncoming: Bool {
         return self.messageModel.isIncoming
     }
-    
+
     var showsBorder: Bool {
         return self.messageModel.showsBorder
     }
-    
+
     var dateLabel: String {
         return self.messageModel.dateLabel
     }
-    
+
     var status: MessageStatus {
         get {
             return self.messageModel.status
@@ -63,23 +65,24 @@ public extension DecoratedMessageModelProtocol {
             self.messageModel.status = newValue
         }
     }
-    
+
     var avatarClosure: AvatarClosure? {
         return self.messageModel.avatarClosure
     }
 }
 
-public class MessageModel: MessageModelProtocol {
-    public var uid: String
-    public var senderId: String
-    public var type: String
-    public var showsBorder: Bool
-    public var isIncoming: Bool
-    public var dateLabel: String
-    public var status: MessageStatus
-    public var avatarClosure: AvatarClosure?
-    
-    public init(uid: String, senderId: String, type: String, isIncoming: Bool, showsBorder: Bool, dateLabel: String, status: MessageStatus, avatarClosure: AvatarClosure) {
+open class MessageModel: MessageModelProtocol {
+
+    open var uid: String
+    open var senderId: String
+    open var type: String
+    open var showsBorder: Bool
+    open var isIncoming: Bool
+    open var dateLabel: String
+    open var status: MessageStatus
+    open var avatarClosure: AvatarClosure?
+
+    public init(uid: String, senderId: String, type: String, isIncoming: Bool, showsBorder: Bool, dateLabel: String, status: MessageStatus, avatarClosure: @escaping AvatarClosure) {
         self.uid = uid
         self.senderId = senderId
         self.type = type

@@ -9,5 +9,6 @@
 import Foundation
 
 public protocol MessageItemsDecoratorProtocol {
-     func decorateItems(chatItems: [MessageItemProtocol]) -> [DecoratedMessageItem]
+
+     func decorateItems(_ chatItems: [MessageItemProtocol]) -> [DecoratedMessageItem]
 }

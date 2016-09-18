@@ -1,0 +1,10 @@
+framework module MessageKit {
+  umbrella header "MessageKit.h"
+
+  export *
+  module * { export * }
+}
+
+module MessageKit.Swift {
+    header "MessageKit-Swift.h"
+}

@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension NSBundle {
-    
-    class func messageBudle() -> NSBundle {
-        return NSBundle(forClass: MessageViewController.classForCoder())
+extension Bundle {
+
+    class func messageBudle() -> Bundle {
+        return Bundle(for: MessageViewController.classForCoder())
     }
 }

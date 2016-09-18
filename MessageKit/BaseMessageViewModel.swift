@@ -9,25 +9,27 @@
 import Foundation
 
 public enum MessageViewModelStatus {
-    case Success
-    case Sending
-    case Failed
+    case success
+    case sending
+    case failed
 }
 
 public extension MessageStatus {
+
     public func viewModelStatus() -> MessageViewModelStatus {
         switch self {
-        case .Success:
-            return MessageViewModelStatus.Success
-        case .Failed:
-            return MessageViewModelStatus.Failed
-        case .Sending:
-            return MessageViewModelStatus.Sending
+        case .success:
+            return MessageViewModelStatus.success
+        case .failed:
+            return MessageViewModelStatus.failed
+        case .sending:
+            return MessageViewModelStatus.sending
         }
     }
 }
 
 public protocol MessageViewModelProtocol: class {
+
     var isIncoming: Bool { get }
     var showsTail: Bool { get set }
     var showsFailedIcon: Bool { get }
@@ -39,13 +41,16 @@ public protocol MessageViewModelProtocol: class {
 }
 
 public protocol DecoratedMessageViewModelProtocol: MessageViewModelProtocol {
+
     var messageViewModel: MessageViewModelProtocol { get }
 }
 
 extension DecoratedMessageViewModelProtocol {
+
     public var isIncoming: Bool {
         return self.messageViewModel.isIncoming
     }
+
     public var showsTail: Bool {
         get {
             return self.messageViewModel.showsTail
@@ -54,7 +59,7 @@ extension DecoratedMessageViewModelProtocol {
             self.messageViewModel.showsTail = newValue
         }
     }
-    
+
     public var showsBorder: Bool {
         return self.messageViewModel.showsBorder
     }
@@ -62,64 +67,64 @@ extension DecoratedMessageViewModelProtocol {
     public var date: String {
         return self.messageViewModel.date
     }
-    
+
     public var status: MessageViewModelStatus {
         return self.messageViewModel.status
     }
-    
+
     public var showsFailedIcon: Bool {
         return self.messageViewModel.showsFailedIcon
     }
-    
+
     public var messageModel: MessageModelProtocol {
         return self.messageViewModel.messageModel
     }
-    
+
     public var avatarClosure: AvatarClosure? {
         return self.messageViewModel.avatarClosure
     }
-
 }
 
-public class MessageViewModel: MessageViewModelProtocol {
-    public var isIncoming: Bool {
+open class MessageViewModel: MessageViewModelProtocol {
+
+    open var isIncoming: Bool {
         return self.messageModel.isIncoming
     }
-    
-    public var status: MessageViewModelStatus {
+
+    open var status: MessageViewModelStatus {
         return self.messageModel.status.viewModelStatus()
     }
-    
-    public var showsTail: Bool
-    public lazy var date: String = {
+
+    open var showsTail: Bool
+    open lazy var date: String = {
         return self.messageModel.dateLabel
     }()
-    
-    public private(set) var messageModel: MessageModelProtocol
-    
+
+    open fileprivate(set) var messageModel: MessageModelProtocol
+
     public init(showsTail: Bool, messageModel: MessageModelProtocol) {
         self.showsTail = showsTail
         self.messageModel = messageModel
     }
-    
-    public var showsFailedIcon: Bool {
-        return self.status == .Failed
+
+    open var showsFailedIcon: Bool {
+        return self.status == .failed
     }
-    
-    public var avatarClosure: AvatarClosure? {
+
+    open var avatarClosure: AvatarClosure? {
         return self.messageModel.avatarClosure
     }
-    
-    public var showsBorder: Bool {
+
+    open var showsBorder: Bool {
         return self.messageModel.showsBorder
     }
 }
 
-public class MessageViewModelDefaultBuilder {
-    
+open class MessageViewModelDefaultBuilder {
+
     public init() {}
-    
-    public func createMessageViewModel(message: MessageModelProtocol) -> MessageViewModelProtocol {
+
+    open func createMessageViewModel(_ message: MessageModelProtocol) -> MessageViewModelProtocol {
         return MessageViewModel(showsTail: false, messageModel: message)
     }
 }

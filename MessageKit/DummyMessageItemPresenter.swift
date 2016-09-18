@@ -9,25 +9,25 @@
 import Foundation
 
 class DummyMessageItemPresenter: ItemPresenterProtocol {
-    
-    class func registerCells(collectionView: UICollectionView) {
-        collectionView.registerClass(DummyCollectionViewCell.self, forCellWithReuseIdentifier: "cell-id-unhandled-message")
+
+    class func registerCells(_ collectionView: UICollectionView) {
+        collectionView.register(DummyCollectionViewCell.self, forCellWithReuseIdentifier: "cell-id-unhandled-message")
     }
-    
-    var canCalculateHeightInBackground: Bool {
+
+    var isCalculateHeightInBackground: Bool {
         return true
     }
-    
+
     func heightForCell(maximumWidth width: CGFloat, decorationAttributes: ItemDecorationAttributesProtocol?) -> CGFloat {
         return 0
     }
-    
-    func dequeueCell(collectionView collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("cell-id-unhandled-message", forIndexPath: indexPath)
+
+    func dequeueCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "cell-id-unhandled-message", for: indexPath)
     }
-    
-    func configureCell(cell: UICollectionViewCell, decorationAttributes: ItemDecorationAttributesProtocol?) {
-        cell.hidden = true
+
+    func configureCell(_ cell: UICollectionViewCell, decorationAttributes: ItemDecorationAttributesProtocol?) {
+        cell.isHidden = true
     }
 }
 

@@ -9,17 +9,19 @@
 import Foundation
 
 public protocol FileMessageViewModelProtocol: DecoratedMessageViewModelProtocol {
+
     var fileName: String { get }
     var fileSize: String { get }
     var fileFolderColor: UIColor { get }
 }
 
-public class FileMessageViewModel: FileMessageViewModelProtocol {
-    public var fileName: String
-    public var fileSize: String
-    public var fileFolderColor: UIColor
-    public var messageViewModel: MessageViewModelProtocol
-    
+open class FileMessageViewModel: FileMessageViewModelProtocol {
+
+    open var fileName: String
+    open var fileSize: String
+    open var fileFolderColor: UIColor
+    open var messageViewModel: MessageViewModelProtocol
+
     public init(messageViewModel: MessageViewModelProtocol, fileName: String, fileSize: String, fileFolderColor: UIColor) {
         self.fileName = fileName
         self.fileSize = fileSize
@@ -28,12 +30,13 @@ public class FileMessageViewModel: FileMessageViewModelProtocol {
     }
 }
 
-public class FileMessageViewModelDefaultBuilder: ViewModelBuilderProtocol {
+open class FileMessageViewModelDefaultBuilder: ViewModelBuilderProtocol {
+
     public init() { }
-    
+
     let messageViewModelBuilder = MessageViewModelDefaultBuilder()
-    
-    public func createViewModel(model: FileMessageModel) -> FileMessageViewModel {
+
+    open func createViewModel(_ model: FileMessageModel) -> FileMessageViewModel {
         let messageViewModel = self.messageViewModelBuilder.createMessageViewModel(model)
         let fileMessageViewModel = FileMessageViewModel(messageViewModel: messageViewModel, fileName: model.fileName, fileSize: model.fileSize, fileFolderColor: model.fileFolderColor)
         return fileMessageViewModel

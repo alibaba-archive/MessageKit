@@ -9,7 +9,10 @@
 import Foundation
 
 public protocol ItemPresenterBuilderProtocol {
-    func canHandleMessageItem(messageItem: MessageItemProtocol) -> Bool
-    func createPresenterWithMessageItem(messageItem: MessageItemProtocol) -> ItemPresenterProtocol
+
     var presenterType: ItemPresenterProtocol.Type { get }
+
+    func canHandle(_ messageItem: MessageItemProtocol) -> Bool
+    func createPresenter(withMessageItem messageItem: MessageItemProtocol) -> ItemPresenterProtocol
+
 }

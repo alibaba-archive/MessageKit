@@ -8,53 +8,53 @@
 
 import Foundation
 
-public class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionViewCellStyleProtocol {
-    
-    private struct Constants {
+open class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionViewCellStyleProtocol {
+
+    fileprivate struct Constants {
         let tailWidth: CGFloat = 6.0
-        let aspectRatioIntervalForSquaredSize: ClosedInterval<CGFloat> = 0.90...1.10
+        let aspectRatioIntervalForSquaredSize: ClosedRange<CGFloat> = 0.90...1.10
         let photoSizeLandscape = CGSize(width: 210, height: 136)
         let photoSizePortratit = CGSize(width: 136, height: 210)
         let photoSizeSquare = CGSize(width: 210, height: 210)
-        let placeholderIconTintIncoming = UIColor.bma_color(rgb: 0xced6dc)
-        let placeholderIconTintOugoing = UIColor.bma_color(rgb: 0x508dfc)
-        let progressIndicatorColorIncoming = UIColor.bma_color(rgb: 0x98a3ab)
-        let progressIndicatorColorOutgoing = UIColor.whiteColor()
-        let overlayColor = UIColor.blackColor().colorWithAlphaComponent(0.70)
+        let placeholderIconTintIncoming = UIColor.bmaColor(rgb: 0xced6dc)
+        let placeholderIconTintOugoing = UIColor.bmaColor(rgb: 0x508dfc)
+        let progressIndicatorColorIncoming = UIColor.bmaColor(rgb: 0x98a3ab)
+        let progressIndicatorColorOutgoing = UIColor.white
+        let overlayColor = UIColor.black.withAlphaComponent(0.70)
     }
-    
-    lazy private var styleConstants = Constants()
-    lazy private var baseStyle = BaseMessageCollectionViewCellDefaultSyle()
-    
-    lazy private var maskImageIncomingTail: UIImage = {
-        return UIImage(named: "bubble-incoming-tail", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+
+    lazy fileprivate var styleConstants = Constants()
+    lazy fileprivate var baseStyle = BaseMessageCollectionViewCellDefaultSyle()
+
+    lazy fileprivate var maskImageIncomingTail: UIImage = {
+        return UIImage(named: "bubble-incoming-tail", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
-    lazy private var maskImageIncomingNoTail: UIImage = {
-        return UIImage(named: "bubble-incoming", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+
+    lazy fileprivate var maskImageIncomingNoTail: UIImage = {
+        return UIImage(named: "bubble-incoming", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
-    lazy private var maskImageOutgoingTail: UIImage = {
-        return UIImage(named: "bubble-outgoing-tail", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+
+    lazy fileprivate var maskImageOutgoingTail: UIImage = {
+        return UIImage(named: "bubble-outgoing-tail", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
-    lazy private var maskImageOutgoingNoTail: UIImage = {
-        return UIImage(named: "bubble-outgoing", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+
+    lazy fileprivate var maskImageOutgoingNoTail: UIImage = {
+        return UIImage(named: "bubble-outgoing", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
-    lazy private var placeholderBackgroundIncoming: UIImage = {
-        return UIImage.bma_imageWithColor(self.baseStyle.baseColorIncoming, size: CGSize(width: 1, height: 1))
+
+    lazy fileprivate var placeholderBackgroundIncoming: UIImage = {
+        return UIImage.bmaImageWithColor(self.baseStyle.baseColorIncoming, size: CGSize(width: 1, height: 1))
     }()
-    
-    lazy private var placeholderBackgroundOutgoing: UIImage = {
-        return UIImage.bma_imageWithColor(self.baseStyle.baseColorOutgoing, size: CGSize(width: 1, height: 1))
+
+    lazy fileprivate var placeholderBackgroundOutgoing: UIImage = {
+        return UIImage.bmaImageWithColor(self.baseStyle.baseColorOutgoing, size: CGSize(width: 1, height: 1))
     }()
-    
-    lazy private var placeholderIcon: UIImage = {
-        return UIImage(named: "photo-bubble-placeholder-icon", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+
+    lazy fileprivate var placeholderIcon: UIImage = {
+        return UIImage(named: "photo-bubble-placeholder-icon", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
-    public func maskingImage(viewModel viewModel: PhotoMessageViewModelProtocol) -> UIImage {
+
+    open func maskingImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage {
         switch (viewModel.isIncoming, viewModel.showsTail) {
         case (true, true):
             return self.maskImageIncomingTail
@@ -66,47 +66,41 @@ public class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionV
             return self.maskImageOutgoingNoTail
         }
     }
-    
-    public func borderImage(viewModel viewModel: PhotoMessageViewModelProtocol) -> UIImage? {
+
+    open func borderImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage? {
         return self.baseStyle.borderImage(viewModel: viewModel)
     }
-    
-    public func placeholderBackgroundImage(viewModel viewModel: PhotoMessageViewModelProtocol) -> UIImage {
+
+    open func placeholderBackgroundImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage {
         return viewModel.isIncoming ? self.placeholderBackgroundIncoming : self.placeholderBackgroundOutgoing
     }
-    
-    public func placeholderIconImage(viewModel viewModel: PhotoMessageViewModelProtocol) -> (icon: UIImage?, tintColor: UIColor?) {
-//        if viewModel.image.value == nil && viewModel.transferStatus.value == .Failed {
-//            let tintColor = viewModel.isIncoming ? self.styleConstants.placeholderIconTintIncoming : self.styleConstants.placeholderIconTintOugoing
-//            return (self.placeholderIcon, tintColor)
-//        }
+
+    open func placeholderIconImage(viewModel: PhotoMessageViewModelProtocol) -> (icon: UIImage?, tintColor: UIColor?) {
         return (nil, nil)
     }
-    
-    public func tailWidth(viewModel viewModel: PhotoMessageViewModelProtocol) -> CGFloat {
+
+    open func tailWidth(viewModel: PhotoMessageViewModelProtocol) -> CGFloat {
         return self.styleConstants.tailWidth
     }
-    
-    public func bubbleSize(viewModel viewModel: PhotoMessageViewModelProtocol) -> CGSize {
+
+    open func bubbleSize(viewModel: PhotoMessageViewModelProtocol) -> CGSize {
         let aspectRatio = viewModel.imageSize.height > 0 ? viewModel.imageSize.width / viewModel.imageSize.height : 0
-        
+
         if aspectRatio == 0 || self.styleConstants.aspectRatioIntervalForSquaredSize.contains(aspectRatio) {
             return self.styleConstants.photoSizeSquare
-        } else if aspectRatio < self.styleConstants.aspectRatioIntervalForSquaredSize.start {
+        } else if aspectRatio < self.styleConstants.aspectRatioIntervalForSquaredSize.lowerBound {
             return self.styleConstants.photoSizePortratit
         } else {
             return self.styleConstants.photoSizeLandscape
         }
     }
-    
-    public func progressIndicatorColor(viewModel viewModel: PhotoMessageViewModelProtocol) -> UIColor {
+
+    open func progressIndicatorColor(viewModel: PhotoMessageViewModelProtocol) -> UIColor {
         return viewModel.isIncoming ? self.styleConstants.progressIndicatorColorIncoming : self.styleConstants.progressIndicatorColorOutgoing
     }
-    
-    public func overlayColor(viewModel viewModel: PhotoMessageViewModelProtocol) -> UIColor? {
-//        let showsOverlay = viewModel.image.value != nil && (viewModel.transferStatus.value == .Transfering || viewModel.status != MessageViewModelStatus.Success)
-//        return showsOverlay ? self.styleConstants.overlayColor : nil
+
+    open func overlayColor(viewModel: PhotoMessageViewModelProtocol) -> UIColor? {
         return nil
     }
-    
+
 }

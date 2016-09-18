@@ -13,30 +13,32 @@ public protocol MessageCollectionViewLayoutDelegate: class {
 }
 
 public struct MessageCollectionViewLayoutModel {
+
     let contentSize: CGSize
     let layoutAttributes: [UICollectionViewLayoutAttributes]
     let layoutAttributesBySectionAndItem: [[UICollectionViewLayoutAttributes]]
     let calculatedForWidth: CGFloat
-    
-    public static func createModel(collectionViewWidth: CGFloat, itemsLayoutData: [(height: CGFloat, bottomMargin: CGFloat)]) -> MessageCollectionViewLayoutModel {
+
+    public static func createModel(_ collectionViewWidth: CGFloat, itemsLayoutData: [(height: CGFloat, bottomMargin: CGFloat)]) -> MessageCollectionViewLayoutModel {
+
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         var layoutAttributesBySectionAndItem = [[UICollectionViewLayoutAttributes]]()
         layoutAttributesBySectionAndItem.append([UICollectionViewLayoutAttributes]())
-        
+
         var verticalOffset: CGFloat = 0
-        for (index, layoutData) in itemsLayoutData.enumerate() {
-            let indexPath = NSIndexPath(forItem: index, inSection: 0)
+        for (index, layoutData) in itemsLayoutData.enumerated() {
+            let indexPath = IndexPath(item: index, section: 0)
             let (height, bottomMargin) = layoutData
             let itemSize = CGSize(width: collectionViewWidth, height: height)
             let frame = CGRect(origin: CGPoint(x: 0, y: verticalOffset), size: itemSize)
-            let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = frame
             layoutAttributes.append(attributes)
             layoutAttributesBySectionAndItem[0].append(attributes)
             verticalOffset += itemSize.height
             verticalOffset += bottomMargin
         }
-        
+
         return MessageCollectionViewLayoutModel(
             contentSize: CGSize(width: collectionViewWidth, height: verticalOffset),
             layoutAttributes: layoutAttributes,
@@ -46,50 +48,50 @@ public struct MessageCollectionViewLayoutModel {
     }
 }
 
-public class MessageCollectionViewLayout: UICollectionViewLayout {
+open class MessageCollectionViewLayout: UICollectionViewLayout {
 
     var layoutModel: MessageCollectionViewLayoutModel!
-    public weak var delegate: MessageCollectionViewLayoutDelegate?
-    
-    private var layoutNeedsUpdate = true
-    public override func invalidateLayout() {
+    open weak var delegate: MessageCollectionViewLayoutDelegate?
+    fileprivate var layoutNeedsUpdate = true
+
+    open override func invalidateLayout() {
         super.invalidateLayout()
         self.layoutNeedsUpdate = true
     }
-    
-    public override func prepareLayout() {
-        super.prepareLayout()
+
+    open override func prepare() {
+        super.prepare()
         guard self.layoutNeedsUpdate else { return }
         guard let delegate = self.delegate else { return }
         var oldLayoutModel = self.layoutModel
         self.layoutModel = delegate.messageCollectionViewLayoutModel()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+        DispatchQueue.global(qos: .default).async { () -> Void in
             if oldLayoutModel != nil {
                 oldLayoutModel = nil
             }
         }
     }
-    
-    public override func collectionViewContentSize() -> CGSize {
+
+    open override var collectionViewContentSize: CGSize {
         if self.layoutNeedsUpdate {
-            self.prepareLayout()
+            self.prepare()
         }
         return self.layoutModel.contentSize
     }
-    
-    override public func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+
+    override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return self.layoutModel.layoutAttributes.filter { $0.frame.intersects(rect) }
     }
-    
-    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        if indexPath.section < self.layoutModel.layoutAttributesBySectionAndItem.count && indexPath.item < self.layoutModel.layoutAttributesBySectionAndItem[indexPath.section].count {
-            return self.layoutModel.layoutAttributesBySectionAndItem[indexPath.section][indexPath.item]
+
+    open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        if (indexPath as NSIndexPath).section < self.layoutModel.layoutAttributesBySectionAndItem.count && (indexPath as NSIndexPath).item < self.layoutModel.layoutAttributesBySectionAndItem[(indexPath as NSIndexPath).section].count {
+            return self.layoutModel.layoutAttributesBySectionAndItem[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).item]
         }
         assert(false, "Unexpected indexPath requested:\(indexPath)")
         return nil
     }
-    
-    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+
+    open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return self.layoutModel.calculatedForWidth != newBounds.width
     }
 }

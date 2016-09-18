@@ -8,48 +8,48 @@
 
 import Foundation
 
-public class BaseMessageCollectionViewCellDefaultSyle: BaseMessageCollectionViewCellStyleProtocol {
-    
+open class BaseMessageCollectionViewCellDefaultSyle: BaseMessageCollectionViewCellStyleProtocol {
+
     public init () {}
-    
-    lazy var baseColorIncoming = UIColor.bma_color(rgb: 0xF2F2F2)
-    lazy var baseColorOutgoing = UIColor.bma_color(rgb: 0x03A9F4)
-    public lazy var baseColorTimestampText = UIColor.bma_color(rgb: 0xAAAAAA)
-    
+
+    lazy var baseColorIncoming = UIColor.bmaColor(rgb: 0xF2F2F2)
+    lazy var baseColorOutgoing = UIColor.bmaColor(rgb: 0x03A9F4)
+    open lazy var baseColorTimestampText = UIColor.bmaColor(rgb: 0xAAAAAA)
+
     lazy var borderIncomingTail: UIImage = {
-        return UIImage(named: "bubble-incoming-border-tail", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+        return UIImage(named: "bubble-incoming-border-tail", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
+
     lazy var borderIncomingNoTail: UIImage = {
-        return UIImage(named: "bubble-incoming-border", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+        return UIImage(named: "bubble-incoming-border", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
+
     lazy var borderOutgoingTail: UIImage = {
-        return UIImage(named: "bubble-outgoing-border-tail", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+        return UIImage(named: "bubble-outgoing-border-tail", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
+
     lazy var borderOutgoingNoTail: UIImage = {
-        return UIImage(named: "bubble-outgoing-border", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+        return UIImage(named: "bubble-outgoing-border", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
-    public lazy var failedIcon: UIImage = {
-        return UIImage(named: "base-message-failed-icon", inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)!
+
+    open lazy var failedIcon: UIImage = {
+        return UIImage(named: "base-message-failed-icon", in: Bundle(for: type(of: self)), compatibleWith: nil)!
     }()
-    
-    public lazy var failedIconHighlighted: UIImage = {
-        return self.failedIcon.bma_blendWithColor(UIColor.blackColor().colorWithAlphaComponent(0.10))
+
+    open lazy var failedIconHighlighted: UIImage = {
+        return self.failedIcon.bmaBlendWithColor(UIColor.black.withAlphaComponent(0.10))
     }()
-    
-    private lazy var dateFont = {
-        return UIFont.systemFontOfSize(12.0)
+
+    fileprivate lazy var dateFont = {
+        return UIFont.systemFont(ofSize: 12.0)
     }()
-    
-    public func attributedStringForDate(date: String) -> NSAttributedString {
+
+    open func attributedStringForDate(_ date: String) -> NSAttributedString {
         let attributes = [NSFontAttributeName : self.dateFont]
         return NSAttributedString(string: date, attributes: attributes)
     }
-    
-    func borderImage(viewModel viewModel: MessageViewModelProtocol) -> UIImage? {
+
+    func borderImage(viewModel: MessageViewModelProtocol) -> UIImage? {
         switch (viewModel.isIncoming, viewModel.showsTail) {
         case (true, true):
             return self.borderIncomingTail

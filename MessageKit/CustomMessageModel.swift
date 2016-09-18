@@ -9,16 +9,18 @@
 import Foundation
 
 public protocol CustomMessageModelProtocol: DecoratedMessageModelProtocol {
+
     var customView: UIView { get }
 }
 
-public class CustomMessageModel: CustomMessageModelProtocol {
-    public let messageModel: MessageModelProtocol
-    public var customView: UIView
-    
+open class CustomMessageModel: CustomMessageModelProtocol {
+
+    open let messageModel: MessageModelProtocol
+    open var customView: UIView
+    open var uid: String { return messageModel.uid }
+
     public init(messageModel: MessageModelProtocol, customView: UIView) {
         self.messageModel = messageModel
         self.customView = customView
     }
-    public var uid: String { return messageModel.uid }
 }
