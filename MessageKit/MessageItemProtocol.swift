@@ -14,7 +14,6 @@ public protocol MessageItemProtocol: class, UniqueIdentificable {
     var type: MessageItemType { get }
 }
 
-
 public protocol UniqueIdentificable {
     var uid: String { get }
 }

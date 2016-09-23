@@ -11,41 +11,45 @@ import Foundation
 public typealias FileMessageCollectionViewCellStyleProtocol = FileBubbleViewStyleProtocol
 
 public final class FileMessageCollectionViewCell: BaseMessageCollectionViewCell<FileBubbleView> {
-    
+
     static func sizingCell() -> FileMessageCollectionViewCell {
         let cell = FileMessageCollectionViewCell(frame: CGRect.zero)
-        cell.viewContext = .Sizing
+        cell.viewContext = .sizing
         return cell
     }
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func createBubbleView() -> FileBubbleView {
         return FileBubbleView()
     }
-    
+
     override public var viewContext: ViewContext {
         didSet {
             self.bubbleView.viewContext = self.viewContext
         }
     }
-    
+
     var fileMessageViewModel: FileMessageViewModelProtocol! {
         didSet {
             self.messageViewModel = self.fileMessageViewModel
             self.bubbleView.fileMessageViewModel = self.fileMessageViewModel
         }
     }
-    
+
     public var fileMessageStyle: FileMessageCollectionViewCellStyleProtocol! {
         didSet {
             self.bubbleView.fileMessageStyle = self.fileMessageStyle
         }
     }
-    
-    public override func performBatchUpdates(updateClosure: () -> Void, animated: Bool, completion: (() -> Void)?) {
+
+    public override func performBatchUpdates(_ updateClosure: @escaping () -> Void, animated: Bool, completion: (() -> Void)?) {
         super.performBatchUpdates({ () -> Void in
             self.bubbleView.performBatchUpdates(updateClosure, animated: false, completion: nil)
             }, animated: animated, completion: completion)

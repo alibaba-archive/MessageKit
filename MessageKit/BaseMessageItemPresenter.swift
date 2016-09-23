@@ -9,80 +9,80 @@
 import Foundation
 
 public enum ChatItemVisibility {
-    case Hidden
-    case Appearing
-    case Visible
+    case hidden
+    case appearing
+    case visible
 }
 
-public class BaseMessageItemPresenter<CellT: UICollectionViewCell>: ItemPresenterProtocol {
+open class BaseMessageItemPresenter<CellT: UICollectionViewCell>: ItemPresenterProtocol {
     public final weak var cell: CellT?
-    
+
     public init() { }
-    
-    public class func registerCells(collectionView: UICollectionView) {
+
+    open class func registerCells(_ collectionView: UICollectionView) {
         assert(false, "Implement in subclass")
     }
-    
-    public var canCalculateHeightInBackground: Bool {
+
+    open var isCalculateHeightInBackground: Bool {
         return false
     }
-    
-    public func heightForCell(maximumWidth width: CGFloat, decorationAttributes: ItemDecorationAttributesProtocol?) -> CGFloat {
+
+    open func heightForCell(maximumWidth width: CGFloat, decorationAttributes: ItemDecorationAttributesProtocol?) -> CGFloat {
         assert(false, "Implement in subclass")
         return 0
     }
-    
-    public func dequeueCell(collectionView collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell {
+
+    open func dequeueCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         assert(false, "Implemenent in subclass")
         return UICollectionViewCell()
     }
-    
-    public func configureCell(cell: UICollectionViewCell, decorationAttributes: ItemDecorationAttributesProtocol?) {
+
+    open func configureCell(_ cell: UICollectionViewCell, decorationAttributes: ItemDecorationAttributesProtocol?) {
         assert(false, "Implemenent in subclass")
     }
-    
-    final public private(set) var itemVisibility: ChatItemVisibility = .Hidden
-    
-    public final func cellWillBeShown(cell: UICollectionViewCell) {
+
+    final public fileprivate(set) var itemVisibility: ChatItemVisibility = .hidden
+
+    public final func cellWillBeShown(_ cell: UICollectionViewCell) {
         if let cell = cell as? CellT {
             self.cell = cell
-            self.itemVisibility = .Appearing
+            self.itemVisibility = .appearing
             self.cellWillBeShown()
-            self.itemVisibility = .Visible
+            self.itemVisibility = .visible
         } else {
             assert(false, "Invalid cell was given to presenter!")
         }
     }
-    
-    public func cellWillBeShown() {
+
+    open func cellWillBeShown() {
         // Hook for subclasses
     }
-    
-    public func shouldShowMenu() -> Bool {
+
+    open func shouldShowMenu() -> Bool {
         return false
     }
-    
-    public final func cellWasHidden(cell: UICollectionViewCell) {
+
+    public final func cellWasHidden(_ cell: UICollectionViewCell) {
         if let cell = cell as? CellT {
             if cell === self.cell {
                 self.cell = nil
-                self.itemVisibility = .Hidden
+                self.itemVisibility = .hidden
                 self.cellWasHidden()
             }
         } else {
             assert(false, "Invalid cell was given to presenter!")
         }
     }
-    
-    public func cellWasHidden() {
+
+    open func cellWasHidden() {
         // Hook for subclasses. Here we are not visible for real.
     }
-    
-    public func canPerformMenuControllerAction(action: Selector) -> Bool {
+
+    open func canPerformMenuControllerAction(_ action: Selector) -> Bool {
         return false
     }
-    
-    public func performMenuControllerAction(action: Selector) {
+
+    open func performMenuControllerAction(_ action: Selector) {
         assert(self.canPerformMenuControllerAction(action))
     }
 }

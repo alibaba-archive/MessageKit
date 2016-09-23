@@ -8,160 +8,158 @@
 
 import Foundation
 
+typealias UpdateClosure = (_ changes: CollectionChanges, _ updateModelClosure: @escaping () -> Void) -> ()
+
 extension MessageViewController: MessageDataSourceDelegateProtocol {
 
     public enum UpdateContext {
-        case Normal
-        case FirstLoad
-        case Pagination
-        case Reload
-        case MessageCountReduction
+        case normal
+        case firstLoad
+        case pagination
+        case reload
+        case messageCountReduction
     }
-    
-    public func MessageDataSourceDidUpdate(messageDataSource: MessageDataSourceProtocol) {
-        self.enqueueModelUpdate(context: .Normal)
+
+    public func MessageDataSourceDidUpdate(_ messageDataSource: MessageDataSourceProtocol) {
+        self.enqueueModelUpdate(context: .normal)
     }
-    
-    public func enqueueModelUpdate(context context: UpdateContext) {
+
+    public func enqueueModelUpdate(context: UpdateContext) {
         let newItems = self.messageDataSource?.messageItems ?? []
-        self.updateQueue.addTask({ [weak self] (completion) -> () in
-            guard let sSelf = self else { return }
-            
-            let oldItems = sSelf.decoratedMessageItems.map { $0.messageItem }
-            sSelf.updateModels(newItems: newItems, oldItems: oldItems, context: context, completion: {
-                if sSelf.updateQueue.isEmpty {
-                    sSelf.enqueueMessageCountReductionIfNeeded()
+        self.updateQueue.addTask { (completion) -> () in
+            let oldItems = self.decoratedMessageItems.map { $0.messageItem }
+            self.updateModels(newItems: newItems, oldItems: oldItems, context: context, completion: {
+                if self.updateQueue.isEmpty {
+                    self.enqueueMessageCountReductionIfNeeded()
                 }
                 completion()
             })
-            })
+        }
     }
-    
+
     public func enqueueMessageCountReductionIfNeeded() {
-        guard let preferredMaxMessageCount = self.constants.preferredMaxMessageCount where (self.messageDataSource?.messageItems.count ?? 0) > preferredMaxMessageCount else { return }
-        self.updateQueue.addTask { [weak self] (completion) -> () in
-            guard let sSelf = self else { return }
-            sSelf.messageDataSource?.adjustNumberOfMessages(preferredMaxCount: sSelf.constants.preferredMaxMessageCountAdjustment, focusPosition: sSelf.focusPosition, completion: { (didAdjust) -> Void in
-                guard didAdjust, let sSelf = self else {
+        guard let preferredMaxMessageCount = self.constants.preferredMaxMessageCount, (self.messageDataSource?.messageItems.count ?? 0) > preferredMaxMessageCount else { return }
+        self.updateQueue.addTask { (completion) -> () in
+            self.messageDataSource?.adjustNumberOfMessages(preferredMaxCount: self.constants.preferredMaxMessageCountAdjustment, focusPosition: self.focusPosition, completion: { (didAdjust) -> Void in
+                guard didAdjust else {
                     completion()
                     return
                 }
-                let newItems = sSelf.messageDataSource?.messageItems ?? []
-                let oldItems = sSelf.decoratedMessageItems.map { $0.messageItem }
-                sSelf.updateModels(newItems: newItems, oldItems: oldItems, context: .MessageCountReduction, completion: completion )
+                let newItems = self.messageDataSource?.messageItems ?? []
+                let oldItems = self.decoratedMessageItems.map { $0.messageItem }
+                self.updateModels(newItems: newItems, oldItems: oldItems, context: .messageCountReduction, completion: completion)
             })
         }
     }
-    
+
     public var focusPosition: Double {
         if self.isCloseToBottom() {
             return 1
         } else if self.isCloseToTop() {
             return 0
         }
-        
+
         let contentHeight = self.collectionView.contentSize.height
         guard contentHeight > 0 else {
             return 0.5
         }
-        
+
         // Rough estimation
         let midContentOffset = self.collectionView.contentOffset.y + self.visibleRect().height / 2
         return min(max(0, Double(midContentOffset / contentHeight)), 1.0)
     }
 
-    
-    private func updateModels(newItems newItems: [MessageItemProtocol], oldItems: [MessageItemProtocol], context: UpdateContext, completion: () -> Void) {
+    fileprivate func updateModels(newItems: [MessageItemProtocol], oldItems: [MessageItemProtocol], context: UpdateContext, completion: @escaping () -> Void) {
         let collectionViewWidth = self.collectionView.bounds.width
-        let newContext = self.isFirstLayout ? .FirstLoad : context
-        let performInBackground = newContext != .FirstLoad
-        
-        self.autoLoadingEnabled = false
-        let perfomBatchUpdates: (changes: CollectionChanges, updateModelClosure: () -> Void) -> ()  = { [weak self] modelUpdate in
-            self?.performBatchUpdates(
-                updateModelClosure: modelUpdate.updateModelClosure,
-                changes: modelUpdate.changes,
+        let newContext = self.isFirstLayout ? .firstLoad : context
+        let performInBackground = newContext != .firstLoad
+
+        self.isAutoLoadingEnabled = false
+        let perfomBatchUpdates: UpdateClosure  = { modelUpdate in
+            self.performBatchUpdates(
+                updateModelClosure: modelUpdate.1,
+                changes: modelUpdate.0,
                 context: newContext,
                 completion: { () -> Void in
-                    self?.autoLoadingEnabled = true
+                    self.isAutoLoadingEnabled = true
                     completion()
             })
         }
-        
+
         let createModelUpdate = {
             return self.createModelUpdates(
                 newItems: newItems,
                 oldItems: oldItems,
                 collectionViewWidth:collectionViewWidth)
         }
-        
+
         if performInBackground {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+            DispatchQueue.global(qos: .default).async { () -> Void in
                 let modelUpdate = createModelUpdate()
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    perfomBatchUpdates(changes: modelUpdate.changes, updateModelClosure: modelUpdate.updateModelClosure)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    perfomBatchUpdates(modelUpdate.changes, modelUpdate.updateModelClosure)
                 })
             }
         } else {
             let modelUpdate = createModelUpdate()
-            perfomBatchUpdates(changes: modelUpdate.changes, updateModelClosure: modelUpdate.updateModelClosure)
+            perfomBatchUpdates(modelUpdate.changes, modelUpdate.updateModelClosure)
         }
     }
-    
-    func updateVisibleCells(changes: CollectionChanges) {
+
+    func updateVisibleCells(_ changes: CollectionChanges) {
         // Datasource should be already updated!
-        
-        let visibleIndexPaths = Set(self.collectionView.indexPathsForVisibleItems().filter { (indexPath) -> Bool in
+
+        let visibleIndexPaths = Set(self.collectionView.indexPathsForVisibleItems.filter { (indexPath) -> Bool in
             return !changes.insertedIndexPaths.contains(indexPath) && !changes.deletedIndexPaths.contains(indexPath)
             })
-        
-        var updatedIndexPaths = Set<NSIndexPath>()
+
+        var updatedIndexPaths = Set<IndexPath>()
         for move in changes.movedIndexPaths {
-            updatedIndexPaths.insert(move.indexPathOld)
-            if let cell = self.collectionView.cellForItemAtIndexPath(move.indexPathOld) {
-                self.presenterForIndexPath(move.indexPathNew).configureCell(cell, decorationAttributes: self.decorationAttributesForIndexPath(move.indexPathNew))
+            updatedIndexPaths.insert(move.indexPathOld as IndexPath)
+            if let cell = self.collectionView.cellForItem(at: move.indexPathOld as IndexPath) {
+                self.createPresenter(for: move.indexPathNew).configureCell(cell, decorationAttributes: self.decorationAttributesForIndexPath(move.indexPathNew))
             }
         }
-        
+
         // Update remaining visible cells
-        let remaining = visibleIndexPaths.subtract(updatedIndexPaths)
+        let remaining = visibleIndexPaths.subtracting(updatedIndexPaths)
         for indexPath in remaining {
-            if let cell = self.collectionView.cellForItemAtIndexPath(indexPath) {
-                self.presenterForIndexPath(indexPath).configureCell(cell, decorationAttributes: self.decorationAttributesForIndexPath(indexPath))
+            if let cell = self.collectionView.cellForItem(at: indexPath) {
+                self.createPresenter(for: indexPath).configureCell(cell, decorationAttributes: self.decorationAttributesForIndexPath(indexPath))
             }
         }
     }
-    
+
     func performBatchUpdates(
-        updateModelClosure updateModelClosure: () -> Void,
+        updateModelClosure: @escaping () -> Void,
         changes: CollectionChanges,
         context: UpdateContext,
-        completion: () -> Void) {
-            let shouldScrollToBottom = context != .Pagination && self.isScrolledAtBottom()
+        completion: @escaping () -> Void) {
+            let shouldScrollToBottom = context != .pagination && self.isScrolledAtBottom()
             let oldRect = self.rectAtIndexPath(changes.movedIndexPaths.first?.indexPathOld)
             let myCompletion = {
                 // Found that cells may not match correct index paths here yet! (see comment below)
                 // Waiting for next loop seems to fix the issue
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     completion()
                 })
             }
-            
-            if context == .Normal {
-                
-                UIView.animateWithDuration(self.constants.updatesAnimationDuration, animations: { () -> Void in
+
+            if context == .normal {
+
+                UIView.animate(withDuration: self.constants.updatesAnimationDuration, animations: { () -> Void in
                     // We want to update visible cells to support easy removal of bubble tail or any other updates that may be needed after a data update
                     // Collection view state is not constistent after performBatchUpdates. It can happen that we ask a cell for an index path and we still get the old one.
                     // Visible cells can be either updated in completion block (easier but with delay) or before, taking into account if some cell is gonna be moved
-                    
+
                     updateModelClosure()
                     self.updateVisibleCells(changes)
-                    
+
                     self.collectionView.performBatchUpdates({ () -> Void in
-                        self.collectionView.deleteItemsAtIndexPaths(Array(changes.deletedIndexPaths))
-                        self.collectionView.insertItemsAtIndexPaths(Array(changes.insertedIndexPaths))
+                        self.collectionView.deleteItems(at: Array(changes.deletedIndexPaths))
+                        self.collectionView.insertItems(at: Array(changes.insertedIndexPaths))
                         for move in changes.movedIndexPaths {
-                            self.collectionView.moveItemAtIndexPath(move.indexPathOld, toIndexPath: move.indexPathNew)
+                            self.collectionView.moveItem(at: move.indexPathOld, to: move.indexPathNew)
                         }
                         }) { (finished) -> Void in
                             myCompletion()
@@ -170,20 +168,20 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
             } else {
                 updateModelClosure()
                 self.collectionView.reloadData()
-                self.collectionView.collectionViewLayout.prepareLayout()
+                self.collectionView.collectionViewLayout.prepare()
                 myCompletion()
             }
-            
+
             if shouldScrollToBottom {
-                self.scrollToBottom(animated: context == .Normal)
+                self.scrollToBottom(animated: context == .normal)
             } else {
                 let newRect = self.rectAtIndexPath(changes.movedIndexPaths.first?.indexPathNew)
                 self.scrollToPreservePosition(oldRefRect: oldRect, newRefRect: newRect)
             }
     }
-    
-    private func createModelUpdates(newItems newItems: [MessageItemProtocol], oldItems: [MessageItemProtocol], collectionViewWidth: CGFloat) -> (changes: CollectionChanges, updateModelClosure: () -> Void) {
-        
+
+    fileprivate func createModelUpdates(newItems: [MessageItemProtocol], oldItems: [MessageItemProtocol], collectionViewWidth: CGFloat) -> (changes: CollectionChanges, updateModelClosure: () -> Void) {
+
         let newDecoratedItems = self.messageItemsDecorator?.decorateItems(newItems) ?? newItems.map { DecoratedMessageItem(messageItem: $0, decorationAttributes: nil) }
         let changes = generateChanges(
             oldCollection: oldItems.map { $0 },
@@ -195,36 +193,36 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
         }
         return (changes, updateModelClosure)
     }
-    
-    private func createLayoutModel(decoratedItems: [DecoratedMessageItem], collectionViewWidth: CGFloat) -> MessageCollectionViewLayoutModel {
+
+    fileprivate func createLayoutModel(_ decoratedItems: [DecoratedMessageItem], collectionViewWidth: CGFloat) -> MessageCollectionViewLayoutModel {
         typealias IntermediateItemLayoutData = (height: CGFloat?, bottomMargin: CGFloat)
         typealias ItemLayoutData = (height: CGFloat, bottomMargin: CGFloat)
-        
-        func createLayoutModel(intermediateLayoutData intermediateLayoutData: [IntermediateItemLayoutData]) -> MessageCollectionViewLayoutModel {
+
+        func createLayoutModel(intermediateLayoutData: [IntermediateItemLayoutData]) -> MessageCollectionViewLayoutModel {
             let layoutData = intermediateLayoutData.map { (intermediateLayoutData: IntermediateItemLayoutData) -> ItemLayoutData in
                 return (height: intermediateLayoutData.height!, bottomMargin: intermediateLayoutData.bottomMargin)
             }
             return MessageCollectionViewLayoutModel.createModel(self.collectionView.bounds.width, itemsLayoutData: layoutData)
         }
-        
-        let isInbackground = !NSThread.isMainThread()
+
+        let isInbackground = !Thread.isMainThread
         var intermediateLayoutData = [IntermediateItemLayoutData]()
         var itemsForMainThread = [(index: Int, item: DecoratedMessageItem, presenter: ItemPresenterProtocol?)]()
-        
-        for (index, decoratedItem) in decoratedItems.enumerate() {
-            let presenter = presenterForIndex(index, messageItems: decoratedItems)
+
+        for (index, decoratedItem) in decoratedItems.enumerated() {
+            let presenter = createPresenter(for: index, messageItems: decoratedItems)
             var height: CGFloat?
             let bottomMargin: CGFloat = decoratedItem.decorationAttributes?.bottomMargin ?? 0
-            if !isInbackground || presenter.canCalculateHeightInBackground ?? false {
+            if !isInbackground || presenter.isCalculateHeightInBackground {
                 height = presenter.heightForCell(maximumWidth: collectionViewWidth, decorationAttributes: decoratedItem.decorationAttributes)
             } else {
                 itemsForMainThread.append((index: index, item: decoratedItem, presenter: presenter))
             }
             intermediateLayoutData.append((height: height, bottomMargin: bottomMargin))
         }
-        
+
         if itemsForMainThread.count > 0 {
-            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.sync(execute: { () -> Void in
                 for (index, decoratedItem, presenter) in itemsForMainThread {
                     let height = presenter?.heightForCell(maximumWidth: collectionViewWidth, decorationAttributes: decoratedItem.decorationAttributes)
                     intermediateLayoutData[index].height = height
@@ -233,7 +231,7 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
         }
         return createLayoutModel(intermediateLayoutData: intermediateLayoutData)
     }
-    
+
     public func messageCollectionViewLayoutModel() -> MessageCollectionViewLayoutModel {
         if self.layoutModel.calculatedForWidth != self.collectionView.bounds.width {
             self.layoutModel = self.createLayoutModel(self.decoratedMessageItems, collectionViewWidth: self.collectionView.bounds.width)

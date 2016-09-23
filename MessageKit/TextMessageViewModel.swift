@@ -9,28 +9,31 @@
 import Foundation
 
 public protocol TextMessageViewModelProtocol: DecoratedMessageViewModelProtocol {
+
     var text: String { get }
 }
 
-public class TextMessageViewModel: TextMessageViewModelProtocol {
-    public let text: String
-    public let messageViewModel: MessageViewModelProtocol
-    
+open class TextMessageViewModel: TextMessageViewModelProtocol {
+
+    open let text: String
+    open let messageViewModel: MessageViewModelProtocol
+
     public init(text: String, messageViewModel: MessageViewModelProtocol) {
         self.text = text
         self.messageViewModel = messageViewModel
     }
 }
 
-public class TextMessageViewModelDefaultBuilder: ViewModelBuilderProtocol {
+open class TextMessageViewModelDefaultBuilder: ViewModelBuilderProtocol {
+
     public init() { }
-    
+
     let messageViewModelBuilder = MessageViewModelDefaultBuilder()
-    
-    public func createViewModel(model: TextMessageModel) -> TextMessageViewModel {
+
+    open func createViewModel(_ model: TextMessageModel) -> TextMessageViewModel {
         let messageViewModel = self.messageViewModelBuilder.createMessageViewModel(model)
         let textMessageViewModel = TextMessageViewModel(text: model.text, messageViewModel: messageViewModel)
         return textMessageViewModel
-        
+
     }
 }

@@ -9,15 +9,18 @@
 import Foundation
 
 public protocol TextMessageModelProtocol: DecoratedMessageModelProtocol {
+
     var text: String { get }
 }
 
-public class TextMessageModel: TextMessageModelProtocol {
-    public let messageModel: MessageModelProtocol
-    public let text: String
+open class TextMessageModel: TextMessageModelProtocol {
+
+    open let messageModel: MessageModelProtocol
+    open let text: String
+    open var uid: String { return self.messageModel.uid }
+
     public init(messageModel: MessageModelProtocol, text: String) {
         self.messageModel = messageModel
         self.text = text
     }
-    public var uid: String { return self.messageModel.uid }
 }

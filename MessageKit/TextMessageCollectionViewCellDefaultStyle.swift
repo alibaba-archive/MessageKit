@@ -8,43 +8,43 @@
 
 import Foundation
 
-public class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewCellStyleProtocol {
-    
+open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewCellStyleProtocol {
+
     public init () {}
-    
+
     lazy var baseStyle = BaseMessageCollectionViewCellDefaultSyle()
     lazy var images: [String: UIImage] = {
         return [
-            "incoming_tail" : UIImage(named: "bubble-incoming-tail", inBundle: NSBundle(forClass: TextMessageCollectionViewCellDefaultStyle.self), compatibleWithTraitCollection: nil)!,
-            "incoming_notail" : UIImage(named: "bubble-incoming", inBundle: NSBundle(forClass: TextMessageCollectionViewCellDefaultStyle.self), compatibleWithTraitCollection: nil)!,
-            "outgoing_tail" : UIImage(named: "bubble-outgoing-tail", inBundle: NSBundle(forClass: TextMessageCollectionViewCellDefaultStyle.self), compatibleWithTraitCollection: nil)!,
-            "outgoing_notail" : UIImage(named: "bubble-outgoing", inBundle: NSBundle(forClass: TextMessageCollectionViewCellDefaultStyle.self), compatibleWithTraitCollection: nil)!,
+            "incoming_tail" : UIImage(named: "bubble-incoming-tail", in: Bundle(for: TextMessageCollectionViewCellDefaultStyle.self), compatibleWith: nil)!,
+            "incoming_notail" : UIImage(named: "bubble-incoming", in: Bundle(for: TextMessageCollectionViewCellDefaultStyle.self), compatibleWith: nil)!,
+            "outgoing_tail" : UIImage(named: "bubble-outgoing-tail", in: Bundle(for: TextMessageCollectionViewCellDefaultStyle.self), compatibleWith: nil)!,
+            "outgoing_notail" : UIImage(named: "bubble-outgoing", in: Bundle(for: TextMessageCollectionViewCellDefaultStyle.self), compatibleWith: nil)!,
         ]
     }()
-    
+
     lazy var font = {
-        return UIFont.systemFontOfSize(16)
+        return UIFont.systemFont(ofSize: 16)
     }()
-    
-    public func textFont(viewModel viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIFont {
+
+    open func textFont(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIFont {
         return self.font
     }
-    
-    public func textColor(viewModel viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIColor {
-        return viewModel.isIncoming ? UIColor.blackColor() : UIColor.whiteColor()
+
+    open func textColor(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIColor {
+        return viewModel.isIncoming ? UIColor.black : UIColor.white
     }
-    
-    public func textInsets(viewModel viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIEdgeInsets {
+
+    open func textInsets(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIEdgeInsets {
         return viewModel.isIncoming ? UIEdgeInsets(top: 10, left: 19, bottom: 10, right: 15) : UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 19)
     }
-    
-    public func bubbleImageBorder(viewModel viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIImage? {
+
+    open func bubbleImageBorder(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIImage? {
         return self.baseStyle.borderImage(viewModel: viewModel)
     }
-    
-    public func bubbleImage(viewModel viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIImage {
+
+    open func bubbleImage(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIImage {
         let key = self.imageKey(isIncoming: viewModel.isIncoming, status: viewModel.status, showsTail: viewModel.showsTail, isSelected: isSelected)
-        
+
         if let image = self.images[key] {
             return image
         } else {
@@ -55,29 +55,29 @@ public class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionVie
                 return image
             }
         }
-        
+
         assert(false, "coulnd't find image for this status. ImageKey: \(key)")
         return UIImage()
     }
-    
-    private func createImage(templateImage image: UIImage, isIncoming: Bool, status: MessageViewModelStatus, isSelected: Bool) -> UIImage {
+
+    fileprivate func createImage(templateImage image: UIImage, isIncoming: Bool, status: MessageViewModelStatus, isSelected: Bool) -> UIImage {
         var color = isIncoming ? self.baseStyle.baseColorIncoming : self.baseStyle.baseColorOutgoing
-        
+
         switch status {
-        case .Success:
+        case .success:
             break
-        case .Failed, .Sending:
-            color = color.bma_blendWithColor(UIColor.whiteColor().colorWithAlphaComponent(0.70))
+        case .failed, .sending:
+            color = color.bmaBlendWithColor(UIColor.white.withAlphaComponent(0.70))
         }
-        
+
         if isSelected {
-            color = color.bma_blendWithColor(UIColor.blackColor().colorWithAlphaComponent(0.10))
+            color = color.bmaBlendWithColor(UIColor.black.withAlphaComponent(0.10))
         }
-        
-        return image.bma_tintWithColor(color)
+
+        return image.bmaTintWithColor(color)
     }
-    
-    private func imageKey(isIncoming isIncoming: Bool, status: MessageViewModelStatus, showsTail: Bool, isSelected: Bool) -> String {
+
+    fileprivate func imageKey(isIncoming: Bool, status: MessageViewModelStatus, showsTail: Bool, isSelected: Bool) -> String {
         let directionKey = isIncoming ? "incoming" : "outgoing"
         let tailKey = showsTail ? "tail" : "notail"
         let statusKey = self.statusKey(status)
@@ -85,20 +85,20 @@ public class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionVie
         let key = "\(directionKey)_\(tailKey)_\(statusKey)_\(highlightedKey)"
         return key
     }
-    
-    private func templateKey(isIncoming isIncoming: Bool, showsTail: Bool) -> String {
+
+    fileprivate func templateKey(isIncoming: Bool, showsTail: Bool) -> String {
         let directionKey = isIncoming ? "incoming" : "outgoing"
         let tailKey = showsTail ? "tail" : "notail"
         return "\(directionKey)_\(tailKey)"
     }
-    
-    private func statusKey(status: MessageViewModelStatus) -> NSString {
+
+    fileprivate func statusKey(_ status: MessageViewModelStatus) -> NSString {
         switch status {
-        case .Success:
+        case .success:
             return "ok"
-        case .Sending:
+        case .sending:
             return "sending"
-        case .Failed:
+        case .failed:
             return "failed"
         }
     }

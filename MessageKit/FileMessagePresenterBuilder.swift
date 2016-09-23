@@ -8,35 +8,35 @@
 
 import Foundation
 
-public class FileMessagePresenterBuilder<ViewModelBuilderT, InteractionHandlerT where
+open class FileMessagePresenterBuilder<ViewModelBuilderT, InteractionHandlerT>: ItemPresenterBuilderProtocol where
     ViewModelBuilderT: ViewModelBuilderProtocol,
     ViewModelBuilderT.ModelT: FileMessageModelProtocol,
     ViewModelBuilderT.ViewModelT: FileMessageViewModelProtocol,
     InteractionHandlerT: BaseMessageInteractionHandlerProtocol,
-    InteractionHandlerT.ViewModelT == ViewModelBuilderT.ViewModelT
->: ItemPresenterBuilderProtocol {
+    InteractionHandlerT.ViewModelT == ViewModelBuilderT.ViewModelT {
+
     public typealias ModelT = ViewModelBuilderT.ModelT
     public typealias ViewModelT = ViewModelBuilderT.ViewModelT
-    
+
     public init(
         viewModelBuilder: ViewModelBuilderT,
         interactionHandler: InteractionHandlerT?) {
             self.viewModelBuilder = viewModelBuilder
             self.interactionHandler = interactionHandler
     }
-    
+
     let viewModelBuilder: ViewModelBuilderT
     let interactionHandler: InteractionHandlerT?
-    public lazy var sizingCell: FileMessageCollectionViewCell = FileMessageCollectionViewCell.sizingCell()
-    public lazy var fileCellStyle: FileMessageCollectionViewCellStyleProtocol = FileMessageCollectionViewCellDefaultStyle()
-    public lazy var baseCellStyle: BaseMessageCollectionViewCellStyleProtocol = BaseMessageCollectionViewCellDefaultSyle()
-    
-    public func canHandleMessageItem(messageItem: MessageItemProtocol) -> Bool {
+    open lazy var sizingCell: FileMessageCollectionViewCell = FileMessageCollectionViewCell.sizingCell()
+    open lazy var fileCellStyle: FileMessageCollectionViewCellStyleProtocol = FileMessageCollectionViewCellDefaultStyle()
+    open lazy var baseCellStyle: BaseMessageCollectionViewCellStyleProtocol = BaseMessageCollectionViewCellDefaultSyle()
+
+    open func canHandle(_ messageItem: MessageItemProtocol) -> Bool {
         return messageItem is FileMessageModelProtocol ? true : false
     }
-    
-    public func createPresenterWithMessageItem(messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
-        assert(self.canHandleMessageItem(messageItem))
+
+    open func createPresenter(withMessageItem messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
+        assert(self.canHandle(messageItem))
         return FileMessagePresenter<ViewModelBuilderT, InteractionHandlerT>(
             messageModel: messageItem as! ModelT,
             viewModelBuilder: self.viewModelBuilder,
@@ -46,8 +46,8 @@ public class FileMessagePresenterBuilder<ViewModelBuilderT, InteractionHandlerT 
             fileCellStyle: self.fileCellStyle
         )
     }
-    
-    public var presenterType: ItemPresenterProtocol.Type {
+
+    open var presenterType: ItemPresenterProtocol.Type {
         return FileMessagePresenter<ViewModelBuilderT, InteractionHandlerT>.self
     }
 }

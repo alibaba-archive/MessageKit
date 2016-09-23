@@ -9,8 +9,10 @@
 import Foundation
 
 public struct DecoratedMessageItem {
+
     public let messageItem: MessageItemProtocol
     public let decorationAttributes: ItemDecorationAttributesProtocol?
+
     public init(messageItem: MessageItemProtocol, decorationAttributes: ItemDecorationAttributesProtocol?) {
         self.messageItem = messageItem
         self.decorationAttributes = decorationAttributes

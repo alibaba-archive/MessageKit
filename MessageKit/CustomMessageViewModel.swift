@@ -9,25 +9,28 @@
 import Foundation
 
 public protocol CustomMessageViewModelProtocol: DecoratedMessageViewModelProtocol {
+
     var customView: UIView { get }
 }
 
-public class CustomMessageViewModel: CustomMessageViewModelProtocol {
-    public var customView: UIView
-    public var messageViewModel: MessageViewModelProtocol
-    
+open class CustomMessageViewModel: CustomMessageViewModelProtocol {
+
+    open var customView: UIView
+    open var messageViewModel: MessageViewModelProtocol
+
     public init(messageViewModel: MessageViewModelProtocol, customView: UIView) {
         self.customView = customView
         self.messageViewModel = messageViewModel
     }
 }
 
-public class CustomMessageViewModelDefaultBuilder: ViewModelBuilderProtocol {
+open class CustomMessageViewModelDefaultBuilder: ViewModelBuilderProtocol {
+
     public init() { }
-    
+
     let messageViewModelBuilder = MessageViewModelDefaultBuilder()
-    
-    public func createViewModel(model: CustomMessageModel) -> CustomMessageViewModel {
+
+    open func createViewModel(_ model: CustomMessageModel) -> CustomMessageViewModel {
         let messageViewModel = self.messageViewModelBuilder.createMessageViewModel(model)
         let customMessageViewModel = CustomMessageViewModel(messageViewModel: messageViewModel, customView: model.customView)
         return customMessageViewModel

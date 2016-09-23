@@ -9,76 +9,76 @@
 import Foundation
 
 extension MessageViewController: MessageCollectionViewLayoutDelegate {
-    
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return decoratedMessageItems.count
     }
 
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    @objc(numberOfSectionsInCollectionView:) public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let presenter = presenterForIndexPath(indexPath)
+    @objc(collectionView:cellForItemAtIndexPath:) public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let presenter = createPresenter(for: indexPath)
         let cell = presenter.dequeueCell(collectionView: collectionView, indexPath: indexPath)
         let decorationAttributes = self.decorationAttributesForIndexPath(indexPath)
         presenter.configureCell(cell, decorationAttributes: decorationAttributes)
         return cell
     }
-    
-    public func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        if let oldPresenterForCell = presentersByCell.objectForKey(cell) as? ItemPresenterProtocol {
-            presentersByCell.removeObjectForKey(cell)
+
+    @objc(collectionView:didEndDisplayingCell:forItemAtIndexPath:) public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let oldPresenterForCell = presentersByCell.object(forKey: cell) as? ItemPresenterProtocol {
+            presentersByCell.removeObject(forKey: cell)
             oldPresenterForCell.cellWasHidden(cell)
         }
     }
-    
-    public func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        let presenter = self.presenterForIndexPath(indexPath)
+
+    @objc(collectionView:willDisplayCell:forItemAtIndexPath:) public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let presenter = createPresenter(for: indexPath)
         presentersByCell.setObject(presenter, forKey: cell)
         presenter.cellWillBeShown(cell)
     }
-    
-    public func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return presenterForIndexPath(indexPath).shouldShowMenu() ?? false
+
+    @objc(collectionView:shouldShowMenuForItemAtIndexPath:) public func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        return createPresenter(for: indexPath).shouldShowMenu()
     }
-    
-    public func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-        presenterForIndexPath(indexPath).performMenuControllerAction(action)
+
+    @objc(collectionView:performAction:forItemAtIndexPath:withSender:) public func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        createPresenter(for: indexPath).performMenuControllerAction(action)
     }
-    
-    public func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return presenterForIndexPath(indexPath).canPerformMenuControllerAction(action)
+
+    @objc(collectionView:canPerformAction:forItemAtIndexPath:withSender:) public func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        return createPresenter(for: indexPath).canPerformMenuControllerAction(action)
     }
-    
-    public func presenterForIndexPath(indexPath: NSIndexPath) -> ItemPresenterProtocol {
-        return presenterForIndex(indexPath.item, messageItems: decoratedMessageItems)
+
+    public func createPresenter(for indexPath: IndexPath) -> ItemPresenterProtocol {
+        return createPresenter(for: (indexPath as NSIndexPath).item, messageItems: decoratedMessageItems)
     }
-    
-    func presenterForIndex(index: Int, messageItems: [DecoratedMessageItem]) -> ItemPresenterProtocol {
+
+    func createPresenter(for index: Int, messageItems: [DecoratedMessageItem]) -> ItemPresenterProtocol {
         guard index < messageItems.count else {
             return DummyMessageItemPresenter()
         }
-        
+
         let messageItem = messageItems[index].messageItem
-        if let presenter = presentersByMessageItem.objectForKey(messageItem) as? ItemPresenterProtocol {
+        if let presenter = presentersByMessageItem.object(forKey: messageItem) as? ItemPresenterProtocol {
             return presenter
         }
-        let presenter = createPresenterForMessageItem(messageItem)
+        let presenter = createPresenter(for: messageItem)
         presentersByMessageItem.setObject(presenter, forKey: messageItem)
         return presenter
     }
-    
-    public func createPresenterForMessageItem(messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
+
+    public func createPresenter(for messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
         for builder in self.presenterBuildersByType[messageItem.type] ?? [] {
-            if builder.canHandleMessageItem(messageItem) {
-                return builder.createPresenterWithMessageItem(messageItem)
+            if builder.canHandle(messageItem) {
+                return builder.createPresenter(withMessageItem: messageItem)
             }
         }
         return DummyMessageItemPresenter()
     }
-    
-    public func decorationAttributesForIndexPath(indexPath: NSIndexPath) -> ItemDecorationAttributesProtocol? {
-        return decoratedMessageItems[indexPath.item].decorationAttributes
+
+    public func decorationAttributesForIndexPath(_ indexPath: IndexPath) -> ItemDecorationAttributesProtocol? {
+        return decoratedMessageItems[(indexPath as NSIndexPath).item].decorationAttributes
     }
 }
