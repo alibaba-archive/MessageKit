@@ -106,7 +106,7 @@ open class CustomMessageCollectionViewCellDefaultStyle: CustomMessageCollectionV
         return "\(directionKey)_\(tailKey)"
     }
 
-    fileprivate func statusKey(_ status: MessageViewModelStatus) -> NSString {
+    fileprivate func statusKey(_ status: MessageViewModelStatus) -> String {
         switch status {
         case .success:
             return "ok"

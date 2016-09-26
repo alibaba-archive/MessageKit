@@ -115,8 +115,8 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
 
         var updatedIndexPaths = Set<IndexPath>()
         for move in changes.movedIndexPaths {
-            updatedIndexPaths.insert(move.indexPathOld as IndexPath)
-            if let cell = self.collectionView.cellForItem(at: move.indexPathOld as IndexPath) {
+            updatedIndexPaths.insert(move.indexPathOld)
+            if let cell = self.collectionView.cellForItem(at: move.indexPathOld) {
                 self.createPresenter(for: move.indexPathNew).configureCell(cell, decorationAttributes: self.decorationAttributesForIndexPath(move.indexPathNew))
             }
         }

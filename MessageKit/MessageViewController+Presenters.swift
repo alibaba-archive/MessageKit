@@ -52,7 +52,7 @@ extension MessageViewController: MessageCollectionViewLayoutDelegate {
     }
 
     public func createPresenter(for indexPath: IndexPath) -> ItemPresenterProtocol {
-        return createPresenter(for: (indexPath as NSIndexPath).item, messageItems: decoratedMessageItems)
+        return createPresenter(for: indexPath.item, messageItems: decoratedMessageItems)
     }
 
     func createPresenter(for index: Int, messageItems: [DecoratedMessageItem]) -> ItemPresenterProtocol {
@@ -79,6 +79,6 @@ extension MessageViewController: MessageCollectionViewLayoutDelegate {
     }
 
     public func decorationAttributesForIndexPath(_ indexPath: IndexPath) -> ItemDecorationAttributesProtocol? {
-        return decoratedMessageItems[(indexPath as NSIndexPath).item].decorationAttributes
+        return decoratedMessageItems[indexPath.item].decorationAttributes
     }
 }
