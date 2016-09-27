@@ -35,7 +35,7 @@ open class PhotoMessagePresenterBuilder<ViewModelBuilderT, InteractionHandlerT>:
         return messageItem is PhotoMessageModelProtocol ? true : false
     }
 
-    open func createPresenter(withMessageItem messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
+    open func createPresenter(with messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
         assert(self.canHandle(messageItem))
         return PhotoMessagePresenter<ViewModelBuilderT, InteractionHandlerT>(
             messageModel: messageItem as! ModelT,

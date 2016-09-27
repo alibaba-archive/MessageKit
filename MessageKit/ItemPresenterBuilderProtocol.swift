@@ -13,6 +13,6 @@ public protocol ItemPresenterBuilderProtocol {
     var presenterType: ItemPresenterProtocol.Type { get }
 
     func canHandle(_ messageItem: MessageItemProtocol) -> Bool
-    func createPresenter(withMessageItem messageItem: MessageItemProtocol) -> ItemPresenterProtocol
+    func createPresenter(with messageItem: MessageItemProtocol) -> ItemPresenterProtocol
 
 }

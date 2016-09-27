@@ -35,7 +35,7 @@ open class CustomMessagePresenterBuilder<ViewModelBuilderT, InteractionHandlerT>
         return messageItem is CustomMessageModelProtocol ? true : false
     }
 
-    open func createPresenter(withMessageItem messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
+    open func createPresenter(with messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
         assert(self.canHandle(messageItem))
         return CustomMessagePresenter<ViewModelBuilderT, InteractionHandlerT>(
             messageModel: messageItem as! ModelT,

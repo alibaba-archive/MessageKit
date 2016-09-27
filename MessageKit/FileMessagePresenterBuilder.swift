@@ -35,7 +35,7 @@ open class FileMessagePresenterBuilder<ViewModelBuilderT, InteractionHandlerT>: 
         return messageItem is FileMessageModelProtocol ? true : false
     }
 
-    open func createPresenter(withMessageItem messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
+    open func createPresenter(with messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
         assert(self.canHandle(messageItem))
         return FileMessagePresenter<ViewModelBuilderT, InteractionHandlerT>(
             messageModel: messageItem as! ModelT,

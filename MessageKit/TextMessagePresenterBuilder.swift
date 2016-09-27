@@ -50,7 +50,7 @@ open class TextMessagePresenterBuilder<ViewModelBuilderT, InteractionHandlerT>
         return messageItem is TextMessageModelProtocol ? true : false
     }
 
-    open func createPresenter(withMessageItem messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
+    open func createPresenter(with messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
         assert(canHandle(messageItem))
         return TextMessagePresenter<ViewModelBuilderT, InteractionHandlerT>(
             messageModel: messageItem as! ModelT,

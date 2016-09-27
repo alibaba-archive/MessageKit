@@ -72,7 +72,7 @@ extension MessageViewController: MessageCollectionViewLayoutDelegate {
     public func createPresenter(for messageItem: MessageItemProtocol) -> ItemPresenterProtocol {
         for builder in self.presenterBuildersByType[messageItem.type] ?? [] {
             if builder.canHandle(messageItem) {
-                return builder.createPresenter(withMessageItem: messageItem)
+                return builder.createPresenter(with: messageItem)
             }
         }
         return DummyMessageItemPresenter()
