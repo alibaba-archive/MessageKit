@@ -34,7 +34,6 @@
 		E565A4A51C99035D003AD80D /* CustomMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565A4A41C99035D003AD80D /* CustomMessageCollectionViewCell.swift */; };
 		E565A4A71C990373003AD80D /* CustomMessageCollectionViewCellDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565A4A61C990373003AD80D /* CustomMessageCollectionViewCellDefaultStyle.swift */; };
 		E5AC72421C8E70300047981F /* FileMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */; };
-		E5BF8FC01C882B4F0041AF71 /* PhotoMessageAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */; };
 		E5BF8FCE1C89525C0041AF71 /* UIImageView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BF8FCD1C89525C0041AF71 /* UIImageView+CornerRadius.swift */; };
 		E5CC40301C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */; };
 		E5D671C91C59BD0C005C9598 /* MessageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D671C81C59BD0C005C9598 /* MessageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -109,7 +108,6 @@
 		E565A4A41C99035D003AD80D /* CustomMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E565A4A61C990373003AD80D /* CustomMessageCollectionViewCellDefaultStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageCollectionViewCellDefaultStyle.swift; sourceTree = "<group>"; };
 		E5AC72411C8E70300047981F /* FileMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FileMessageAssets.xcassets; sourceTree = "<group>"; };
-		E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhotoMessageAssets.xcassets; sourceTree = "<group>"; };
 		E5BF8FCD1C89525C0041AF71 /* UIImageView+CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CornerRadius.swift"; sourceTree = "<group>"; };
 		E5CC402F1C880E9D00B3C130 /* BaseMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D671C51C59BD0C005C9598 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -376,7 +374,6 @@
 		E5E16F4E1C8827B900065288 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E5BF8FBF1C882B4F0041AF71 /* PhotoMessageAssets.xcassets */,
 				E5E16F531C88282200065288 /* PhotoBubbleView.swift */,
 				E5E16F4F1C8827CA00065288 /* PhotoMessageCollectionViewCell.swift */,
 				E5E16F511C8827EE00065288 /* PhotoMessageCollectionViewCellDefaultStyle.swift */,
@@ -500,7 +497,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5BF8FC01C882B4F0041AF71 /* PhotoMessageAssets.xcassets in Resources */,
 				E5D6723C1C5B179B005C9598 /* Images.xcassets in Resources */,
 				E5AC72421C8E70300047981F /* FileMessageAssets.xcassets in Resources */,
 				E5E16F371C8812A100065288 /* BaseMessageAssets.xcassets in Resources */,

@@ -50,10 +50,6 @@ open class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionVie
         return UIImage.bmaImageWithColor(self.baseStyle.baseColorOutgoing, size: CGSize(width: 1, height: 1))
     }()
 
-    lazy fileprivate var placeholderIcon: UIImage = {
-        return UIImage(named: "photo-bubble-placeholder-icon", in: Bundle(for: type(of: self)), compatibleWith: nil)!
-    }()
-
     open func maskingImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage {
         switch (viewModel.isIncoming, viewModel.showsTail) {
         case (true, true):
