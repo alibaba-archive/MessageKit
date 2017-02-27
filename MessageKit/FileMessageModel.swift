@@ -15,7 +15,7 @@ public protocol FileMessageModelProtocol: DecoratedMessageModelProtocol {
 }
 
 public class FileMessageModel: FileMessageModelProtocol {
-    public let messageModel: MessageModelProtocol
+    public var messageModel: MessageModelProtocol
     public var fileName: String
     public var fileSize: String
     public var fileFolderColor: UIColor
@@ -26,5 +26,12 @@ public class FileMessageModel: FileMessageModelProtocol {
         self.fileSize = fileSize
         self.fileFolderColor = fileFolderColor
     }
-    public var uid: String { return messageModel.uid }
+    public var uid: String {
+        get {
+            return messageModel.uid
+        }
+        set {
+            messageModel.uid = newValue
+        }
+    }
 }

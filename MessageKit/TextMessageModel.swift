@@ -13,11 +13,18 @@ public protocol TextMessageModelProtocol: DecoratedMessageModelProtocol {
 }
 
 public class TextMessageModel: TextMessageModelProtocol {
-    public let messageModel: MessageModelProtocol
+    public var messageModel: MessageModelProtocol
     public let text: String
     public init(messageModel: MessageModelProtocol, text: String) {
         self.messageModel = messageModel
         self.text = text
     }
-    public var uid: String { return self.messageModel.uid }
+    public var uid: String {
+        get {
+           return self.messageModel.uid
+        }
+        set {
+            messageModel.uid = newValue
+        }
+    }
 }

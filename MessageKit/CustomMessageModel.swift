@@ -13,12 +13,19 @@ public protocol CustomMessageModelProtocol: DecoratedMessageModelProtocol {
 }
 
 public class CustomMessageModel: CustomMessageModelProtocol {
-    public let messageModel: MessageModelProtocol
+    public var messageModel: MessageModelProtocol
     public var customView: UIView
     
     public init(messageModel: MessageModelProtocol, customView: UIView) {
         self.messageModel = messageModel
         self.customView = customView
     }
-    public var uid: String { return messageModel.uid }
+    public var uid: String {
+        get {
+           return messageModel.uid
+        }
+        set {
+            messageModel.uid = newValue
+        }
+    }
 }
