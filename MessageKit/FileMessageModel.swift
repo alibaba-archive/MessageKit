@@ -17,11 +17,18 @@ public protocol FileMessageModelProtocol: DecoratedMessageModelProtocol {
 
 open class FileMessageModel: FileMessageModelProtocol {
 
-    open let messageModel: MessageModelProtocol
+    open var messageModel: MessageModelProtocol
     open var fileName: String
     open var fileSize: String
     open var fileFolderColor: UIColor
-    open var uid: String { return messageModel.uid }
+    open var uid: String {
+        get {
+            return messageModel.uid
+        }
+        set {
+            messageModel.uid = newValue
+        }
+    }
 
     public init(messageModel: MessageModelProtocol, fileName: String, fileSize: String, fileFolderColor: UIColor) {
         self.messageModel = messageModel
