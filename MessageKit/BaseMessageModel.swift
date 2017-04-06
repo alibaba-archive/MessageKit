@@ -28,13 +28,18 @@ public protocol MessageModelProtocol: MessageItemProtocol {
 
 public protocol DecoratedMessageModelProtocol: MessageModelProtocol {
 
-    var messageModel: MessageModelProtocol { get }
+    var messageModel: MessageModelProtocol { get set }
 }
 
 public extension DecoratedMessageModelProtocol {
 
     var uid: String {
-        return self.messageModel.uid
+        get {
+            return self.messageModel.uid
+        }
+        set {
+            self.messageModel.uid = newValue
+        }
     }
 
     var senderId: String {

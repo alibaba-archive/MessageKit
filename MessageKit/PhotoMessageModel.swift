@@ -18,10 +18,17 @@ public typealias PhotoClosure =  (_ imageview: UIImageView) -> ()
 
 open class PhotoMessageModel: PhotoMessageModelProtocol {
 
-    open let messageModel: MessageModelProtocol
+    open var messageModel: MessageModelProtocol
     open let imageSize: CGSize
     open let imageClosure: PhotoClosure
-    open var uid: String { return messageModel.uid }
+    open var uid: String {
+        get {
+            return messageModel.uid
+        }
+        set {
+            messageModel.uid = newValue
+        }
+    }
 
     public init(messageModel: MessageModelProtocol, imageSize: CGSize, imageClosure: @escaping PhotoClosure) {
         self.messageModel = messageModel

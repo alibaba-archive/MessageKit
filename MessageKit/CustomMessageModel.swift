@@ -15,9 +15,16 @@ public protocol CustomMessageModelProtocol: DecoratedMessageModelProtocol {
 
 open class CustomMessageModel: CustomMessageModelProtocol {
 
-    open let messageModel: MessageModelProtocol
+    open var messageModel: MessageModelProtocol
     open var customView: UIView
-    open var uid: String { return messageModel.uid }
+    open var uid: String {
+        get {
+            return messageModel.uid
+        }
+        set {
+            messageModel.uid = newValue
+        }
+    }
 
     public init(messageModel: MessageModelProtocol, customView: UIView) {
         self.messageModel = messageModel
