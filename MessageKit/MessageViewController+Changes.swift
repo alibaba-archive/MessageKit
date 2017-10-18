@@ -75,10 +75,11 @@ extension MessageViewController: MessageDataSourceDelegateProtocol {
         let performInBackground = newContext != .firstLoad
 
         self.isAutoLoadingEnabled = false
-        let perfomBatchUpdates: UpdateClosure  = { modelUpdate in
+        
+        let perfomBatchUpdates: UpdateClosure  = { (changes, updateModelClosure) in
             self.performBatchUpdates(
-                updateModelClosure: modelUpdate.1,
-                changes: modelUpdate.0,
+                updateModelClosure: updateModelClosure,
+                changes: changes,
                 context: newContext,
                 completion: { () -> Void in
                     self.isAutoLoadingEnabled = true

@@ -275,7 +275,7 @@ class ViewController: MessageViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func addNewMessage() {
+    @objc func addNewMessage() {
 
         for _ in 1...1000 {
             sendNewMessage(randomModel())
@@ -283,7 +283,7 @@ class ViewController: MessageViewController {
 
     }
 
-    func addNewMessages() {
+    @objc func addNewMessages() {
 
         var array = self.messageDataSource!.messageItems
         for _ in 0...300 {

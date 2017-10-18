@@ -25,7 +25,7 @@ class FPSLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func tick(_ link: CADisplayLink) {
+    @objc func tick(_ link: CADisplayLink) {
         if lastTime == 0 {
             lastTime = link.timestamp
             return
