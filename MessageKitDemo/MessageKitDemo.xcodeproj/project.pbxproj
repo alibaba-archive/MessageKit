@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		86A830CF1D8E927800A69D85 /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A830CE1D8E927800A69D85 /* MessageKit.framework */; };
-		86A830D01D8E927800A69D85 /* MessageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 86A830CE1D8E927800A69D85 /* MessageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC0979B31F97001500F5CB9F /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0979B41F97001500F5CB9F /* MessageKit.framework */; };
 		E5259E5B1C7DB06E00C503FF /* FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5259E5A1C7DB06E00C503FF /* FPSLabel.swift */; };
 		E5D672011C59BE77005C9598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672001C59BE77005C9598 /* AppDelegate.swift */; };
 		E5D672031C59BE77005C9598 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D672021C59BE77005C9598 /* ViewController.swift */; };
@@ -24,7 +23,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				86A830D01D8E927800A69D85 /* MessageKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -32,7 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		86A830CE1D8E927800A69D85 /* MessageKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MessageKit.framework; sourceTree = "<group>"; };
+		AC0979B41F97001500F5CB9F /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5259E5A1C7DB06E00C503FF /* FPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSLabel.swift; sourceTree = "<group>"; };
 		E5D671FD1C59BE77005C9598 /* MessageKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D672001C59BE77005C9598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,19 +46,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86A830CF1D8E927800A69D85 /* MessageKit.framework in Frameworks */,
+				AC0979B31F97001500F5CB9F /* MessageKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC0979B21F97001500F5CB9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC0979B41F97001500F5CB9F /* MessageKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E5D671F41C59BE77005C9598 = {
 			isa = PBXGroup;
 			children = (
-				86A830CE1D8E927800A69D85 /* MessageKit.framework */,
 				E5D671FF1C59BE77005C9598 /* MessageKitDemo */,
 				E5D671FE1C59BE77005C9598 /* Products */,
+				AC0979B21F97001500F5CB9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,12 +121,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = HarriesChen;
 				TargetAttributes = {
 					E5D671FC1C59BE77005C9598 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -212,14 +218,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -259,14 +271,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -304,7 +322,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -321,7 +340,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harrieschen.MessageKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
