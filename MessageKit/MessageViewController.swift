@@ -168,7 +168,12 @@ open class MessageViewController: UIViewController, UICollectionViewDataSource, 
         let newContentOffsetY = self.collectionView.contentOffset.y + insetBottomDiff - currentDistanceToBottomInset
 
         self.collectionView.contentInset.bottom = newInsetBottom
-        self.collectionView.scrollIndicatorInsets.bottom = self.constants.defaultScrollIndicatorInsets.bottom + inputHeightWithKeyboard
+        if #available(iOS 11.0, *) {
+            let indicatorBottom = self.constants.defaultScrollIndicatorInsets.bottom + inputHeightWithKeyboard - view.safeAreaInsets.bottom
+            self.collectionView.scrollIndicatorInsets.bottom = max(indicatorBottom, 0)
+        } else {
+            self.collectionView.scrollIndicatorInsets.bottom = self.constants.defaultScrollIndicatorInsets.bottom + inputHeightWithKeyboard
+        }
         let inputIsAtBottom = self.view.bounds.maxY - self.inputContainer.frame.maxY <= 0
 
         if allContentFits {
